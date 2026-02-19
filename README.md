@@ -1,16 +1,52 @@
-# React + Vite
+# Vivaxplay
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An online betting platform built with React and Vite, offering sports betting, casino games, live dealers, and promotions.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Sports Betting
+- Casino Games
+- Live Dealers
+- Promotions
+- User Authentication
+- Policies & Terms
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 18+
+- Vite
+- Tailwind CSS
+- ESLint
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install
+```
+
+## Development
+
+```bash
+npm run dev
+```
+
+## Build
+
+```bash
+npm run build
+```
+
+## Project Structure
+
+```
+src/
+├── components/       # Reusable React components
+├── pages/           # Page components
+├── assets/          # Images and icons
+├── context/         # State management
+└── App.jsx          # Main component
+```
+
+## License
+
+MIT

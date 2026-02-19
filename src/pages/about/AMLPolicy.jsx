@@ -6,7 +6,7 @@ const AMLPolicy = () => {
 
       <PageHeader title="AML Policy" />
 
-      <div className="bg-white px-4 sm:px-6 md:px-8 py-6 md:py-8">
+      <div style={{ marginLeft: '20px', marginRight: '20px', borderRadius: '8px' }} className="bg-white px-4 sm:px-6 md:px-8 py-6 md:py-8 rounded-md shadow-[0_4px_8px_0_rgba(0,0,0,0.1),0_3px_10px_0_rgba(0,0,0,0.08)]">
 
         {/* 1 */}
         <h2 className="text-[20px] md:text-[24px] font-[590] text-[#111827] mt-6 mb-2 leading-[100%]">

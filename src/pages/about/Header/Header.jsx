@@ -18,17 +18,16 @@ const PageHeader = ({ title }) => {
 const styles = {
   header: {
     width: "100%",
-    maxWidth: "1188px",
-    height: "266px",
-    borderRadius: "12px",
+    height: "170px",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: "0 60px",
+    padding: "0 30px",
     background: "linear-gradient(0deg, #025877, #025877)",
     boxShadow: "0 4px 18px rgba(15, 23, 42, 0.06)",
     overflow: "hidden",
     boxSizing: "border-box",
+    marginBottom: "30px",
   },
 
   headerTitle: {
@@ -48,6 +47,7 @@ const styles = {
     height: "200px",
     objectFit: "contain",
     flexShrink: 0,
+    marginLeft: "105px",
   },
 };
 

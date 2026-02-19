@@ -230,6 +230,10 @@ const styles = {
   content: {
     padding: '24px 32px 32px',
     backgroundColor: '#ffffff',
+    marginLeft: '20px',
+    marginRight: '20px',
+    borderRadius: '8px',
+    boxShadow: '0 4px 8px 0 rgba(0,0,0,0.1), 0 3px 10px 0 rgba(0,0,0,0.08)',
   },
   pageTitle: {
     fontFamily: baseFont,

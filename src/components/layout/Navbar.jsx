@@ -31,7 +31,7 @@ const Navbar = () => {
     <header className="fixed top-0 left-0 right-0 z-[1000] flex items-center justify-between bg-[#1f1f1f] h-[62px] px-5">
 
       {/* ── Left: Hamburger (mobile only) + Logo ── */}
-      <div className="flex items-center gap-[14px]">
+      <div className="flex items-center">
 
         {/* Hamburger — mobile only */}
         <button
@@ -46,7 +46,7 @@ const Navbar = () => {
         <img
           src={logoSvg}
           alt="VIVA X PLAY"
-          className="w-[230px] h-[42px] object-contain cursor-pointer"
+          className="w-[100px] lg:w-[230px] h-[42px] object-contain cursor-pointer sm:w-[100px]"
           onClick={() => navigate('/')}
         />
       </div>
@@ -71,17 +71,17 @@ const Navbar = () => {
       </nav>
 
       {/* ── Right: Auth buttons ── */}
-      <div className="flex items-center gap-[8px]">
+      <div className="flex items-center gap-[4px] sm:gap-[8px]">
 
         {/* Globe + EN */}
-        <button className="flex items-center justify-center gap-[10px] bg-[#121212] text-white px-[10px] pt-[4px] pb-[4px] w-[71px] h-[44px] rounded-[8px] text-[12px] font-[500] border-2 border-[#1cd4ff] cursor-pointer">
-          <img src={worldIcon} alt="lang" className="w-[14px] h-[14px]" />
-          <span className="hidden md:inline">EN</span>
+        <button className="flex items-center justify-center gap-[6px] md:gap-[10px] bg-[#121212] text-white px-[6px] md:px-[10px] pt-[3px] md:pt-[4px] pb-[3px] md:pb-[4px] w-[44px] sm:w-[56px] md:w-[71px] h-[40px] md:h-[44px] rounded-[6px] md:rounded-[8px] text-[10px] sm:text-[11px] md:text-[12px] font-[500] border-2 border-[#1cd4ff] cursor-pointer transition-all duration-200">
+          <img src={worldIcon} alt="lang" className="w-[12px] md:w-[14px] h-[12px] md:h-[14px]" />
+          <span className="hidden sm:inline md:inline">EN</span>
         </button>
 
         {/* Login */}
         <button
-          className="bg-[#121212] text-white px-[10px] pt-[4px] pb-[4px] w-[90px] h-[44px] rounded-[8px] text-[12px] font-[500] uppercase border-2 border-[#1cd4ff] cursor-pointer"
+          className="bg-[#121212] text-white px-[6px] md:px-[10px] pt-[3px] md:pt-[4px] pb-[3px] md:pb-[4px] w-[55px] sm:w-[70px] md:w-[90px] h-[40px] md:h-[44px] rounded-[6px] md:rounded-[8px] text-[9px] sm:text-[10px] md:text-[12px] font-[500] uppercase border-2 border-[#1cd4ff] cursor-pointer transition-all duration-200"
           onClick={() => navigate('/login')}
         >
           LOGIN
@@ -89,7 +89,7 @@ const Navbar = () => {
 
         {/* Register */}
         <button
-          className="bg-[#1cd4ff] text-[#121212] px-[10px] pt-[4px] pb-[4px] w-[122px] h-[44px] rounded-[8px] text-[12px] font-[510] uppercase cursor-pointer border-none"
+          className="bg-[#1cd4ff] text-[#121212] px-[6px] md:px-[10px] pt-[3px] md:pt-[4px] pb-[3px] md:pb-[4px] w-[70px] sm:w-[90px] md:w-[122px] h-[40px] md:h-[44px] rounded-[6px] md:rounded-[8px] text-[9px] sm:text-[10px] md:text-[12px] font-[510] uppercase cursor-pointer border-none transition-all duration-200"
           onClick={() => navigate('/register')}
         >
           Register

@@ -17,10 +17,10 @@ const MainLayout = ({ children }) => {
       */}
       <div
         style={{
-          marginLeft: sidebarOpen ? '332px' : '20px',
-          marginTop: '62px',
+          marginLeft: sidebarOpen ? '332px' : '',
+          // marginTop: '62px',
           paddingTop: '55px',
-          paddingRight: '20px',
+          // paddingRight: '20px',
           paddingBottom: '32px',
           minHeight: 'calc(100vh - 62px)',
           backgroundColor: '#ececec',
