@@ -28,14 +28,24 @@ const LatestBet = () => {
     <section className="mt-4 md:mt-5 bg-white rounded-xl p-4 md:p-5 shadow-[0_4px_14px_rgba(0,0,0,0.04)] w-full box-border">
 
       {/* Tabs */}
-      <div className="inline-flex rounded-3xl border border-[#1CD4FF] overflow-hidden mb-4">
-        <button className="px-4 md:px-5 py-2 text-[12px] md:text-[13px] border-none bg-[#1CD4FF] text-[#121212] font-semibold cursor-pointer">
+      {/* <div className="w-full inline-flex border border-[#1CD4FF] overflow-hidden mb-4">
+        <button className="w-[50%] px-4 md:px-5 py-2 text-[12px] md:text-[13px] border-none bg-[#1CD4FF] text-[#121212] font-semibold cursor-pointer">
           Latest Bet
         </button>
-        <button className="px-4 md:px-5 py-2 text-[12px] md:text-[13px] border-none bg-transparent text-[#1CD4FF] cursor-pointer">
+        <button className="w-[50%] px-4 md:px-5 py-2 text-[12px] md:text-[13px] border-none bg-transparent text-[#1CD4FF] cursor-pointer">
           High Rollers
         </button>
-      </div>
+      </div> */}
+
+      <div className="w-full md:w-auto inline-flex border border-[#1CD4FF] overflow-hidden mb-4 md:rounded-3xl">
+      <button className="w-1/2 md:w-auto px-4 md:px-5 py-2 text-[12px] md:text-[13px] border-none bg-[#1CD4FF] text-[#121212] font-semibold cursor-pointer">
+        Latest Bet
+      </button>
+      <button className="w-1/2 md:w-auto px-4 md:px-5 py-2 text-[12px] md:text-[13px] border-none bg-transparent text-[#1CD4FF] cursor-pointer">
+        High Rollers
+      </button>
+    </div>
+
 
       {/* ── DESKTOP TABLE (md and up) ── */}
       <div className="hidden md:block rounded-xl overflow-hidden border border-[#e6e8ec]">
