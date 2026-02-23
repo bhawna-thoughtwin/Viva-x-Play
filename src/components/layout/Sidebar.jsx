@@ -3,56 +3,62 @@ import { useNavigate } from 'react-router-dom';
 import { useApp } from '../../context/AppContext';
 import SearchBar from '../common/SearchBar';
 
-import sportsIcon     from '../../assets/icons/sportsicon.png';
+import sportsIcon from '../../assets/icons/sportsicon.png';
 import liveSportsIcon from '../../assets/icons/Livesports.png';
-import casinoIcon     from '../../assets/icons/icon-casino2.svg';
+import casinoIcon from '../../assets/icons/icon-casino2.svg';
 import liveDealerIcon from '../../assets/icons/icon-live-dealer2.svg';
 import promotionsIcon from '../../assets/icons/icon-promotions2.svg';
-import referIcon      from '../../assets/icons/icon-refer.svg';
-import bonusIcon      from '../../assets/icons/icon-bonus.svg';
-import supportIcon    from '../../assets/icons/icon-support.svg';
-import aboutIcon      from '../../assets/icons/icon-about.svg';
+import referIcon from '../../assets/icons/icon-refer.svg';
+import bonusIcon from '../../assets/icons/icon-bonus.svg';
+import supportIcon from '../../assets/icons/icon-support.svg';
+import aboutIcon from '../../assets/icons/icon-about.svg';
 
 const aboutLinks = [
-  { label: 'AML Policy',            path: '/about/aml-policy' },
-  { label: 'Cookie Policy',         path: '/about/cookie-policy' },
-  { label: 'Dispute Policy',        path: '/about/dispute-policy' },
-  { label: 'KYC Policy',            path: '/about/kyc-policy' },
-  { label: 'Privacy Policy',        path: '/about/privacy-policy' },
-  { label: 'Responsible Gaming',    path: '/about/responsible-gaming' },
+  { label: 'AML Policy', path: '/about/aml-policy' },
+  { label: 'Cookie Policy', path: '/about/cookie-policy' },
+  { label: 'Dispute Policy', path: '/about/dispute-policy' },
+  { label: 'KYC Policy', path: '/about/kyc-policy' },
+  { label: 'Privacy Policy', path: '/about/privacy-policy' },
+  { label: 'Responsible Gaming', path: '/about/responsible-gaming' },
   { label: 'Self Exclusion Policy', path: '/about/self-exclusion-policy' },
-  { label: 'Terms & Conditions',    path: '/about/terms-and-conditions' },
+  { label: 'Terms & Conditions', path: '/about/terms-and-conditions' },
+];
+const supportLinks = [
+  { label: 'FAQ', path: '/support/faq' },
+  { label: 'Contact', path: '/support/contact' },
+  { label: 'Chat', path: '/support/chat' },
 ];
 
 /* Groups with dividers between them — matches Figma layout */
 const menuGroups = [
   [
-    { label: 'Sports',      icon: sportsIcon },
+    { label: 'Sports', icon: sportsIcon },
     { label: 'Live Sports', icon: liveSportsIcon, isLive: true },
   ],
   [
-    { label: 'Casino',      icon: casinoIcon,     path: '/casino' },
+    { label: 'Casino', icon: casinoIcon },
     { label: 'Live Dealer', icon: liveDealerIcon },
   ],
   [
-    { label: 'Promotions',      icon: promotionsIcon },
-    { label: 'Refer a friend',  icon: referIcon },
+    { label: 'Promotions', icon: promotionsIcon, path: '/promotion' },
+    { label: 'Refer a friend', icon: referIcon },
     { label: 'Welcome Bonuses', icon: bonusIcon },
   ],
   [
-    { label: 'Support',  icon: supportIcon },
+    { label: 'Support', icon: supportIcon, expandable: true, children: supportLinks },
     { label: 'About Us', icon: aboutIcon, expandable: true, children: aboutLinks },
   ],
+
 ];
 
 const ChevronDown = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-    <path d="M6 9l6 6 6-6" stroke="#999" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M6 9l6 6 6-6" stroke="#999" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 const ChevronUp = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-    <path d="M18 15l-6-6-6 6" stroke="#999" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M18 15l-6-6-6 6" stroke="#999" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
@@ -87,17 +93,17 @@ const Sidebar = () => {
       {/* ── Sidebar panel ── */}
       <aside
         className={`
-          fixed left-0 top-[62px]
-          w-[300px]
-          h-[calc(100vh-62px)]
-          bg-white rounded-br-[12px]
-          overflow-y-auto overflow-x-hidden
-          flex flex-col
-          transition-transform duration-300 ease-in-out
-          z-[1100] md:z-[900]
-          shadow-[4px_0_20px_rgba(0,0,0,0.10)]
-          ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
-        `}
+    fixed left-0 top-[62px]
+    w-[300px]
+    h-[calc(100vh-62px)]
+    bg-white rounded-br-[12px]
+    overflow-y-auto overflow-x-hidden
+    flex flex-col
+    transition-transform duration-300 ease-in-out
+    z-[1100] md:z-[900]
+    shadow-[4px_0_20px_rgba(0,0,0,0.10)]
+    ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+  `}
       >
 
         {/* ── Inner content container: width 276, left 12px, gap 16px ── */}
@@ -131,23 +137,28 @@ const Sidebar = () => {
                       </span>
                     </button>
 
-                  /* ── Navigable item ── */
+                    /* ── Navigable item ── */
                   ) : item.path ? (
                     <button
                       className="flex items-center gap-3 w-full bg-transparent border-none outline-none cursor-pointer px-2 py-[11px] text-[15px] font-medium text-[#0d0c22] text-left rounded-lg hover:bg-[#f7f7f7] transition-colors"
-                      onClick={() => handleNavigate(item.path)}
+                      onClick={() => {
+                        setActiveSubItem(item.label);
+                        handleNavigate(item.path)
+                      }
+                      }
+
                     >
                       <img src={item.icon} alt={item.label} className="w-[20px] h-[20px] object-contain shrink-0" />
                       <span className="flex-1 text-[#0d0c22] text-[15px]">{item.label}</span>
                       <span className="flex items-center shrink-0 mr-1"><ChevronDown /></span>
                     </button>
 
-                  /* ── Static item ── */
+                    /* ── Static item ── */
                   ) : (
                     <div className="flex items-center gap-3 w-full px-2 py-[11px] text-[15px] font-medium text-[#0d0c22] rounded-lg">
                       <img src={item.icon} alt={item.label} className="w-[20px] h-[20px] object-contain shrink-0" />
                       <span className="flex-1 text-[#0d0c22] text-[15px]">{item.label}</span>
-                     <span className="flex items-center shrink-0 mr-1"><ChevronDown /></span>
+                      <span className="flex items-center shrink-0 mr-1"><ChevronDown /></span>
 
                     </div>
                   )}
@@ -158,11 +169,10 @@ const Sidebar = () => {
                       {item.children.map((child) => (
                         <button
                           key={child.label}
-                          className={`border-none outline-none cursor-pointer text-[13px] text-left py-[7px] px-[10px] rounded-md leading-snug transition-all ${
-                            activeSubItem === child.label
-                              ? 'bg-[#1cd4ff] text-white font-semibold'
-                              : 'bg-transparent text-[#666] font-normal hover:text-[#0d0c22]'
-                          }`}
+                          className={`border-none outline-none cursor-pointer text-[13px] text-left py-[7px] px-[10px] rounded-md leading-snug transition-all ${activeSubItem === child.label
+                            ? 'bg-[#1cd4ff] text-white font-semibold'
+                            : 'bg-transparent text-[#666] font-normal hover:text-[#0d0c22]'
+                            }`}
                           onClick={() => {
                             setActiveSubItem(child.label);
                             handleNavigate(child.path);

@@ -5,22 +5,22 @@ import {
   worldIcon,
   sportsIconAlt,
   casinoIconAlt,
-  liveDealerIconAlt,
-  promotionsIconAlt,
+  liveDealerIcon,
+  promotionsIcon,
 } from '../../assets/icons';
 
 // Alias for compatibility
 const logoSvg = logo;
 const sportsIcon = sportsIconAlt;
 const casinoIcon = casinoIconAlt;
-const liveDealerIcon = liveDealerIconAlt;
-const promotionsIcon = promotionsIconAlt;
+const liveDealerIconb = liveDealerIcon;
+const promotionsIconb = promotionsIcon;
 
 const navLinks = [
   { label: 'Sports',      path: '/sports',      icon: sportsIcon },
   { label: 'Casino',      path: '/casino',       icon: casinoIcon },
-  { label: 'Live Dealer', path: '/live-dealer',  icon: liveDealerIcon },
-  { label: 'Promotions',  path: '/promotions',   icon: promotionsIcon },
+  { label: 'Live Dealer', path: '/live-dealer',  icon: liveDealerIconb },
+  { label: 'Promotions',  path: '/promotion',   icon: promotionsIconb },
 ];
 
 const Navbar = () => {
@@ -46,7 +46,7 @@ const Navbar = () => {
         <img
           src={logoSvg}
           alt="VIVA X PLAY"
-          className="w-[100px] lg:w-[230px] h-[42px] object-contain cursor-pointer sm:w-[100px]"
+          className="w-[100px] lg:w-[230px] h-[42px] object-contain cursor-pointer sm:w-[100px] ml-[15px] lg:ml-[23px]" 
           onClick={() => navigate('/')}
         />
       </div>

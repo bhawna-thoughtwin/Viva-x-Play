@@ -9,13 +9,14 @@ const PromotionCard = ({ title, line1, line1Bold, line2, line2Highlight, btnLabe
         <img
           src={image}
           alt={title}
-          className="absolute object-contain pointer-events-none z-0"
+          className="absolute"
           style={{
-            top: '33px',
-            left: '151px',
-            width: '401px',
-            height: '401px',
-            transform: 'scaleX(-1)',
+            width: '296px',
+            height: '296px',
+            top: '37.5px',
+            left: '102px',
+            objectFit: 'contain',
+            zIndex: 5,
           }}
         />
       )}

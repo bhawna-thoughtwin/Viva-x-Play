@@ -8,11 +8,11 @@ import sport4 from '../../assets/images/sport4.png';
 import sport5 from '../../assets/images/sport5.png';
 
 const sports = [
-  { label: 'Football',   image: sport1, number: '1' },
-  { label: 'Tennis',     image: sport2, number: '2' },
+  { label: 'Football', image: sport1, number: '1' },
+  { label: 'Tennis', image: sport2, number: '2' },
   { label: 'Basketball', image: sport3, number: '3' },
-  { label: 'Baseball',   image: sport4, number: '4' },
-  { label: 'Boxing',     image: sport5, number: '5' },
+  { label: 'Baseball', image: sport4, number: '4' },
+  { label: 'Boxing', image: sport5, number: '5' },
 ];
 
 const trendingMatches = [
@@ -31,23 +31,53 @@ const recommendationMatches = [
 
 /* Reusable card row */
 const CardRow = ({ title, matches }) => (
-  <div style={{ marginTop: '24px' }}>
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-      <span style={{ fontSize: '24px', fontWeight: '700', color: '#121212' }}>{title}</span>
-      <button style={{ background: 'transparent', border: '1px solid #e0e0e0', color: '#1cd4ff', padding: '5px 14px', borderRadius: '6px', fontSize: '13px', fontWeight: '600', cursor: 'pointer', outline: 'none' }}>
+  <div className="mt-6">
+
+    {/* Header Row */}
+    <div className="flex items-center justify-between mb-4 gap-3">
+
+      {/* Title */}
+      <span className="text-[20px] md:text-[24px] font-bold text-[#121212] truncate">
+        {title}
+      </span>
+
+      {/* View All Button */}
+      <button
+        className="
+          bg-transparent
+          border-0 md:border md:border-[#e0e0e0]
+          text-[#1cd4ff]
+          px-3 md:px-[14px]
+          py-1.5
+          rounded-md
+          text-xs md:text-[13px]
+          font-semibold
+          cursor-pointer
+          shrink-0
+          whitespace-nowrap
+        "
+      >
         VIEW ALL &rsaquo;
       </button>
+
     </div>
+
+    {/* Cards Row */}
     <div
-      className="flex gap-3 overflow-x-auto"
-      style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', paddingLeft: '4px', paddingBottom: '4px' }}
+      className="flex gap-3 overflow-x-auto pb-1"
+      style={{
+        scrollbarWidth: 'none',
+        msOverflowStyle: 'none'
+      }}
     >
       {matches.map((match, i) => (
         <MatchCard key={i} {...match} isLive={false} />
       ))}
     </div>
+
   </div>
 );
+
 
 const SportsBetting = () => {
   return (
@@ -57,7 +87,7 @@ const SportsBetting = () => {
         icon={<img src={sportsIcon} alt="Sports Betting" className="w-full h-full object-contain" />}
         title="Sports Betting"
         subtitle="Bet on 30+ sports with the best odds"
-        onViewAll={() => {}}
+        onViewAll={() => { }}
       />
 
       {/* Sports image strip */}

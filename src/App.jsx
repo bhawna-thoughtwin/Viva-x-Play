@@ -5,9 +5,9 @@ import MainLayout from './components/layout/MainLayout';
 
 import Home from './pages/Home';
 import Sports from './pages/Sports';
-import Casino from './pages/Casino';
+import Casino from './pages/Promotion';
 import LiveDealer from './pages/LiveDealer';
-import Promotions from './pages/Promotions';
+import Promotion from './pages/Promotion';
 
 import AMLPolicy from './pages/about/AMLPolicy';
 import CookiePolicy from './pages/about/CookiePolicy';
@@ -20,6 +20,8 @@ import TermsAndConditions from './pages/about/TermsAndConditions';
 
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import FAQ from './pages/support/faq';
+import PromotionsSection from './components/home/PromotionsSection';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -46,9 +48,9 @@ function App() {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/sports" element={<Sports />} />
-                  <Route path="/casino" element={<Casino />} />
+                  <Route path="/promotion" element={<Promotion />} />
                   <Route path="/live-dealer" element={<LiveDealer />} />
-                  <Route path="/promotions" element={<Promotions />} />
+                  <Route path="/promotions" element={<PromotionsSection />} />
                   <Route path="/about/aml-policy" element={<AMLPolicy />} />
                   <Route path="/about/cookie-policy" element={<CookiePolicy />} />
                   <Route path="/about/dispute-policy" element={<DisputePolicy />} />
@@ -57,6 +59,7 @@ function App() {
                   <Route path="/about/responsible-gaming" element={<ResponsibleGaming />} />
                   <Route path="/about/self-exclusion-policy" element={<SelfExclusionPolicy />} />
                   <Route path="/about/terms-and-conditions" element={<TermsAndConditions />} />
+                  <Route path="/support/faq" element={<FAQ />} />
                 </Routes>
               </MainLayout>
             }

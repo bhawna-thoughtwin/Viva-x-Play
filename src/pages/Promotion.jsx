@@ -77,11 +77,12 @@ const tcSections = [
 ];
 
 /* ════════════════════════════════════════════════════════ */
-const Casino = ({ defaultTab = 'Casino' }) => {
+const promotion = ({ defaultTab = 'Casino' }) => {
   const [activeTab, setActiveTab] = useState(defaultTab);
 
   return (
-    <div className="w-full flex flex-col gap-[32px] pb-10 box-border">
+    <div className="w-full flex flex-col gap-[32px] pb-10 box-border mt-4 md:mt-5">
+      
 
       {/* ── 1. Filter Tab Bar ── */}
       <div className="inline-flex self-start items-center gap-1 bg-white rounded-full p-1 shadow-[0_1px_4px_rgba(0,0,0,0.08)]">
@@ -112,10 +113,10 @@ const Casino = ({ defaultTab = 'Casino' }) => {
       </div>
 
       {/* ── 2. Promotions Section ── */}
-      <PromotionsSection />
+     
 
       {/* ── 3. Hero + Content (conditional by tab) ── */}
-      {activeTab === 'Casino' ? (
+      {activeTab === 'All' ? (
         <>
           {/* Hero wrapper */}
           <div className="bg-white rounded-xl px-4 md:px-6 pt-6 pb-0 flex flex-col gap-6 overflow-hidden">
@@ -132,6 +133,7 @@ const Casino = ({ defaultTab = 'Casino' }) => {
 
           {/* Content block */}
           <div className="bg-white rounded-xl p-4 md:p-[22px] flex flex-col">
+            
             <h3 className="text-[20px] md:text-[25px] font-bold text-[#0d0c22] m-0 mb-2">
               Get a 500% Bonus up to $10,000
             </h3>
@@ -233,4 +235,4 @@ const Casino = ({ defaultTab = 'Casino' }) => {
   );
 };
 
-export default Casino;
+export default promotion;

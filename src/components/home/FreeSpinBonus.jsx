@@ -1,7 +1,7 @@
 import freeSpinImg from '../../assets/images/freespin.png';
 
 const FreeSpinBonus = () => (
-  <section className="w-full max-w-full mb-3 md:mb-4 box-border relative">
+  <section className="w-full max-w-full mb-1 md:mb-4 box-border relative">
 
     {/* Card */}
     <div
@@ -25,7 +25,7 @@ const FreeSpinBonus = () => (
       {/* RIGHT — text block */}
       <div className="absolute right-4 md:right-10 flex flex-col gap-2 md:gap-8 z-[1] text-right items-end max-w-[55%] md:max-w-none">
         <h2
-          className="m-0 p-0 font-medium text-[#131313] leading-none whitespace-nowrap"
+          className="m-0 p-0 font-medium text-[#131313] leading-none whitespace-nowrap ml-[52px]"
           style={{ fontSize: 'clamp(22px, 4vw, 72px)' }}
         >
           Free Spin Bonus

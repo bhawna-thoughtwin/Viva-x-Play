@@ -18,7 +18,7 @@ const PageHeader = ({ title }) => {
 const styles = {
   header: {
     width: "100%",
-    height: "170px",
+    height: "175px",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
@@ -28,6 +28,7 @@ const styles = {
     overflow: "hidden",
     boxSizing: "border-box",
     marginBottom: "30px",
+    marginTop: "20px",
   },
 
   headerTitle: {

@@ -1,4 +1,4 @@
-import Casino from './Casino';
+import Casino from './Promotion';
 
 const LiveDealer = () => <Casino defaultTab="Live Dealer" />;
 
