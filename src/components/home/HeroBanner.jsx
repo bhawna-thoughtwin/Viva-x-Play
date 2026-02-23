@@ -1,4 +1,5 @@
 import casinoBg from '../../assets/images/casino-bg.png';
+import bannerFormobile from '../../assets/images/bannerformobile.png';
 
 const HeroBanner = () => {
   return (
@@ -9,8 +10,8 @@ const HeroBanner = () => {
         style={{ marginLeft: '-12px', marginRight: '-12px', marginTop: '-12px', height: '393px' }}
       >
         <img
-          src={casinoBg}
-          alt="Hero Banner"
+          src={bannerFormobile}
+          alt="Hero Banner Mobile"
           className="absolute inset-0 w-full h-full object-cover object-top"
         />
         {/* Dark top gradient */}

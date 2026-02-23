@@ -1,4 +1,5 @@
-import { useRef, useState, useEffect } from 'react';
+import useScrollDots from '../../hooks/useScrollDots';
+import ScrollDots from '../common/ScrollDots';
 import SectionHeader from '../common/SectionHeader';
 import MatchCard from '../cards/MatchCard';
 import { volleyballPlayer1Alt as liveSportsIcon } from '../../assets/icons';
@@ -11,30 +12,7 @@ const matches = [
 ];
 
 const LiveBetting = () => {
-  const scrollRef = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-
-    const handleScroll = () => {
-      const cardWidth = el.scrollWidth / matches.length;
-      const index = Math.round(el.scrollLeft / cardWidth);
-      setActiveIndex(Math.min(index, matches.length - 1));
-    };
-
-    el.addEventListener('scroll', handleScroll, { passive: true });
-    return () => el.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToIndex = (index) => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const cardWidth = el.scrollWidth / matches.length;
-    el.scrollTo({ left: cardWidth * index, behavior: 'smooth' });
-    setActiveIndex(index);
-  };
+  const { scrollRef, activeIndex, scrollToIndex } = useScrollDots(matches.length);
 
   return (
     <section className="bg-white rounded-xl p-4 md:p-5 mb-3 md:mb-4 w-full box-border">
@@ -68,20 +46,7 @@ const LiveBetting = () => {
         ))}
       </div>
 
-      {/* Scroll indicator pills */}
-      <div className="flex justify-center items-center gap-1.5 mt-3.5">
-        {matches.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => scrollToIndex(i)}
-            className={`h-[6px] rounded-full transition-all duration-300 cursor-pointer border-none p-0 ${i === activeIndex
-                ? 'w-[22px] bg-[#4CAF50]'
-                : 'w-[22px] bg-[#D0D0D0]'
-              }`}
-            aria-label={`Go to slide ${i + 1}`}
-          />
-        ))}
-      </div>
+      <ScrollDots count={matches.length} activeIndex={activeIndex} scrollToIndex={scrollToIndex} />
 
     </section>
   );

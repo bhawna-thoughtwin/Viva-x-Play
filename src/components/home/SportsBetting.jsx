@@ -1,3 +1,5 @@
+import useScrollDots from '../../hooks/useScrollDots';
+import ScrollDots from '../common/ScrollDots';
 import SectionHeader from '../common/SectionHeader';
 import MatchCard from '../cards/MatchCard';
 import { volleyballPlayer3 as sportsIcon } from '../../assets/icons';
@@ -30,53 +32,64 @@ const recommendationMatches = [
 ];
 
 /* Reusable card row */
-const CardRow = ({ title, matches }) => (
-  <div className="mt-6">
+const CardRow = ({ title, matches }) => {
+  const { scrollRef, activeIndex, scrollToIndex } = useScrollDots(matches.length);
 
-    {/* Header Row */}
-    <div className="flex items-center justify-between mb-4 gap-3">
+  return (
+    <div className="mt-6">
 
-      {/* Title */}
-      <span className="text-[20px] md:text-[24px] font-bold text-[#121212] truncate">
-        {title}
-      </span>
+      {/* Header Row */}
+      <div className="flex items-center justify-between mb-4 gap-3">
+        <span className="text-[20px] md:text-[24px] font-bold text-[#121212] truncate">
+          {title}
+        </span>
+        <button
+          className="
+            bg-transparent
+            border-0 md:border md:border-[#E0E0E0]
+            text-[#1CD4FF]
+            px-3 md:px-[14px]
+            py-1.5
+            rounded-md
+            text-xs md:text-[13px]
+            font-semibold
+            cursor-pointer
+            shrink-0
+            whitespace-nowrap
+          "
+        >
+          VIEW ALL &rsaquo;
+        </button>
+      </div>
 
-      {/* View All Button */}
-      <button
-        className="
-          bg-transparent
-          border-0 md:border md:border-[#e0e0e0]
-          text-[#1cd4ff]
-          px-3 md:px-[14px]
-          py-1.5
-          rounded-md
-          text-xs md:text-[13px]
-          font-semibold
-          cursor-pointer
-          shrink-0
-          whitespace-nowrap
-        "
+      {/* Cards Row */}
+      <div
+        ref={scrollRef}
+        className="flex gap-3 overflow-x-auto pb-1"
+        style={{
+          scrollSnapType: 'x mandatory',
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none',
+          WebkitOverflowScrolling: 'touch',
+        }}
       >
-        VIEW ALL &rsaquo;
-      </button>
+        {matches.map((match, i) => (
+          <div
+            key={i}
+            className="shrink-0 w-[calc(100vw-56px)] md:w-auto"
+            style={{ scrollSnapAlign: 'start' }}
+          >
+            <MatchCard {...match} isLive={false} />
+          </div>
+        ))}
+      </div>
+
+      <ScrollDots count={matches.length} activeIndex={activeIndex} scrollToIndex={scrollToIndex} />
 
     </div>
+  );
+};
 
-    {/* Cards Row */}
-    <div
-      className="flex gap-3 overflow-x-auto pb-1"
-      style={{
-        scrollbarWidth: 'none',
-        msOverflowStyle: 'none'
-      }}
-    >
-      {matches.map((match, i) => (
-        <MatchCard key={i} {...match} isLive={false} />
-      ))}
-    </div>
-
-  </div>
-);
 
 
 const SportsBetting = () => {
@@ -96,7 +109,7 @@ const SportsBetting = () => {
           <div key={sport.label} className="flex-1 flex justify-center">
             <div className="relative w-[120px] md:w-[180px] h-[140px] md:h-[200px] flex items-end justify-center">
               <span
-                className="absolute bottom-0 left-0 font-black text-[#1cd4ff] leading-none z-10 select-none -translate-x-1/5"
+                className="absolute bottom-0 left-0 font-black text-[#1CD4FF] leading-none z-10 select-none -translate-x-1/5"
                 style={{
                   fontSize: 'clamp(80px, 10vw, 160px)',
                   fontFamily: 'Impact, "Arial Narrow", Arial, sans-serif',

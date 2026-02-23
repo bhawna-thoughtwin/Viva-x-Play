@@ -1,3 +1,5 @@
+import useScrollDots from '../../hooks/useScrollDots';
+import ScrollDots from '../common/ScrollDots';
 import SectionHeader from '../common/SectionHeader';
 import { volleyballPlayer1 as casinoIcon } from '../../assets/icons';
 import casino1 from '../../assets/images/casinoandgames1.png';
@@ -28,8 +30,8 @@ const casinoCategories = [
   },
   {
     label: 'Jackpot', number: '4', image: casino4, image2: casino44,
-    imageStyle:  { position: 'absolute', bottom: '28px', right: '0px',  width: '90px',  height: '145px', objectFit: 'contain', zIndex: 3 },
-    image2Style: { position: 'absolute', bottom: '28px', left: '5px',   width: '105px', height: '160px', objectFit: 'contain', zIndex: 2 },
+    imageStyle: { position: 'absolute', bottom: '28px', right: '0px', width: '90px', height: '145px', objectFit: 'contain', zIndex: 3 },
+    image2Style: { position: 'absolute', bottom: '28px', left: '5px', width: '105px', height: '160px', objectFit: 'contain', zIndex: 2 },
   },
   {
     label: 'Baccarat', number: '5', image: casino5,
@@ -38,19 +40,19 @@ const casinoCategories = [
 ];
 
 const newGames = [
-  { name: 'Fighter Pit',         image: new1 },
+  { name: 'Fighter Pit', image: new1 },
   { name: 'Wanted Dead or Wild', image: new2 },
-  { name: 'Dragon Gold 88',      image: new3 },
-  { name: 'Cash Quest',          image: new4 },
-  { name: 'San Quentin Xways',   image: new5 },
-  { name: 'Fighter Pit',         image: new6 },
+  { name: 'Dragon Gold 88', image: new3 },
+  { name: 'Cash Quest', image: new4 },
+  { name: 'San Quentin Xways', image: new5 },
+  { name: 'Fighter Pit', image: new6 },
 ];
 
 /* ── Sub-section row header ── */
 const RowHeader = ({ title }) => (
   <div className="flex items-center justify-between mb-3">
     <span className="text-[22px] font-bold text-[#121212]">{title}</span>
-    <button className="bg-transparent border border-[#e0e0e0] text-[#1cd4ff] px-[14px] py-[5px] rounded-md text-[13px] font-semibold cursor-pointer outline-none">
+    <button className="bg-transparent border border-[#E0E0E0] text-[#1CD4FF] px-[14px] py-[5px] rounded-md text-[13px] font-semibold cursor-pointer outline-none">
       VIEW ALL &rsaquo;
     </button>
   </div>
@@ -68,109 +70,107 @@ const GameCard = ({ name, image }) => (
   </div>
 );
 
-/* ── Pagination dots ── */
-const Dots = () => (
-  <div className="flex justify-center gap-1.5 mb-5 mt-3">
-    {[0, 1, 2, 3].map((i) => (
+/* ── Game row with scroll dots ── */
+const GameRow = ({ title, games }) => {
+  const { scrollRef, activeIndex, scrollToIndex } = useScrollDots(games.length);
+
+  return (
+    <>
+      <RowHeader title={title} />
       <div
-        key={i}
-        className={`h-2 rounded-full cursor-pointer transition-all ${
-          i === 0 ? 'w-[22px] bg-[#1cd4ff]' : 'w-2 bg-[#d0d0d0]'
-        }`}
-      />
-    ))}
-  </div>
-);
-
-const CasinoAndGames = () => (
-  <section className="bg-white rounded-xl p-4 md:p-5 mb-3 md:mb-4 w-full box-border">
-
-    {/* 1 ── Section header */}
-    <SectionHeader
-      icon={<img src={casinoIcon} alt="Casino & Games" className="w-full h-full object-contain" />}
-      title="Casino & Games"
-      subtitle="Bet on 30+ sports with the best odds"
-      onViewAll={() => {}}
-    />
-
-    {/* 2 ── Category strip — horizontal scroll on mobile, all 5 on desktop */}
-    <div
-      className="flex gap-2 md:gap-3 mb-6 w-full md:h-[242px] overflow-x-auto md:overflow-x-visible"
-      style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-    >
-      {casinoCategories.map((item) => (
-        <div
-          key={item.label}
-          className="relative shrink-0 w-[155px] h-[210px] md:flex-1 md:w-auto md:h-[242px] rounded-2xl overflow-hidden cursor-pointer"
-          style={{ background: 'linear-gradient(180deg, #c1cfdb 0%, #dbe3e7 100%)' }}
-        >
-          {/* Number — prominent, behind images */}
-          <span
-            className="absolute top-[-10px] left-[-8px] font-black leading-none select-none z-[1]"
-            style={{
-              fontSize: 'clamp(90px, 13vw, 151px)',
-              fontFamily: 'Impact, "Arial Narrow", Arial, sans-serif',
-              background: 'linear-gradient(180deg, #1cd4ff 0%, #107f99 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}
-          >
-            {item.number}
-          </span>
-
-          {/* Primary image */}
-          <img
-            src={item.image}
-            alt={item.label}
-            style={item.imageStyle}
-          />
-
-          {/* Secondary image — Jackpot only */}
-          {item.image2 && (
-            <img
-              src={item.image2}
-              alt={item.label + ' character'}
-              style={item.image2Style}
-            />
-          )}
-
-          {/* Label bar */}
-          <div
-            className="absolute bottom-0 left-0 w-full h-7 flex items-center justify-center z-[3]"
-            style={{ background: 'linear-gradient(90deg, #163e5e 0%, #266181 100%)' }}
-          >
-            <span className="text-[12px] md:text-[14px] font-semibold text-white">{item.label}</span>
+        ref={scrollRef}
+        className="flex gap-3 overflow-x-auto mb-3"
+        style={{
+          scrollSnapType: 'x mandatory',
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none',
+          WebkitOverflowScrolling: 'touch',
+        }}
+      >
+        {games.map((item, i) => (
+          <div key={i} style={{ scrollSnapAlign: 'start', flexShrink: 0 }}>
+            <GameCard name={item.name} image={item.image} />
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+      <ScrollDots count={games.length} activeIndex={activeIndex} scrollToIndex={scrollToIndex} className="mb-5" />
+    </>
+  );
+};
 
-    {/* 3 ── New games row */}
-    <RowHeader title="New" />
-    <div
-      className="flex gap-3 overflow-x-auto mb-3"
-      style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-    >
-      {newGames.map((item, i) => (
-        <GameCard key={i} name={item.name} image={item.image} />
-      ))}
-    </div>
-    <Dots />
+const CasinoAndGames = () => {
+  return (
+    <section className="bg-white rounded-xl p-4 md:p-5 mb-3 md:mb-4 w-full box-border">
 
-    {/* 4 ── Live Dealer row */}
-    <RowHeader title="Live Dealer" />
-    <div
-      className="flex gap-3 overflow-x-auto mb-3"
-      style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-    >
-      {newGames.map((item, i) => (
-        <GameCard key={i} name={item.name} image={item.image} />
-      ))}
-    </div>
-    <Dots />
+      {/* 1 ── Section header */}
+      <SectionHeader
+        icon={<img src={casinoIcon} alt="Casino & Games" className="w-full h-full object-contain" />}
+        title="Casino & Games"
+        subtitle="Bet on 30+ sports with the best odds"
+        onViewAll={() => { }}
+      />
 
-  </section>
-);
+      {/* 2 ── Category strip — horizontal scroll on mobile, all 5 on desktop */}
+      <div
+        className="flex gap-2 md:gap-3 mb-6 w-full md:h-[242px] overflow-x-auto md:overflow-x-visible"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      >
+        {casinoCategories.map((item) => (
+          <div
+            key={item.label}
+            className="relative shrink-0 w-[155px] h-[210px] md:flex-1 md:w-auto md:h-[242px] rounded-2xl overflow-hidden cursor-pointer"
+            style={{ background: 'linear-gradient(180deg, #C1CFDB 0%, #DBE3E7 100%)' }}
+          >
+            {/* Number — prominent, behind images */}
+            <span
+              className="absolute top-[-10px] left-[-8px] font-black leading-none select-none z-[1]"
+              style={{
+                fontSize: 'clamp(90px, 13vw, 151px)',
+                fontFamily: 'Impact, "Arial Narrow", Arial, sans-serif',
+                background: 'linear-gradient(180deg, #1CD4FF 0%, #107F99 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              {item.number}
+            </span>
+
+            {/* Primary image */}
+            <img
+              src={item.image}
+              alt={item.label}
+              style={item.imageStyle}
+            />
+
+            {/* Secondary image — Jackpot only */}
+            {item.image2 && (
+              <img
+                src={item.image2}
+                alt={item.label + ' character'}
+                style={item.image2Style}
+              />
+            )}
+
+            {/* Label bar */}
+            <div
+              className="absolute bottom-0 left-0 w-full h-7 flex items-center justify-center z-[3]"
+              style={{ background: 'linear-gradient(90deg, #163E5E 0%, #266181 100%)' }}
+            >
+              <span className="text-[12px] md:text-[14px] font-semibold text-white">{item.label}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* 3 ── New games row */}
+      <GameRow title="New" games={newGames} />
+
+      {/* 4 ── Live Dealer row */}
+      <GameRow title="Live Dealer" games={newGames} />
+
+    </section>
+  );
+};
 
 export default CasinoAndGames;
