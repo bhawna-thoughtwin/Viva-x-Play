@@ -5,8 +5,8 @@ import MainLayout from './components/layout/MainLayout';
 
 import Home from './pages/Home';
 import Sports from './pages/Sports';
-import Casino from './pages/Promotion';
 import LiveDealer from './pages/LiveDealer';
+import PromotionsGrid from './pages/PromotionsGrid';
 import Promotion from './pages/Promotion';
 
 import AMLPolicy from './pages/about/AMLPolicy';
@@ -17,11 +17,11 @@ import PrivacyPolicy from './pages/about/PrivacyPolicy';
 import ResponsibleGaming from './pages/about/ResponsibleGaming';
 import SelfExclusionPolicy from './pages/about/SelfExclusionPolicy';
 import TermsAndConditions from './pages/about/TermsAndConditions';
-
+import GlobalToaster from "./components/common/GlobalToaster";
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import FAQ from './pages/support/faq';
-import PromotionsSection from './components/home/PromotionsSection';
+import ProfilePage from './pages/ProfilePage';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -34,6 +34,7 @@ function App() {
     <BrowserRouter>
       <ScrollToTop />
       <AppProvider>
+        <GlobalToaster />
         <Routes>
 
           {/* Routes WITHOUT Navbar */}
@@ -48,9 +49,12 @@ function App() {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/sports" element={<Sports />} />
-                  <Route path="/promotion" element={<Promotion />} />
                   <Route path="/live-dealer" element={<LiveDealer />} />
-                  <Route path="/promotions" element={<PromotionsSection />} />
+
+                  {/* Promotions: grid at /promotion, detail at /promotion/detail */}
+                  <Route path="/promotion" element={<PromotionsGrid />} />
+                  <Route path="/promotion/detail" element={<Promotion />} />
+
                   <Route path="/about/aml-policy" element={<AMLPolicy />} />
                   <Route path="/about/cookie-policy" element={<CookiePolicy />} />
                   <Route path="/about/dispute-policy" element={<DisputePolicy />} />
@@ -60,6 +64,8 @@ function App() {
                   <Route path="/about/self-exclusion-policy" element={<SelfExclusionPolicy />} />
                   <Route path="/about/terms-and-conditions" element={<TermsAndConditions />} />
                   <Route path="/support/faq" element={<FAQ />} />
+                  <Route path='profile' element={<ProfilePage />} />
+                
                 </Routes>
               </MainLayout>
             }

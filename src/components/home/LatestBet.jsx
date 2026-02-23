@@ -4,22 +4,22 @@ import sugarRushImg from '../../assets/images/sugarrush.png';
 import pinkoImg from '../../assets/images/pinko.png';
 
 const mockRows = [
-  { game: "Book Of Time",          user: "kjd20215", time: "05:30pm", betAmount: "5.00", multiplier: "1.18x", payout: "5.00" },
-  { game: "Pinko",                 user: "kjd20215", time: "05:30pm", betAmount: "5.00", multiplier: "1.18x", payout: "5.00" },
-  { game: "Juicy Fruits Multihold",user: "kjd20215", time: "05:30pm", betAmount: "5.00", multiplier: "1.18x", payout: "5.00" },
-  { game: "Sugar Rush 1000",       user: "kjd20215", time: "05:30pm", betAmount: "5.00", multiplier: "1.18x", payout: "5.00" },
-  { game: "Pinko",                 user: "kjd20215", time: "05:30pm", betAmount: "5.00", multiplier: "1.18x", payout: "5.00" },
-  { game: "Book Of Time",         user: "kjd20215", time: "05:30pm", betAmount: "5.00", multiplier: "1.18x", payout: "5.00" },
-  { game: "Sugar Rush 1000",       user: "kjd20215", time: "05:30pm", betAmount: "5.00", multiplier: "1.18x", payout: "5.00" },
-  { game: "Juicy Fruits Multihold",user: "kjd20215", time: "05:30pm", betAmount: "5.00", multiplier: "1.18x", payout: "5.00" },
-  { game: "Book Of Time",          user: "kjd20215", time: "05:30pm", betAmount: "5.00", multiplier: "1.18x", payout: "5.00" },
-  { game: "Juicy Fruits Multihold",user: "kjd20215", time: "05:30pm", betAmount: "5.00", multiplier: "1.18x", payout: "5.00" },
+  { game: "Book Of Time", user: "kjd20215", time: "05:30pm", betAmount: "5.00", multiplier: "1.18x", payout: "5.00" },
+  { game: "Pinko", user: "kjd20215", time: "05:30pm", betAmount: "5.00", multiplier: "1.18x", payout: "5.00" },
+  { game: "Juicy Fruits Multihold", user: "kjd20215", time: "05:30pm", betAmount: "5.00", multiplier: "1.18x", payout: "5.00" },
+  { game: "Sugar Rush 1000", user: "kjd20215", time: "05:30pm", betAmount: "5.00", multiplier: "1.18x", payout: "5.00" },
+  { game: "Pinko", user: "kjd20215", time: "05:30pm", betAmount: "5.00", multiplier: "1.18x", payout: "5.00" },
+  { game: "Book Of Time", user: "kjd20215", time: "05:30pm", betAmount: "5.00", multiplier: "1.18x", payout: "5.00" },
+  { game: "Sugar Rush 1000", user: "kjd20215", time: "05:30pm", betAmount: "5.00", multiplier: "1.18x", payout: "5.00" },
+  { game: "Juicy Fruits Multihold", user: "kjd20215", time: "05:30pm", betAmount: "5.00", multiplier: "1.18x", payout: "5.00" },
+  { game: "Book Of Time", user: "kjd20215", time: "05:30pm", betAmount: "5.00", multiplier: "1.18x", payout: "5.00" },
+  { game: "Juicy Fruits Multihold", user: "kjd20215", time: "05:30pm", betAmount: "5.00", multiplier: "1.18x", payout: "5.00" },
 ];
 
 const getImage = (game) => {
-  if (game.startsWith('Book Of Time'))  return bookOfTimeImg;
-  if (game.startsWith('Juicy Fruits'))  return juicyFruitImg;
-  if (game.startsWith('Sugar Rush'))    return sugarRushImg;
+  if (game.startsWith('Book Of Time')) return bookOfTimeImg;
+  if (game.startsWith('Juicy Fruits')) return juicyFruitImg;
+  if (game.startsWith('Sugar Rush')) return sugarRushImg;
   return pinkoImg;
 };
 
@@ -38,13 +38,13 @@ const LatestBet = () => {
       </div> */}
 
       <div className="w-full md:w-auto inline-flex border border-[#1CD4FF] overflow-hidden mb-4 md:rounded-3xl">
-      <button className="w-1/2 md:w-auto px-4 md:px-5 py-2 text-[12px] md:text-[13px] border-none bg-[#1CD4FF] text-[#121212] font-semibold cursor-pointer">
-        Latest Bet
-      </button>
-      <button className="w-1/2 md:w-auto px-4 md:px-5 py-2 text-[12px] md:text-[13px] border-none bg-transparent text-[#1CD4FF] cursor-pointer">
-        High Rollers
-      </button>
-    </div>
+        <button className="w-1/2 md:w-auto px-4 md:px-5 py-2 text-[12px] md:text-[13px] border-none bg-[#1CD4FF] text-[#121212] font-semibold cursor-pointer">
+          Latest Bet
+        </button>
+        <button className="w-1/2 md:w-auto px-4 md:px-5 py-2 text-[12px] md:text-[13px] border-none bg-transparent text-[#1CD4FF] cursor-pointer">
+          High Rollers
+        </button>
+      </div>
 
 
       {/* ── DESKTOP TABLE (md and up) ── */}
@@ -82,7 +82,10 @@ const LatestBet = () => {
               <span className="text-[#333]">{row.time}</span>
               <span className="text-[#333]">$ {row.betAmount}</span>
               <span className="text-[#00b15a] font-semibold">~ {row.multiplier}</span>
-              <span className="text-[#333]">$ {row.payout}</span>
+              <span className="text-[#333]">
+                $ {(Math.random() * 100).toFixed(2)}
+              </span>
+
             </div>
           ))}
         </div>
@@ -112,7 +115,9 @@ const LatestBet = () => {
               </span>
 
               {/* Payout */}
-              <span className="text-[#333] text-[12px] font-medium shrink-0">$ {row.payout}</span>
+              <span className="text-[#333] text-[12px] font-medium shrink-0">
+                $ {(Math.random() * 100).toFixed(2)}
+              </span>
             </div>
           ))}
         </div>

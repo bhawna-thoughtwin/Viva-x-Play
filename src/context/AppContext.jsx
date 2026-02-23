@@ -3,27 +3,54 @@ import { createContext, useContext, useState, useEffect } from 'react';
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  /* Mobile (<768px) starts closed, desktop (>=768px) starts open */
+  /* Sidebar logic */
   const [sidebarOpen, setSidebarOpen] = useState(() => window.innerWidth >= 768);
   const [activeNav, setActiveNav] = useState('Sports');
 
-  /* Auto-close on mobile, auto-open on desktop when window resizes */
+  /*  User state (NEW) */
+  const [user, setUser] = useState(() => {
+    return JSON.parse(localStorage.getItem('user')) || null;
+  });
+
+  /* Auto open/close sidebar on resize */
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
-        setSidebarOpen(true);   // desktop → always open
+        setSidebarOpen(true);
       } else {
-        setSidebarOpen(false);  // mobile  → always closed until hamburger tap
+        setSidebarOpen(false);
       }
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  /*  Login function */
+  const login = (userData) => {
+    localStorage.setItem('user', JSON.stringify(userData));
+    setUser(userData);
+  };
+
+  /*  Logout function */
+  const logout = () => {
+    localStorage.removeItem('user');
+    setUser(null);
+  };
+
   const toggleSidebar = () => setSidebarOpen(prev => !prev);
 
   return (
-    <AppContext.Provider value={{ sidebarOpen, toggleSidebar, activeNav, setActiveNav }}>
+    <AppContext.Provider
+      value={{
+        sidebarOpen,
+        toggleSidebar,
+        activeNav,
+        setActiveNav,
+        user,
+        login,
+        logout
+      }}
+    >
       {children}
     </AppContext.Provider>
   );

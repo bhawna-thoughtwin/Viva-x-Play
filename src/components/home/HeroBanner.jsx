@@ -5,7 +5,7 @@ const HeroBanner = () => {
     <>
       {/* ── Mobile — full bleed (cancel px-3 of MainLayout) ── */}
       <div
-        className="relative overflow-hidden mb-2 md:hidden bg-[#041437]"
+        className="relative overflow-hidden mb-3 md:hidden bg-[#041437]"
         style={{ marginLeft: '-12px', marginRight: '-12px', marginTop: '-12px', height: '393px' }}
       >
         <img

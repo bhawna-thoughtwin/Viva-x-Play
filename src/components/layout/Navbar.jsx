@@ -24,24 +24,15 @@ const navLinks = [
 ];
 
 const Navbar = () => {
-  const { toggleSidebar, activeNav, setActiveNav } = useApp();
+  const { toggleSidebar, activeNav, setActiveNav, user } = useApp();
   const navigate = useNavigate();
+  const isLoggedIn = !!user;
 
   return (
     <header className="fixed top-0 left-0 right-0 z-[1000] flex items-center justify-between bg-[#1f1f1f] h-[62px] px-5">
 
       {/* ── Left: Hamburger (mobile only) + Logo ── */}
       <div className="flex items-center">
-
-        {/* Hamburger — mobile only */}
-        <button
-          className="flex md:hidden items-center justify-center bg-transparent border-none cursor-pointer p-1"
-          onClick={toggleSidebar}
-        >
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-            <path d="M3 6h18M3 12h18M3 18h18" stroke="#ffffff" strokeWidth="2.2" strokeLinecap="round"/>
-          </svg>
-        </button>
 
         <img
           src={logoSvg}
@@ -81,7 +72,9 @@ const Navbar = () => {
 
         {/* Login */}
         <button
-          className="bg-[#121212] text-white px-[6px] md:px-[10px] pt-[3px] md:pt-[4px] pb-[3px] md:pb-[4px] w-[55px] sm:w-[70px] md:w-[90px] h-[40px] md:h-[44px] rounded-[6px] md:rounded-[8px] text-[9px] sm:text-[10px] md:text-[12px] font-[500] uppercase border-2 border-[#1cd4ff] cursor-pointer transition-all duration-200"
+          className={`bg-[#121212] text-white px-[6px] md:px-[10px] pt-[3px] md:pt-[4px] pb-[3px] md:pb-[4px] w-[55px] sm:w-[70px] md:w-[90px] h-[40px] md:h-[44px] rounded-[6px] md:rounded-[8px] text-[9px] sm:text-[10px] md:text-[12px] font-[500] uppercase border-2 border-[#1cd4ff] cursor-pointer transition-all duration-200 ${
+            isLoggedIn ? 'hidden md:block' : 'block'
+          }`}
           onClick={() => navigate('/login')}
         >
           LOGIN
@@ -89,11 +82,27 @@ const Navbar = () => {
 
         {/* Register */}
         <button
-          className="bg-[#1cd4ff] text-[#121212] px-[6px] md:px-[10px] pt-[3px] md:pt-[4px] pb-[3px] md:pb-[4px] w-[70px] sm:w-[90px] md:w-[122px] h-[40px] md:h-[44px] rounded-[6px] md:rounded-[8px] text-[9px] sm:text-[10px] md:text-[12px] font-[510] uppercase cursor-pointer border-none transition-all duration-200"
+          className={`bg-[#1cd4ff] text-[#121212] px-[6px] md:px-[10px] pt-[3px] md:pt-[4px] pb-[3px] md:pb-[4px] w-[70px] sm:w-[90px] md:w-[122px] h-[40px] md:h-[44px] rounded-[6px] md:rounded-[8px] text-[9px] sm:text-[10px] md:text-[12px] font-[510] uppercase cursor-pointer border-none transition-all duration-200 ${
+            isLoggedIn ? 'hidden md:block' : 'block'
+          }`}
           onClick={() => navigate('/register')}
         >
           Register
         </button>
+
+        {/* Profile Button - shows when logged in on desktop only */}
+        {isLoggedIn && (
+          <button
+            className="hidden md:flex items-center justify-center gap-2 bg-[#1cd4ff] text-[#121212] px-[14px] pt-[4px] pb-[4px] h-[44px] rounded-[8px] text-[12px] font-[510] uppercase cursor-pointer border-none transition-all duration-200 hover:bg-[#1ab4d0]"
+            onClick={() => navigate('/profile')}
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span>Profile</span>
+          </button>
+        )}
       </div>
 
     </header>
