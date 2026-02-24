@@ -5,21 +5,28 @@ const PromotionCard = ({ title, line1, line1Bold, line2, line2Highlight, btnLabe
       style={{ background: gradient || '#1a3a52' }}
     >
       {/* Character image — Figma: w401 h401 top:33 left:151 angle:-180deg */}
-      {image && (
-        <img
-          src={image}
-          alt={title}
-          className="absolute"
-          style={{
-            width: '296px',
-            height: '296px',
-            top: '71.5px',
-            left: '179px',
-            objectFit: 'contain',
-            zIndex: 5,
-          }}
-        />
-      )}
+     {image && (
+  <img
+    src={image}
+    alt={title}
+    className="
+      absolute
+      object-contain
+
+
+      w-[296px]
+      h-[296px]
+      top-[37.5px]
+      left-[102px]
+
+      md:w-[401px]
+      md:h-[401px]
+      md:top-[33px]
+      md:left-[151px]
+    "
+  />
+)}
+    
 
       {/* Overlay — left readable, right transparent */}
       <div

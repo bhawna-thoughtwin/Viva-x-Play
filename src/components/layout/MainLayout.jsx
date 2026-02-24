@@ -11,23 +11,30 @@ const MainLayout = ({ children }) => {
     <div className="min-h-screen bg-[#ECECEC]">
       <Navbar />
 
-      <div className='grid grid-cols-12 gap-2'>
+      <div className="grid grid-cols-12 gap-2">
+        {/* Sidebar */}
         <div className="col-span-2">
           <Sidebar />
         </div>
 
+        {/* Main Content */}
         <div
-          style={{
-            paddingTop: '55px',
-            minHeight: 'calc(100vh - 62px)',
-            backgroundColor: '#ECECEC',
-            transition: 'margin-left 0.3s ease',
-          }}
-          className="col-span-10"
+          className="
+            col-span-10
+            pt-[55px]
+            min-h-[calc(100vh-62px)]
+            bg-[#ECECEC]
+            transition-all
+            duration-300
+            ease-in-out
+            ml-[75px]
+            max-md:-ml-[40px]
+          "
         >
           {children}
         </div>
       </div>
+
       <Footer />
       <BottomNav />
     </div>
