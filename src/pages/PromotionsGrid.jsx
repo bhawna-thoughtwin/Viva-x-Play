@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import promo1 from '../assets/images/promo1.png';
-import promo2 from '../assets/images/promo2.png';
-import promo3 from '../assets/images/promo3.png';
+import promotiongrid1 from '../assets/images/promotiongrid1.png';
+import promotiongrid2 from '../assets/images/promotiongrid2.png';
+import promotiongrid3 from '../assets/images/promotiongrid3.png';
 
 import sportsIconPng from '../assets/icons/sportsicon.png';
 import casinoIconImg from '../assets/icons/icon-casino2.svg';
@@ -20,14 +20,14 @@ const tabs = [
 
 /* ── Promotions data ── */
 const promotions = [
-    { id: 'casino-welcome-offer', title: 'Casino Welcome Offer', desc: 'Deposit $50 Today and Receive $50 Extra on Us', category: 'Sports', image: promo1 },
-    { id: 'free-spin-bonus-1', title: 'Free Spin Bonus', desc: 'Deposit $50 Today and Receive $50 Extra on Us', category: 'Sports', image: promo2 },
-    { id: 'bet-and-win-1', title: 'Bet & Win', desc: 'Deposit $50 Today and Receive $50 Extra on Us', category: 'Sports', image: promo3 },
-    { id: 'free-spin-bonus-2', title: 'Free Spin Bonus', desc: 'Deposit $50 Today and Receive $50 Extra on Us', category: 'Sports', image: promo1 },
-    { id: 'double-deposit-1', title: 'Double Deposit', desc: 'Deposit $50 Today and Receive $50 Extra on Us', category: 'Sports', image: promo2 },
-    { id: 'bet-and-win-2', title: 'Bet & Win', desc: 'Deposit $50 Today and Receive $50 Extra on Us', category: 'Sports', image: promo3 },
-    { id: 'free-spin-bonus-3', title: 'Free Spin Bonus', desc: 'Deposit $50 Today and Receive $50 Extra on Us', category: 'Sports', image: promo1 },
-    { id: 'double-deposit-2', title: 'Double Deposit', desc: 'Deposit $50 Today and Receive $60 Extra on Us', category: 'Sports', image: promo2 },
+    { id: 'casino-welcome-offer', title: 'Casino Welcome Offer', desc: 'Deposit $50 Today and Receive $50 Extra on Us', category: 'Sports', image: promotiongrid1 },
+    { id: 'free-spin-bonus-1', title: 'Free Spin Bonus', desc: 'Deposit $50 Today and Receive $50 Extra on Us', category: 'Sports', image: promotiongrid2 },
+    { id: 'bet-and-win-1', title: 'Bet & Win', desc: 'Deposit $50 Today and Receive $50 Extra on Us', category: 'Sports', image: promotiongrid3 },
+    { id: 'free-spin-bonus-2', title: 'Free Spin Bonus', desc: 'Deposit $50 Today and Receive $50 Extra on Us', category: 'Sports', image: promotiongrid1 },
+    { id: 'double-deposit-1', title: 'Double Deposit', desc: 'Deposit $50 Today and Receive $50 Extra on Us', category: 'Sports', image: promotiongrid2 },
+    { id: 'bet-and-win-2', title: 'Bet & Win', desc: 'Deposit $50 Today and Receive $50 Extra on Us', category: 'Sports', image: promotiongrid3 },
+    { id: 'free-spin-bonus-3', title: 'Free Spin Bonus', desc: 'Deposit $50 Today and Receive $50 Extra on Us', category: 'Sports', image: promotiongrid1 },
+    { id: 'double-deposit-2', title: 'Double Deposit', desc: 'Deposit $50 Today and Receive $60 Extra on Us', category: 'Sports', image: promotiongrid2 },
 ];
 
 /* ── Badge config: className + optional inline style ── */
@@ -58,7 +58,7 @@ const PromotionsGrid = () => {
 
     return (
         /* outer: add px-3 on mobile so cards don't touch screen edges */
-        <div className="w-full flex flex-col gap-4 md:gap-5 pb-10 px-3 md:px-0 mt-4 md:mt-5">
+      <div className="w-full flex flex-col gap-4 md:gap-5 pb-10 px-3 md:pl-0 md:pr-4 mt-4 md:mt-5">
 
             {/* ── Promotions header ── */}
             <div

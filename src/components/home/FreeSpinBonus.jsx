@@ -9,11 +9,24 @@ const FreeSpinBonus = () => (
       style={{ background: 'linear-gradient(90deg, #92FE9D 0%, #00C9FF 100%)' }}
     >
 
-      {/* LEFT — freespin image — Figma: w594 h446 top:-20 left:-65 angle:0 */}
+      {/* LEFT — freespin image — MOBILE only */}
       <img
         src={freeSpinImg}
         alt="Free spin"
-        className="absolute object-contain pointer-events-none z-[1]"
+        className="absolute object-contain pointer-events-none z-[1] md:hidden"
+        style={{
+          top: '44px',
+          left: '-61px',
+          width: '223px',
+          height: '175px',
+        }}
+      />
+
+      {/* LEFT — freespin image — DESKTOP only */}
+      <img
+        src={freeSpinImg}
+        alt="Free spin"
+        className="absolute object-contain pointer-events-none z-[1] hidden md:block"
         style={{
           top: '-20px',
           left: '-65px',

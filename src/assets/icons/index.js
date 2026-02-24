@@ -11,6 +11,11 @@ export { default as bonusIcon } from './icon-bonus.svg';
 export { default as supportIcon } from './icon-support.svg';
 export { default as aboutIcon } from './icon-about.svg';
 
+// Support Icons
+export { default as chatIcon } from './chaticon.png';
+export { default as faqIcon } from './faqicon.png';
+export { default as envelopeIcon } from './envolop.png';
+
 // Additional SVG Icons
 export { default as casinoIconAlt } from './icon-casino.svg';
 export { default as liveDealerIconAlt } from './icon-live-dealer2.svg';

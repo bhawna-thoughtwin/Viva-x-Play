@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import HeroBanner from '../components/home/HeroBanner';
+
+import promotiongrid1 from '../assets/images/promotiongrid1.png';
 
 /* ── T&C sections ── */
 const tcSections = [
@@ -62,13 +63,11 @@ const tcSections = [
         ],
     },
 ];
-
-/* ════════════════════════════════════════════════════════ */
 const Promotion = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="w-full flex flex-col gap-4 md:gap-[32px] pb-10 px-3 md:px-0 box-border mt-4 md:mt-5">
+        <div className="w-full flex flex-col gap-4 md:gap-[32px] pb-10 px-3 md:pl-0 md:pr-4  box-border mt-4 md:mt-5">
 
             {/* ── Breadcrumb ── */}
             <nav className="flex items-center gap-1.5 md:gap-2 text-[12px] md:text-[13px] flex-wrap">
@@ -99,7 +98,14 @@ const Promotion = () => {
                         Get a 500% Bonus up to $10,000
                     </p>
                 </div>
-                <HeroBanner />
+                <div className="-mx-3 md:-mx-6">
+                    <img
+                        src={promotiongrid1}
+                        alt="Casino Welcome Offer Banner"
+                        className="w-full block object-cover"
+                        style={{ aspectRatio: '1122 / 604' }}
+                    />
+                </div>
             </div>
 
             {/* ── Content ── */}

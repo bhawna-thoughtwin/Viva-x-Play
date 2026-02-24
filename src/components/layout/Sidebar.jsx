@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useApp } from '../../context/AppContext';
 import SearchBar from '../common/SearchBar';
-
+import { useNavigate, useLocation } from 'react-router-dom';
 import sportsIcon from '../../assets/icons/sportsicon.png';
 import liveSportsIcon from '../../assets/icons/Livesports.png';
 import casinoIcon from '../../assets/icons/icon-casino2.svg';
@@ -12,6 +11,7 @@ import referIcon from '../../assets/icons/icon-refer.svg';
 import bonusIcon from '../../assets/icons/icon-bonus.svg';
 import supportIcon from '../../assets/icons/icon-support.svg';
 import aboutIcon from '../../assets/icons/icon-about.svg';
+import { chatIcon, faqIcon, envelopeIcon } from '../../assets/icons';
 
 const aboutLinks = [
   { label: 'AML Policy', path: '/about/aml-policy' },
@@ -24,9 +24,9 @@ const aboutLinks = [
   { label: 'Terms & Conditions', path: '/about/terms-and-conditions' },
 ];
 const supportLinks = [
-  { label: 'FAQ', path: '/support/faq' },
-  { label: 'Contact', path: '/support/contact' },
-  { label: 'Chat', path: '/support/chat' },
+  { label: 'FAQ', path: '/support/faq', icon: faqIcon },
+  { label: 'Contact', path: '/support/contact', icon: envelopeIcon, disabled: true },
+  { label: 'Chat', path: '/support/chat', icon: chatIcon, disabled: true },
 ];
 
 /* Groups with dividers between them — matches Figma layout */
@@ -74,6 +74,7 @@ const Sidebar = () => {
   const [expanded, setExpanded] = useState({});
   const [activeSubItem, setActiveSubItem] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleNavigate = (path) => {
     navigate(path);
@@ -140,16 +141,24 @@ const Sidebar = () => {
                     /* ── Navigable item ── */
                   ) : item.path ? (
                     <button
-                      className="flex items-center gap-3 w-full bg-transparent border-none outline-none cursor-pointer px-2 py-[11px] text-[15px] font-medium text-[#0d0c22] text-left rounded-lg hover:bg-[#f7f7f7] transition-colors"
+                      className={`flex items-center gap-3 w-full border-none outline-none cursor-pointer px-2 py-[11px] text-[15px] font-medium text-left rounded-lg transition-colors ${location.pathname === item.path
+                        ? 'bg-[#1CD4FF] text-white font-semibold'
+                        : 'bg-transparent text-[#0D0C22] hover:bg-[#F7F7F7]'
+                        }`}
                       onClick={() => {
                         setActiveSubItem(item.label);
-                        handleNavigate(item.path)
-                      }
-                      }
-
+                        handleNavigate(item.path);
+                      }}
                     >
-                      <img src={item.icon} alt={item.label} className="w-[20px] h-[20px] object-contain shrink-0" />
-                      <span className="flex-1 text-[#0d0c22] text-[15px]">{item.label}</span>
+                      <img
+                        src={item.icon}
+                        alt={item.label}
+                        className="w-[20px] h-[20px] object-contain shrink-0"
+                        style={location.pathname === item.path ? { filter: 'brightness(0) invert(1)' } : {}}
+                      />
+                      <span className={`flex-1 text-[15px] ${location.pathname === item.path ? 'text-white' : 'text-[#0D0C22]'}`}>
+                        {item.label}
+                      </span>
                       <span className="flex items-center shrink-0 mr-1"><ChevronDown /></span>
                     </button>
 
@@ -169,16 +178,24 @@ const Sidebar = () => {
                       {item.children.map((child) => (
                         <button
                           key={child.label}
-                          className={`border-none outline-none cursor-pointer text-[13px] text-left py-[7px] px-[10px] rounded-md leading-snug transition-all ${activeSubItem === child.label
-                            ? 'bg-[#1cd4ff] text-white font-semibold'
-                            : 'bg-transparent text-[#666] font-normal hover:text-[#0d0c22]'
+                          disabled={child.disabled}
+                          className={`border-none outline-none cursor-pointer text-[13px] text-left py-[7px] px-[10px] rounded-md leading-snug transition-all flex items-center gap-2 ${child.disabled
+                            ? 'opacity-50 cursor-not-allowed text-[#999]'
+                            : activeSubItem === child.label
+                              ? 'bg-[#1cd4ff] text-white font-semibold'
+                              : 'bg-transparent text-[#666] font-normal hover:text-[#0d0c22]'
                             }`}
                           onClick={() => {
-                            setActiveSubItem(child.label);
-                            handleNavigate(child.path);
+                            if (!child.disabled) {
+                              setActiveSubItem(child.label);
+                              handleNavigate(child.path);
+                            }
                           }}
                         >
-                          {child.label}
+                          {child.icon && (
+                            <img src={child.icon} alt={child.label} className="w-[14px] h-[14px] object-contain shrink-0" />
+                          )}
+                          <span className="flex-1">{child.label}</span>
                         </button>
                       ))}
                     </div>

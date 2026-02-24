@@ -92,7 +92,11 @@ const CardRow = ({ title, matches }) => {
 
 
 
+
+
 const SportsBetting = () => {
+  const { scrollRef: sportsRef, activeIndex: sportsActive, scrollToIndex: sportsScrollTo } = useScrollDots(sports.length);
+
   return (
     <section className="bg-white rounded-xl w-full box-border" style={{ padding: '20px 24px' }}>
 
@@ -103,10 +107,23 @@ const SportsBetting = () => {
         onViewAll={() => { }}
       />
 
-      {/* Sports image strip */}
-      <div className="flex mb-0 overflow-hidden">
+      {/* Sports image strip — scrollable on mobile */}
+      <div
+        ref={sportsRef}
+        className="flex mb-0 overflow-x-auto md:overflow-x-visible"
+        style={{
+          scrollSnapType: 'x mandatory',
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none',
+          WebkitOverflowScrolling: 'touch',
+        }}
+      >
         {sports.map((sport) => (
-          <div key={sport.label} className="flex-1 flex justify-center">
+          <div
+            key={sport.label}
+            className="shrink-0 w-[calc(100vw/3.5)] md:flex-1 flex justify-center"
+            style={{ scrollSnapAlign: 'start' }}
+          >
             <div className="relative w-[120px] md:w-[180px] h-[140px] md:h-[200px] flex items-end justify-center">
               <span
                 className="absolute bottom-0 left-0 font-black text-[#1CD4FF] leading-none z-10 select-none -translate-x-1/5"
@@ -126,6 +143,9 @@ const SportsBetting = () => {
           </div>
         ))}
       </div>
+
+      {/* Scroll dots — below sports strip, above Trending */}
+      <ScrollDots count={sports.length} activeIndex={sportsActive} scrollToIndex={sportsScrollTo} className="md:hidden mb-2" />
 
       <CardRow title="Trending" matches={trendingMatches} />
       <CardRow title="Recommendations" matches={recommendationMatches} />
