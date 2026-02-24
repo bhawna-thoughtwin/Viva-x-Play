@@ -96,9 +96,13 @@ const Sidebar = () => {
       {/* ── Sidebar panel ── */}
       <aside
         className={`
-    fixed left-0 top-[62px]
+     left-0 top-[62px]
     w-[300px]
-    h-[calc(100vh-62px)]
+    h-full
+    md:relative
+    fixed
+    md:z-[0]
+    z-[99]
     bg-white rounded-br-[12px]
     overflow-y-auto overflow-x-hidden
     flex flex-col
@@ -195,7 +199,11 @@ const Sidebar = () => {
                           }}
                         >
                           {child.icon && (
-                            <img src={child.icon} alt={child.label} className="w-[14px] h-[14px] object-contain shrink-0" />
+                            <img
+                              src={child.icon}
+                              alt={child.label}
+                              className="w-[20px] h-[20px] object-contain shrink-0"
+                            />
                           )}
                           <span className="flex-1">{child.label}</span>
                         </button>

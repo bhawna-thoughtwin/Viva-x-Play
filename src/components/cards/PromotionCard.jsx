@@ -13,8 +13,8 @@ const PromotionCard = ({ title, line1, line1Bold, line2, line2Highlight, btnLabe
           style={{
             width: '296px',
             height: '296px',
-            top: '37.5px',
-            left: '102px',
+            top: '71.5px',
+            left: '179px',
             objectFit: 'contain',
             zIndex: 5,
           }}
