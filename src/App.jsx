@@ -64,7 +64,7 @@ function App() {
                   <Route path="/about/self-exclusion-policy" element={<SelfExclusionPolicy />} />
                   <Route path="/about/terms-and-conditions" element={<TermsAndConditions />} />
                   <Route path="/support/faq" element={<FAQ />} />
-                  <Route path='profile' element={<ProfilePage />} />
+                  <Route path='/profile' element={<ProfilePage />} />
                 
                 </Routes>
               </MainLayout>

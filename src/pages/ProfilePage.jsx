@@ -4,6 +4,18 @@ import { FaUserCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useApp } from "../context/AppContext";
 import toast from "react-hot-toast";
+import {
+    sportsIcon,
+    liveSportsIcon,
+    casinoIcon,
+    liveDealerIconAlt,
+    promotionsIconAlt,
+    referIcon,
+    bonusIcon,
+    supportIcon,
+    logout2,
+    global
+} from "../assets/icons";
 
 const ProfilePage = () => {
     const navigate = useNavigate();
@@ -19,34 +31,40 @@ const ProfilePage = () => {
     const menuSections = [
         {
             title: "GAME",
-            items: ["Sports", "Live Sports", "Casino", "Live Dealer"],
+            items: [
+                { label: "Sports", icon: sportsIcon },
+                { label: "Live Sports", icon: liveSportsIcon },
+                { label: "Casino", icon: casinoIcon },
+                { label: "Live Dealer", icon: liveDealerIconAlt },
+            ],
         },
         {
             title: "THE HUB",
-            items: ["Promotions", "Refer a friend", "Welcome Bonuses"],
+            items: [
+                { label: "Promotions", icon: promotionsIconAlt },
+                { label: "Refer a friend", icon: referIcon },
+                { label: "Welcome Bonuses", icon: bonusIcon },
+            ],
         },
         {
             title: "OTHER",
-            items: ["Support", "Language"],
+            items: [
+                { label: "Support", icon: supportIcon },
+                { label: "Language", icon: global },
+            ],
         },
     ];
-    
+
     const handleLogout = () => {
-        // Navigate first to avoid the redirect check at component start
         navigate("/");
-        
-        // Then call logout from AppContext
         if (logout) {
             logout();
         }
-        
         // Clear localStorage
         localStorage.removeItem("isLoggedIn");
         localStorage.removeItem("currentUser");
         localStorage.removeItem("dummyUser");
         localStorage.removeItem("rememberUser");
-        
-        toast.success("Logged out successfully!");
     };
 
     return (
@@ -89,7 +107,12 @@ const ProfilePage = () => {
                                 key={index}
                                 className="flex items-center justify-between py-2 border-b border-[#eee] cursor-pointer hover:bg-[#f9f9f9] px-2 rounded-md transition"
                             >
-                                <span className="text-sm text-[#333]">{item}</span>
+                                <div className="flex items-center gap-3">
+                                    {item.icon && (
+                                        <img src={item.icon} alt={item.label} className="w-[18px] h-[18px] object-contain" />
+                                    )}
+                                    <span className="text-sm text-[#333]">{item.label}</span>
+                                </div>
                                 <FiChevronDown className="text-[#aaa] text-sm" />
                             </div>
                         ))}
@@ -97,11 +120,19 @@ const ProfilePage = () => {
                 ))}
 
                 {/* Logout */}
-                <div className="flex items-center gap-2 cursor-pointer text-red-500 hover:text-red-600 transition">
-                    <FiLogOut />
-                    <span className="text-sm font-medium"
-                        onClick={handleLogout}
-                    >Logout</span>
+                <div
+                    className="flex items-center gap-2 cursor-pointer text-[#333] hover:text-[#000] transition pt-4 mt-4 border-t border-[#eee]"
+                    onClick={handleLogout}
+                >
+                    <img
+                        src={logout2}
+                        alt="Logout"
+                        className="w-[18px] h-[18px] object-contain"
+                    />
+
+                    <span className="text-sm font-medium">
+                        Logout
+                    </span>
                 </div>
 
             </div>

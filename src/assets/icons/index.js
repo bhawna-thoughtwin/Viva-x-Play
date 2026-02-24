@@ -10,6 +10,8 @@ export { default as referIcon } from './icon-refer.svg';
 export { default as bonusIcon } from './icon-bonus.svg';
 export { default as supportIcon } from './icon-support.svg';
 export { default as aboutIcon } from './icon-about.svg';
+export { default as logout2 } from './Logout2.png';
+export { default as global } from './global.png';
 
 // Support Icons
 export { default as chatIcon } from './chaticon.png';
