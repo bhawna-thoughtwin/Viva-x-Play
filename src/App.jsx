@@ -22,6 +22,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import FAQ from './pages/support/faq';
 import ProfilePage from './pages/ProfilePage';
+import ProtectedRoute from './routes/ProtectedRoute';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -64,7 +65,7 @@ function App() {
                   <Route path="/about/self-exclusion-policy" element={<SelfExclusionPolicy />} />
                   <Route path="/about/terms-and-conditions" element={<TermsAndConditions />} />
                   <Route path="/support/faq" element={<FAQ />} />
-                  <Route path='/profile' element={<ProfilePage />} />
+                  <Route path='/profile' element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
                 
                 </Routes>
               </MainLayout>

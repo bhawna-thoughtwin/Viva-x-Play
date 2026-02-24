@@ -90,19 +90,6 @@ const Navbar = () => {
           Register
         </button>
 
-        {/* Profile Button - shows when logged in on desktop only */}
-        {isLoggedIn && (
-          <button
-            className="hidden md:flex items-center justify-center gap-2 bg-[#1cd4ff] text-[#121212] px-[14px] pt-[4px] pb-[4px] h-[44px] rounded-[8px] text-[12px] font-[510] uppercase cursor-pointer border-none transition-all duration-200 hover:bg-[#1ab4d0]"
-            onClick={() => navigate('/profile')}
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-              <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-            <span>Profile</span>
-          </button>
-        )}
       </div>
 
     </header>

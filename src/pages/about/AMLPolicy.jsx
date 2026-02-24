@@ -7,12 +7,12 @@ const AMLPolicy = () => {
       <PageHeader title="AML Policy" />
 
       <div
-        style={{ marginLeft: "20px", marginRight: "20px", borderRadius: "8px" }}
-        className="bg-white px-4 sm:px-6 md:px-8 py-6 md:py-8 rounded-md shadow-[0_4px_8px_0_rgba(0,0,0,0.1),0_3px_10px_0_rgba(0,0,0,0.08)]"
+        style={{ fontFamily: "SF Pro, -apple-system, BlinkMacSystemFont, sans-serif" }}
+        className="bg-white mx-[20px] mb-[20px] px-4 sm:px-6 md:px-8 py-6 md:py-8 rounded-[8px] shadow-[0_4px_8px_0_rgba(0,0,0,0.1),0_3px_10px_0_rgba(0,0,0,0.08)]"
       >
 
         {/* 1 */}
-        <h2 className="text-[20px] md:text-[24px] font-[590] text-[#111827] mt-6 mb-2">
+        <h2 className="text-[20px] md:text-[24px] font-bold leading-[100%] tracking-[0em] text-[#111827] mt-0 mb-2">
           1. Purpose and Scope
         </h2>
 
@@ -38,11 +38,11 @@ const AMLPolicy = () => {
         </p>
 
         {/* 2 */}
-        <h2 className="text-[20px] md:text-[24px] font-[590] text-[#111827] mt-6 mb-2">
+        <h2 className="text-[20px] md:text-[24px] font-bold leading-[100%] tracking-[0em] text-[#111827] mt-6 mb-2">
           2. Governance and Accountability
         </h2>
 
-        <h3 className="text-[18px] md:text-[20px] font-[590] text-[#111827] mt-5 mb-2">
+        <h3 className="text-[20px] md:text-[20px] font-bold leading-[100%] tracking-[0em] text-[#111827] mt-5 mb-2">
           2.1 Money Laundering Reporting Officer (MLRO)
         </h3>
 
@@ -59,7 +59,7 @@ const AMLPolicy = () => {
           <li>Reporting annually to senior management</li>
         </ul>
 
-        <h3 className="text-[18px] md:text-[20px] font-[590] text-[#111827] mt-5 mb-2">
+        <h3 className="text-[20px] md:text-[20px] font-bold leading-[100%] tracking-[0em] text-[#111827] mt-5 mb-2">
           2.2 Management Oversight
         </h3>
 
@@ -70,7 +70,7 @@ const AMLPolicy = () => {
         </p>
 
         {/* 3 */}
-        <h2 className="text-[20px] md:text-[24px] font-[590] text-[#111827] mt-6 mb-2">
+        <h2 className="text-[20px] md:text-[24px] font-bold leading-[100%] tracking-[0em] text-[#111827] mt-6 mb-2">
           3. Risk-Based Approach
         </h2>
 
@@ -91,11 +91,11 @@ const AMLPolicy = () => {
         </p>
 
         {/* 4 */}
-        <h2 className="text-[20px] md:text-[24px] font-[590] text-[#111827] mt-6 mb-2">
+        <h2 className="text-[20px] md:text-[24px] font-bold leading-[100%] tracking-[0em] text-[#111827] mt-6 mb-2">
           4. Control Measures
         </h2>
 
-        <h3 className="text-[18px] md:text-[20px] font-[590] text-[#111827] mt-5 mb-2">
+        <h3 className="text-[20px] md:text-[20px] font-bold leading-[100%] tracking-[0em] text-[#111827] mt-5 mb-2">
           4.1 Customer Due Diligence (CDD)
         </h3>
 
@@ -110,7 +110,7 @@ const AMLPolicy = () => {
           <li>Sanction screening against FATF, EU, UN, and OFAC lists</li>
         </ul>
 
-        <h3 className="text-[18px] md:text-[20px] font-[590] text-[#111827] mt-5 mb-2">
+        <h3 className="text-[20px] md:text-[20px] font-bold leading-[100%] tracking-[0em] text-[#111827] mt-5 mb-2">
           4.2 Enhanced Due Diligence (EDD)
         </h3>
 
@@ -120,7 +120,7 @@ const AMLPolicy = () => {
           or activity inconsistent with profile.
         </p>
 
-        <h3 className="text-[18px] md:text-[20px] font-[590] text-[#111827] mt-5 mb-2">
+        <h3 className="text-[20px] md:text-[20px] font-bold leading-[100%] tracking-[0em] text-[#111827] mt-5 mb-2">
           4.3 Transaction Monitoring
         </h3>
 
@@ -132,7 +132,7 @@ const AMLPolicy = () => {
           <li>Crypto-to-fiat conversions without gaming intent</li>
         </ul>
 
-        <h3 className="text-[18px] md:text-[20px] font-[590] text-[#111827] mt-5 mb-2">
+        <h3 className="text-[20px] md:text-[20px] font-bold leading-[100%] tracking-[0em] text-[#111827] mt-5 mb-2">
           4.4 Suspicious Activity Reporting
         </h3>
 
@@ -145,7 +145,7 @@ const AMLPolicy = () => {
         </ul>
 
         {/* 5 */}
-        <h2 className="text-[20px] md:text-[24px] font-[590] text-[#111827] mt-6 mb-2">
+        <h2 className="text-[20px] md:text-[24px] font-bold leading-[100%] tracking-[0em] text-[#111827] mt-6 mb-2">
           5. Prohibited Jurisdictions and Customers
         </h2>
 
@@ -155,7 +155,7 @@ const AMLPolicy = () => {
         </p>
 
         {/* 6 */}
-        <h2 className="text-[20px] md:text-[24px] font-[590] text-[#111827] mt-6 mb-2">
+        <h2 className="text-[20px] md:text-[24px] font-bold leading-[100%] tracking-[0em] text-[#111827] mt-6 mb-2">
           6. Recordkeeping
         </h2>
 
@@ -165,7 +165,7 @@ const AMLPolicy = () => {
         </p>
 
         {/* 7 */}
-        <h2 className="text-[20px] md:text-[24px] font-[590] text-[#111827] mt-6 mb-2">
+        <h2 className="text-[20px] md:text-[24px] font-bold leading-[100%] tracking-[0em] text-[#111827] mt-6 mb-2">
           7. Training and Awareness
         </h2>
 
@@ -174,7 +174,7 @@ const AMLPolicy = () => {
         </p>
 
         {/* 8 */}
-        <h2 className="text-[20px] md:text-[24px] font-[590] text-[#111827] mt-6 mb-2">
+        <h2 className="text-[20px] md:text-[24px] font-bold leading-[100%] tracking-[0em] text-[#111827] mt-6 mb-2">
           8. Independent Audit
         </h2>
 
@@ -183,7 +183,7 @@ const AMLPolicy = () => {
         </p>
 
         {/* 9 */}
-        <h2 className="text-[20px] md:text-[24px] font-[590] text-[#111827] mt-6 mb-2">
+        <h2 className="text-[20px] md:text-[24px] font-bold leading-[100%] tracking-[0em] text-[#111827] mt-6 mb-2">
           9. Policy Review and Updates
         </h2>
 
@@ -193,7 +193,7 @@ const AMLPolicy = () => {
         </p>
 
         {/* 10 */}
-        <h2 className="text-[20px] md:text-[24px] font-[590] text-[#111827] mt-6 mb-2">
+        <h2 className="text-[20px] md:text-[24px] font-bold leading-[100%] tracking-[0em] text-[#111827] mt-6 mb-2">
           10. Contact Information
         </h2>
 

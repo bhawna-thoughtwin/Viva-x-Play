@@ -1,9 +1,7 @@
-import React, { useEffect } from "react";
-import { FiSearch, FiChevronDown, FiLogOut } from "react-icons/fi";
+import { FiSearch, FiChevronDown } from "react-icons/fi";
 import { FaUserCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useApp } from "../context/AppContext";
-import toast from "react-hot-toast";
 import {
     sportsIcon,
     liveSportsIcon,
@@ -20,13 +18,6 @@ import {
 const ProfilePage = () => {
     const navigate = useNavigate();
     const { user, logout } = useApp();
-
-    // Check if user is logged in on component mount only
-    useEffect(() => {
-        if (!user) {
-            navigate('/login');
-        }
-    }, []); // Empty dependency array - only runs on mount
 
     const menuSections = [
         {
@@ -56,15 +47,8 @@ const ProfilePage = () => {
     ];
 
     const handleLogout = () => {
+        logout();
         navigate("/");
-        if (logout) {
-            logout();
-        }
-        // Clear localStorage
-        localStorage.removeItem("isLoggedIn");
-        localStorage.removeItem("currentUser");
-        localStorage.removeItem("dummyUser");
-        localStorage.removeItem("rememberUser");
     };
 
     return (

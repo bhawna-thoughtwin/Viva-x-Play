@@ -1,10 +1,10 @@
 import { useNavigate, useLocation } from 'react-router-dom';
-import { LayoutGrid, User } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import browse from "../../assets/icons/browse.png";
 import casinoIcon from '../../assets/icons/icon-casino2.svg';
 import liveDealerIcon from '../../assets/icons/icon-live-dealer2.svg';
 import sportsIcon from '../../assets/icons/sportsicon.png';
+import { profileIcon } from '../../assets/icons';
 
 const whiteFilter = 'brightness(0) invert(1)';
 const cyanFilter = 'invert(72%) sepia(60%) saturate(400%) hue-rotate(155deg) brightness(105%)';
@@ -54,7 +54,7 @@ const BottomNav = () => {
             case 'sports':
                 return <img src={sportsIcon} alt="Sports" className={imgClass} style={{ filter: active ? cyanFilter : whiteFilter }} />;
             case 'profile':
-                return <User size={22} color={color} strokeWidth={1.8} />;
+                return <img src={profileIcon} alt="Profile" className={imgClass} style={{ filter: active ? cyanFilter : whiteFilter }} />;
             default:
                 return null;
         }

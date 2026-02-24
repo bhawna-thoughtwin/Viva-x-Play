@@ -12,6 +12,7 @@ export { default as supportIcon } from './icon-support.svg';
 export { default as aboutIcon } from './icon-about.svg';
 export { default as logout2 } from './Logout2.png';
 export { default as global } from './global.png';
+export { default as profileIcon } from './Profile.png';
 
 // Support Icons
 export { default as chatIcon } from './chaticon.png';

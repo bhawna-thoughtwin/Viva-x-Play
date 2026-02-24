@@ -2,124 +2,83 @@ import PageHeader from "./Header/Header";
 
 const DisputePolicy = () => {
   return (
-    <div style={styles.page}>
+    <div className="w-full max-w-[1188px] bg-[#f5f7fb] rounded-[12px] overflow-hidden shadow-[0_4px_18px_rgba(15,23,42,0.06)] mx-auto">
       <PageHeader title="Dispute Policy" />
 
-      <div style={styles.content}>
-        <h2 style={styles.sectionHeading}>1. Commitment to Fair Resolution</h2>
-        <p style={styles.paragraph}>
+      <div
+        style={{ fontFamily: "SF Pro, -apple-system, BlinkMacSystemFont, sans-serif" }}
+        className="bg-white mx-[20px] mb-[20px] px-4 sm:px-6 md:px-8 py-6 md:py-8 rounded-[8px] shadow-[0_4px_8px_0_rgba(0,0,0,0.1),0_3px_10px_0_rgba(0,0,0,0.08)]"
+      >
+
+        <h2 className="text-[20px] md:text-[24px] font-bold leading-[100%] tracking-[0em] text-[#111827] mt-0 mb-2 whitespace-nowrap">
+          1. Commitment to Fair Resolution
+        </h2>
+
+        <p className="text-[14px] leading-[150%] text-[#4b5563] mb-2 max-w-[900px]">
           TigerBet247 is committed to resolving all player complaints and disputes in a fair,
           transparent, and timely manner.
         </p>
 
-        <h2 style={styles.sectionHeading}>2. How to Submit a Complaint</h2>
-        <p style={styles.paragraph}>
+        <h2 className="text-[20px] md:text-[24px] font-bold leading-[100%] tracking-[0em] text-[#111827] mt-6 mb-2">
+          2. How to Submit a Complaint
+        </h2>
+        <p className="text-[14px] leading-[150%] text-[#4b5563] mb-2 max-w-[900px]">
           Players must first contact Customer Support via their registered email address.
           The complaint must include:
         </p>
-        <ul style={styles.list}>
-          <li style={styles.listItem}>The player's full name</li>
-          <li style={styles.listItem}>Username</li>
-          <li style={styles.listItem}>Registered email address</li>
-          <li style={styles.listItem}>A detailed description of the issue</li>
-          <li style={styles.listItem}>Any supporting evidence (if applicable)</li>
+        <ul className="list-disc pl-6 text-[14px] leading-[150%] text-[#4b5563] mb-2 max-w-[900px] space-y-[6px]">
+          <li>The player's full name</li>
+          <li>Username</li>
+          <li>Registered email address</li>
+          <li>A detailed description of the issue</li>
+          <li>Any supporting evidence (if applicable)</li>
         </ul>
-        <p style={styles.paragraph}>
+        <p className="text-[14px] leading-[150%] text-[#4b5563] mb-2 max-w-[900px]">
           Complaints should be submitted within 3 days of the issue occurring.
         </p>
 
-        <h2 style={styles.sectionHeading}>3. Internal Review Process</h2>
-        <ul style={styles.list}>
-          <li style={styles.listItem}>Complaints are acknowledged within 24 hours.</li>
-          <li style={styles.listItem}>An investigation is conducted by the relevant department.</li>
-          <li style={styles.listItem}>A formal response is provided within 7 business days.</li>
-          <li style={styles.listItem}>If additional time is required, the player will be notified.</li>
+        <h2 className="text-[20px] md:text-[24px] font-bold leading-[100%] tracking-[0em] text-[#111827] mt-6 mb-2">
+          3. Internal Review Process
+        </h2>
+        <ul className="list-disc pl-6 text-[14px] leading-[150%] text-[#4b5563] mb-2 max-w-[900px] space-y-[6px]">
+          <li>Complaints are acknowledged within 24 hours.</li>
+          <li>An investigation is conducted by the relevant department.</li>
+          <li>A formal response is provided within 7 business days.</li>
+          <li>If additional time is required, the player will be notified.</li>
         </ul>
 
-        <h2 style={styles.sectionHeading}>4. Escalation</h2>
-        <ul style={styles.list}>
-          <li style={styles.listItem}>
-            If the issue is not resolved satisfactorily, the matter may be escalated to senior management.
-          </li>
-          <li style={styles.listItem}>A final internal decision will be issued after review.</li>
-          <li style={styles.listItem}>
-            If the dispute remains unresolved, the player may contact the Curaçao regulatory
-            authority under which TigerBet247 is licensed.
-          </li>
+        <h2 className="text-[20px] md:text-[24px] font-bold leading-[100%] tracking-[0em] text-[#111827] mt-6 mb-2">
+          4. Escalation
+        </h2>
+        <ul className="list-disc pl-6 text-[14px] leading-[150%] text-[#4b5563] mb-2 max-w-[900px] space-y-[6px]">
+          <li>If the issue is not resolved satisfactorily, the matter may be escalated to senior management.</li>
+          <li>A final internal decision will be issued after review.</li>
+          <li>If the dispute remains unresolved, the player may contact the Curaçao regulatory authority under which TigerBet247 is licensed.</li>
         </ul>
 
-        <h2 style={styles.sectionHeading}>5. Fraudulent or Abusive Complaints</h2>
-        <p style={styles.paragraph}>
+        <h2 className="text-[20px] md:text-[24px] font-bold leading-[100%] tracking-[0em] text-[#111827] mt-6 mb-2">
+          5. Fraudulent or Abusive
+          <span className="hidden md:inline"> Complaints</span>
+        </h2>
+        <p className="text-[14px] leading-[150%] text-[#4b5563] mb-2 max-w-[900px]">
           TigerBet247 reserves the right to reject complaints that are:
         </p>
-        <ul style={styles.list}>
-          <li style={styles.listItem}>Fraudulent or submitted in bad faith</li>
-          <li style={styles.listItem}>Abusive or offensive in nature</li>
-          <li style={styles.listItem}>Repetitive without new supporting evidence</li>
+        <ul className="list-disc pl-6 text-[14px] leading-[150%] text-[#4b5563] mb-2 max-w-[900px] space-y-[6px]">
+          <li>Fraudulent or submitted in bad faith</li>
+          <li>Abusive or offensive in nature</li>
+          <li>Repetitive without new supporting evidence</li>
         </ul>
 
-        <h2 style={styles.sectionHeading}>6. Governing Law</h2>
-        <p style={styles.paragraph}>
+        <h2 className="text-[20px] md:text-[24px] font-bold leading-[100%] tracking-[0em] text-[#111827] mt-6 mb-2">
+          6. Governing Law
+        </h2>
+        <p className="text-[14px] leading-[150%] text-[#4b5563] mb-2 max-w-[900px]">
           All disputes are governed by the laws of Curaçao.
         </p>
+
       </div>
     </div>
   );
-};
-
-const baseFont =
-  '-apple-system, BlinkMacSystemFont, "SF Pro", "SF Pro Display", "Helvetica Neue", Arial, sans-serif';
-
-const styles = {
-  page: {
-    width: '100%',
-    maxWidth: '1188px',
-    backgroundColor: '#f5f7fb',
-    borderRadius: '12px',
-    overflow: 'hidden',
-    boxShadow: '0 4px 18px rgba(15, 23, 42, 0.06)',
-  },
-  content: {
-    padding: '24px 32px 32px',
-    backgroundColor: '#ffffff',
-    marginLeft: '20px',
-    marginRight: '20px',
-    borderRadius: '8px',
-    boxShadow: '0 4px 8px 0 rgba(0,0,0,0.1), 0 3px 10px 0 rgba(0,0,0,0.08)',
-  },
-  sectionHeading: {
-    fontFamily: baseFont,
-    fontWeight: 590,
-    fontStyle: 'normal',
-    fontSize: '24px',
-    lineHeight: '100%',
-    letterSpacing: '0',
-    color: '#111827',
-    margin: '24px 0 8px',
-  },
-  paragraph: {
-    fontFamily: baseFont,
-    fontSize: '14px',
-    lineHeight: '150%',
-    color: '#4b5563',
-    margin: '0 0 8px',
-    maxWidth: '900px',
-  },
-  list: {
-    fontFamily: baseFont,
-    fontSize: '14px',
-    lineHeight: '150%',
-    color: '#4b5563',
-    margin: '0 0 8px',
-    paddingLeft: '24px',
-    maxWidth: '900px',
-    listStyleType: 'disc',
-  },
-  listItem: {
-    marginBottom: '6px',
-    display: 'list-item',
-    listStyleType: 'disc',
-  },
 };
 
 export default DisputePolicy;

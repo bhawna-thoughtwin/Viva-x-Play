@@ -11,7 +11,7 @@ import toast from 'react-hot-toast';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 
 const LoginPage = () => {
-  const { user, login } = useApp(); //  Get user and login function from AppContext
+  const { login } = useApp(); //  Get user and login function from AppContext
   const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -60,7 +60,7 @@ const LoginPage = () => {
       }
 
       toast.success('Login successful!');
-      navigate('/'); // redirect to home
+      navigate('/'); 
     } else {
       toast.error('Invalid email, username, or password');
     }

@@ -11,7 +11,7 @@ import referIcon from '../../assets/icons/icon-refer.svg';
 import bonusIcon from '../../assets/icons/icon-bonus.svg';
 import supportIcon from '../../assets/icons/icon-support.svg';
 import aboutIcon from '../../assets/icons/icon-about.svg';
-import { chatIcon, faqIcon, envelopeIcon } from '../../assets/icons';
+import { chatIcon, faqIcon, envelopeIcon, profileIcon } from '../../assets/icons';
 
 const aboutLinks = [
   { label: 'AML Policy', path: '/about/aml-policy' },
@@ -47,6 +47,7 @@ const menuGroups = [
   [
     { label: 'Support', icon: supportIcon, expandable: true, children: supportLinks },
     { label: 'About Us', icon: aboutIcon, expandable: true, children: aboutLinks },
+    { label: 'Profile', icon: profileIcon, path: '/profile', requiresAuth: true },
   ],
 
 ];
@@ -70,7 +71,8 @@ const LiveBadge = () => (
 );
 
 const Sidebar = () => {
-  const { sidebarOpen, toggleSidebar } = useApp();
+  const { sidebarOpen, toggleSidebar, user } = useApp();
+  const isLoggedIn = !!user;
   const [expanded, setExpanded] = useState({});
   const [activeSubItem, setActiveSubItem] = useState(null);
   const navigate = useNavigate();
@@ -122,7 +124,7 @@ const Sidebar = () => {
                 <div className="h-px bg-[#f0f0f0] mb-[16px]" />
               )}
 
-              {group.map((item) => (
+              {group.filter(item => !item.requiresAuth || isLoggedIn).map((item) => (
                 <div key={item.label}>
 
                   {/* ── Expandable (About Us) ── */}
