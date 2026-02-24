@@ -51,11 +51,8 @@ function App() {
                   <Route path="/" element={<Home />} />
                   <Route path="/sports" element={<Sports />} />
                   <Route path="/live-dealer" element={<LiveDealer />} />
-
-                  {/* Promotions: grid at /promotion, detail at /promotion/detail */}
                   <Route path="/promotion" element={<PromotionsGrid />} />
                   <Route path="/promotion/detail" element={<Promotion />} />
-
                   <Route path="/about/aml-policy" element={<AMLPolicy />} />
                   <Route path="/about/cookie-policy" element={<CookiePolicy />} />
                   <Route path="/about/dispute-policy" element={<DisputePolicy />} />

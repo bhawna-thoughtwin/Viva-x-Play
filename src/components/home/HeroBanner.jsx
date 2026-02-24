@@ -32,12 +32,15 @@ const HeroBanner = () => {
       </div>
 
       {/* ── Desktop ── */}
-      <div className="relative hidden md:block w-full h-[380px] rounded-xl overflow-hidden mb-4">
+      <div 
+        className="relative hidden md:block w-full h-[380px] overflow-hidden mb-4 mr-4"
+        style={{ borderRadius: '12px' }}
+      >
         <img
           src={casinoBg}
           alt="Hero Banner"
-          className="absolute object-cover object-center"
-          style={{ top: '-8px', left: '-25px', width: 'calc(100% + 50px)', height: 'calc(100% + 16px)' }}
+          className="absolute object-cover object-center w-full h-full"
+          style={{ top: '0', left: '0' }}
         />
         {/* Left overlay */}
         <div

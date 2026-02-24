@@ -70,7 +70,7 @@ const Promotion = () => {
         <div className="w-full flex flex-col gap-4 md:gap-[32px] pb-10 px-3 md:pl-0 md:pr-4  box-border mt-4 md:mt-5">
 
             {/* ── Breadcrumb ── */}
-            <nav className="flex items-center gap-1.5 md:gap-2 text-[12px] md:text-[13px] flex-wrap">
+            <nav className="hidden md:flex items-center gap-1.5 md:gap-2 text-[12px] md:text-[13px] flex-wrap">
                 <button
                     onClick={() => navigate('/')}
                     className="bg-transparent border-none cursor-pointer text-[#666] hover:text-[#0D0C22] p-0 transition-colors"
@@ -89,7 +89,7 @@ const Promotion = () => {
             </nav>
 
             {/* ── Hero + title ── */}
-            <div className="bg-white rounded-xl px-3 md:px-6 pt-4 md:pt-6 pb-0 flex flex-col gap-3 md:gap-6 overflow-hidden">
+            <div className="bg-white rounded-xl px-3 md:px-6 pt-4 md:pt-6 pb-0 flex flex-col gap-2 md:gap-6 overflow-hidden">
                 <div className="w-full flex flex-col gap-2 md:gap-3">
                     <h2 className="text-[22px] md:text-[42px] font-bold text-[#333] uppercase m-0 leading-tight">
                         Casino Welcome Offer

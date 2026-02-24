@@ -44,19 +44,7 @@ const CardRow = ({ title, matches }) => {
           {title}
         </span>
         <button
-          className="
-            bg-transparent
-            border-0 md:border md:border-[#E0E0E0]
-            text-[#1CD4FF]
-            px-3 md:px-[14px]
-            py-1.5
-            rounded-md
-            text-xs md:text-[13px]
-            font-semibold
-            cursor-pointer
-            shrink-0
-            whitespace-nowrap
-          "
+          className="bg-transparent border border-[#E0E0E0] text-[#1CD4FF] px-3 md:px-[14px] py-1.5 rounded-md text-xs md:text-[13px] font-semibold cursor-pointer shrink-0 whitespace-nowrap"
         >
           VIEW ALL &rsaquo;
         </button>
@@ -76,7 +64,7 @@ const CardRow = ({ title, matches }) => {
         {matches.map((match, i) => (
           <div
             key={i}
-            className="shrink-0 w-[calc(100vw-56px)] md:w-auto"
+            className="shrink-0 w-[301px] h-[202px]"
             style={{ scrollSnapAlign: 'start' }}
           >
             <MatchCard {...match} isLive={false} />

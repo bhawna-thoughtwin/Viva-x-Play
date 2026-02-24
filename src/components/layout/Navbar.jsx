@@ -20,7 +20,7 @@ const navLinks = [
   { label: 'Sports',      path: '/sports',      icon: sportsIcon },
   { label: 'Casino',      path: '/casino',       icon: casinoIcon },
   { label: 'Live Dealer', path: '/live-dealer',  icon: liveDealerIconb },
-  { label: 'Promotions',  path: '/promotion',   icon: promotionsIconb },
+  { label: 'Promotions',  path: '/promotion',   icon: promotionsIconb},
 ];
 
 const Navbar = () => {
@@ -37,7 +37,7 @@ const Navbar = () => {
         <img
           src={logoSvg}
           alt="VIVA X PLAY"
-          className="w-[100px] lg:w-[230px] h-[42px] object-contain cursor-pointer sm:w-[100px] ml-[15px] lg:ml-[23px]" 
+          className="w-[107px] lg:w-[230px] h-[42px] object-contain cursor-pointer sm:w-[100px] ml-[10px] lg:ml-[15px]" 
           onClick={() => navigate('/')}
         />
       </div>

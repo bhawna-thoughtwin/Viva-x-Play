@@ -60,7 +60,7 @@ const LoginPage = () => {
       }
 
       toast.success('Login successful!');
-      navigate('/'); 
+      navigate('/');
     } else {
       toast.error('Invalid email, username, or password');
     }
@@ -202,11 +202,12 @@ const LoginPage = () => {
                         <img
                           src={src}
                           alt="social"
-                          className="w-6 h-6 object-contain"
+                          className="w-[25px] h-[20px] object-contain"
                         />
                       </button>
                     ))}
                   </div>
+
 
                 </form>
 
