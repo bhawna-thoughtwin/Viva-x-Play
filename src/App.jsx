@@ -23,6 +23,7 @@ import RegisterPage from './pages/RegisterPage';
 import FAQ from './pages/support/faq';
 import ProfilePage from './pages/ProfilePage';
 import ProtectedRoute from './routes/ProtectedRoute';
+import Casino from './pages/Casino';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -50,6 +51,7 @@ function App() {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/sports" element={<Sports />} />
+                  <Route path="/casino" element={<Casino />} />
                   <Route path="/live-dealer" element={<LiveDealer />} />
                   <Route path="/promotion" element={<PromotionsGrid />} />
                   <Route path="/promotion/detail" element={<Promotion />} />

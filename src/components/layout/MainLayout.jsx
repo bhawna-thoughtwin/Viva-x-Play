@@ -12,24 +12,20 @@ const MainLayout = ({ children }) => {
       <Navbar />
 
       <div className='grid grid-cols-12 gap-2'>
-         <div className="col-span-2 ">
- <Sidebar />
+        <div className="col-span-2">
+          <Sidebar />
+        </div>
 
-         </div>
-       
         <div
           style={{
-            // marginLeft: sidebarOpen ? '332px' : '',
             paddingTop: '55px',
             minHeight: 'calc(100vh - 62px)',
-            
             backgroundColor: '#ECECEC',
             transition: 'margin-left 0.3s ease',
           }}
           className="col-span-10"
         >
           {children}
-
         </div>
       </div>
       <Footer />

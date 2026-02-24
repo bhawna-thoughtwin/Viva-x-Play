@@ -36,5 +36,18 @@ export { default as volleyballPlayer2 } from './volleyball-player 2.png';
 export { default as volleyballPlayer3 } from './volleyball-player 3.png';
 export { default as sportsIconPng } from './sportsicon.png';
 
+// Casino Page Header Icon
+export { default as casinoDiceIcon } from './casinodice.svg';
+
+// Casino Sub-item Icons
+export { default as slotsIcon } from './slots.png';
+export { default as rouletteIcon } from './roulette.png';
+export { default as blackjackIcon } from './blackjack.svg';
+export { default as pokerIcon } from './poker.svg';
+export { default as crashIcon } from './crash.svg';
+export { default as baccaratIcon } from './baccrat.svg';
+export { default as jackpotIcon } from './jackpot.svg';
+export { default as newReleaseIcon } from './new realase.svg';
+
 // Legacy/Other
 export { default as legacyImage } from './81a429aaf4ae70d4170b2f520f10dda378204b52.png';

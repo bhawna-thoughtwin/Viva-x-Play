@@ -11,7 +11,18 @@ import referIcon from '../../assets/icons/icon-refer.svg';
 import bonusIcon from '../../assets/icons/icon-bonus.svg';
 import supportIcon from '../../assets/icons/icon-support.svg';
 import aboutIcon from '../../assets/icons/icon-about.svg';
-import { chatIcon, faqIcon, envelopeIcon, profileIcon } from '../../assets/icons';
+import { chatIcon, faqIcon, envelopeIcon, profileIcon, slotsIcon, rouletteIcon, blackjackIcon, pokerIcon, crashIcon, baccaratIcon, jackpotIcon, newReleaseIcon } from '../../assets/icons';
+
+const casinoLinks = [
+  { label: 'Slots', icon: slotsIcon },
+  { label: 'Roulette', icon: rouletteIcon },
+  { label: 'Blackjack', icon: blackjackIcon },
+  { label: 'Poker', icon: pokerIcon },
+  { label: 'Crash', icon: crashIcon },
+  { label: 'Baccarat', icon: baccaratIcon },
+  { label: 'Jackpot', icon: jackpotIcon },
+  { label: 'New Release', icon: newReleaseIcon },
+];
 
 const aboutLinks = [
   { label: 'AML Policy', path: '/about/aml-policy' },
@@ -32,17 +43,15 @@ const supportLinks = [
 /* Groups with dividers between them — matches Figma layout */
 const menuGroups = [
   [
-    { label: 'Sports', icon: sportsIcon },
-    { label: 'Live Sports', icon: liveSportsIcon, isLive: true },
+    { label: 'Sports', icon: sportsIcon, path: '/sports' },
+    { label: 'Casino', icon: casinoIcon, expandable: true, path: '/casino', children: casinoLinks },
+      { label: 'Live Casino', icon: liveDealerIcon },
   ],
   [
-    { label: 'Casino', icon: casinoIcon },
-    { label: 'Live Dealer', icon: liveDealerIcon },
-  ],
-  [
-    { label: 'Promotions', icon: promotionsIcon, path: '/promotion' },
+     { label: 'Promotions', icon: promotionsIcon, path: '/promotion' },
     { label: 'Refer a friend', icon: referIcon },
     { label: 'Welcome Bonuses', icon: bonusIcon },
+  
   ],
   [
     { label: 'Support', icon: supportIcon, expandable: true, children: supportLinks },
@@ -73,7 +82,11 @@ const LiveBadge = () => (
 const Sidebar = () => {
   const { sidebarOpen, toggleSidebar, user } = useApp();
   const isLoggedIn = !!user;
-  const [expanded, setExpanded] = useState({});
+  const [expanded, setExpanded] = useState(() => {
+    // Auto-open Casino sub-menu if already on /casino
+    if (window.location.pathname === '/casino') return { Casino: true };
+    return {};
+  });
   const [activeSubItem, setActiveSubItem] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
@@ -131,14 +144,28 @@ const Sidebar = () => {
               {group.filter(item => !item.requiresAuth || isLoggedIn).map((item) => (
                 <div key={item.label}>
 
-                  {/* ── Expandable (About Us) ── */}
+                  {/* ── Expandable (Casino / Support / About Us) ── */}
                   {item.expandable ? (
                     <button
-                      className="flex items-center gap-3 w-full bg-transparent border-none outline-none cursor-pointer px-2 py-[11px] text-[15px] font-medium text-[#0d0c22] text-left rounded-lg hover:bg-[#f7f7f7] transition-colors"
-                      onClick={() => setExpanded(prev => ({ ...prev, [item.label]: !prev[item.label] }))}
+                      className={`flex items-center gap-3 w-full border-none outline-none cursor-pointer px-2 py-[11px] text-[15px] font-medium text-left rounded-lg transition-colors ${
+                        item.path && location.pathname === item.path
+                          ? 'bg-[#1CD4FF] text-white font-semibold'
+                          : 'bg-transparent text-[#0d0c22] hover:bg-[#f7f7f7]'
+                      }`}
+                      onClick={() => {
+                        setExpanded(prev => ({ ...prev, [item.label]: !prev[item.label] }));
+                        if (item.path) handleNavigate(item.path);
+                      }}
                     >
-                      <img src={item.icon} alt={item.label} className="w-[20px] h-[20px] object-contain shrink-0" />
-                      <span className="flex-1 text-[#0d0c22] text-[15px]">{item.label}</span>
+                      <img
+                        src={item.icon}
+                        alt={item.label}
+                        className="w-[20px] h-[20px] object-contain shrink-0"
+                        style={item.path && location.pathname === item.path ? { filter: 'brightness(0) invert(1)' } : {}}
+                      />
+                      <span className={`flex-1 text-[15px] ${item.path && location.pathname === item.path ? 'text-white' : 'text-[#0d0c22]'}`}>
+                        {item.label}
+                      </span>
                       <span className="flex items-center shrink-0 mr-1">
                         {expanded[item.label] ? <ChevronUp /> : <ChevronDown />}
                       </span>
@@ -178,18 +205,18 @@ const Sidebar = () => {
                     </div>
                   )}
 
-                  {/* ── About Us sub-links ── */}
+                  {/* ── Sub-links ── */}
                   {item.children && expanded[item.label] && (
-                    <div className="flex flex-col pl-[44px] pb-1 pt-1">
+                    <div className="flex flex-col pb-1 pt-1">
                       {item.children.map((child) => (
                         <button
                           key={child.label}
                           disabled={child.disabled}
-                          className={`border-none outline-none cursor-pointer text-[13px] text-left py-[7px] px-[10px] rounded-md leading-snug transition-all flex items-center gap-2 ${child.disabled
+                          className={`border-none outline-none cursor-pointer text-[15px] font-medium text-left px-2 py-[11px] rounded-lg transition-colors flex items-center gap-3 ${child.disabled
                             ? 'opacity-50 cursor-not-allowed text-[#999]'
                             : activeSubItem === child.label
                               ? 'bg-[#1cd4ff] text-white font-semibold'
-                              : 'bg-transparent text-[#666] font-normal hover:text-[#0d0c22]'
+                              : 'bg-transparent text-[#0d0c22] hover:bg-[#f7f7f7]'
                             }`}
                           onClick={() => {
                             if (!child.disabled) {
