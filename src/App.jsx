@@ -24,6 +24,7 @@ import FAQ from './pages/support/faq';
 import ProfilePage from './pages/ProfilePage';
 import ProtectedRoute from './routes/ProtectedRoute';
 import Casino from './pages/Casino';
+import LiveCasino from './pages/LiveCasino';
 
 function ScrollToTop() {
   const { pathname } = useLocation();

@@ -11,18 +11,18 @@ import {
 } from '../assets/icons';
 
 /* ── Game images ── */
-import g1 from '../../assets/images/aviamasters.png';
-import g2 from '../../assets/images/aztecClusters.png';
-import g3 from '../../assets/images/crazytime.png';
-import g4 from '../../assets/images/duckhunter.png';
-import g5 from '../../assets/images/fortunetiger.png';
-import g6 from '../../assets/images/knockoutriches.png';
-import n1 from '../../assets/images/new1.png';
-import n2 from '../../assets/images/new2.png';
-import n3 from '../../assets/images/new3.png';
-import n4 from '../../assets/images/new4.png';
-import n5 from '../../assets/images/new5.png';
-import n6 from '../../assets/images/new6.png';
+import g1 from "../assets/images/aviamasters.png";
+import g2 from '../assets/images/aztecClusters.png';
+import g3 from '../assets/images/crazytime.png';
+import g4 from '../assets/images/duckhunter.png';
+import g5 from '../assets/images/fortunetiger.png';
+import g6 from '../assets/images/knockoutriches.png';
+import n1 from '../assets/images/new1.png';
+import n2 from '../assets/images/new2.png';
+import n3 from '../assets/images/new3.png';
+import n4 from '../assets/images/new4.png';
+import n5 from '../assets/images/new5.png';
+import n6 from '../assets/images/new6.png';
 import Casinoprovider from "../components/casino/Casinoprovider";
 
 
