@@ -33,18 +33,18 @@ const CasinoGameSection = ({ title, icon, games = [], categoryKey, basePath = '/
   return (
     <div className="mb-6 md:mb-8">
       {/* Section header */}
-      <div className="flex items-center justify-between mb-3 md:mb-4">
+      <div className="flex items-center justify-between mb-3 md:mb-4 gap-2">
 
         {/* Left: icon + title */}
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2 min-w-0 flex-1">
           {icon && (
-            <img src={icon} alt={title} className="w-6 h-6 md:w-7 md:h-7 object-contain shrink-0" />
+            <img src={icon} alt={title} className="w-5 h-5 md:w-7 md:h-7 object-contain shrink-0" />
           )}
-          <h3 className="text-[18px] md:text-[24px] font-bold text-[#333] leading-none">{title}</h3>
+          <h3 className="text-[15px] md:text-[24px] font-bold text-[#333] leading-none truncate">{title}</h3>
         </div>
 
         {/* Right: arrows + see all */}
-        <div className="flex items-center gap-3 md:gap-4">
+        <div className="flex items-center gap-2 md:gap-4 shrink-0">
           {/* Arrows — desktop only */}
           <div className="hidden md:flex items-center gap-2">
             <button
@@ -61,13 +61,21 @@ const CasinoGameSection = ({ title, icon, games = [], categoryKey, basePath = '/
             </button>
           </div>
 
-          {/* Divider */}
+          {/* Divider — desktop only */}
           <div className="hidden md:block w-px h-[44px] bg-[#6b7280]/30" />
 
-          {/* See All */}
+          {/* View All */}
           <button
             onClick={() => categoryKey && navigate(`${basePath}/${categoryKey}`)}
-            className="border-2 border-[#1CD4FF] text-[#1CD4FF] bg-white rounded-lg px-4 md:px-8 h-[36px] md:h-[44px] text-[14px] leading-[20px] font-[590] font-['SF_Pro'] cursor-pointer hover:bg-[#f0fdff] transition-colors whitespace-nowrap"
+            className="
+              border-2 border-[#1CD4FF] text-[#1CD4FF] bg-white
+              rounded-md md:rounded-lg
+              px-2.5 md:px-8
+              h-[28px] md:h-[44px]
+              text-[11px] md:text-[14px]
+              leading-none font-[590] font-['SF_Pro']
+              cursor-pointer hover:bg-[#f0fdff] transition-colors whitespace-nowrap
+            "
           >
             View All
           </button>

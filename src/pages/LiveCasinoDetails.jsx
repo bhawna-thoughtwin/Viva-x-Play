@@ -90,19 +90,24 @@ const LiveCasinoDetails = () => {
           <span className="text-[#333] font-semibold">{meta.label}</span>
         </div>
 
-        {/* ── Single header row: icon · title · search · filter · sort ── */}
-        <div className="bg-white rounded-xl px-5 py-3 flex items-center gap-3">
+        {/* ── Header: icon · title · search · filter · sort ── */}
+        <div className="bg-white rounded-xl px-4 py-3 flex flex-col md:flex-row md:items-center gap-3">
 
-          {meta.icon && (
-            <img src={meta.icon} alt={meta.label} className="w-[26px] h-[26px] object-contain shrink-0" />
-          )}
-          <h1 className="text-[20px] font-black text-[#333] uppercase leading-none tracking-wide shrink-0">
-            {meta.label}
-          </h1>
+          {/* Icon + Title */}
+          <div className="flex items-center gap-3">
+            {meta.icon && (
+              <img src={meta.icon} alt={meta.label} className="w-[24px] h-[24px] md:w-[26px] md:h-[26px] object-contain shrink-0" />
+            )}
+            <h1 className="text-[16px] md:text-[20px] font-black text-[#333] uppercase leading-none tracking-wide">
+              {meta.label}
+            </h1>
+          </div>
 
-          <div className="flex items-center gap-3 ml-auto">
+          {/* Search · Filter · Sort */}
+          <div className="flex flex-col sm:flex-row md:items-center gap-3 md:ml-auto w-full md:w-auto">
 
-            <div className="w-[200px]">
+            {/* Search */}
+            <div className="w-full sm:w-[200px]">
               <SearchBar
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
@@ -111,7 +116,8 @@ const LiveCasinoDetails = () => {
               />
             </div>
 
-            <button className="flex items-center gap-2 px-4 h-[36px] bg-white border border-[#e5e7eb] rounded-lg text-[13px] font-medium text-[#333] hover:border-[#1CD4FF] hover:text-[#1CD4FF] transition-colors cursor-pointer shrink-0">
+            {/* Filter */}
+            <button className="flex items-center justify-center gap-2 px-4 h-[36px] bg-white border border-[#e5e7eb] rounded-lg text-[13px] font-medium text-[#333] hover:border-[#1CD4FF] hover:text-[#1CD4FF] transition-colors cursor-pointer shrink-0">
               <img src={changeIcon} alt="filter" className="w-[16px] h-[16px] object-contain shrink-0" />
               <span>Filter</span>
               {activeFilters.length > 0 ? (
@@ -123,16 +129,17 @@ const LiveCasinoDetails = () => {
               )}
             </button>
 
-            <div className="relative">
+            {/* Sort */}
+            <div className="relative w-full sm:w-auto">
               <button
                 onClick={() => setSortOpen((p) => !p)}
-                className="flex items-center gap-2 px-4 h-[36px] bg-white border border-[#e5e7eb] rounded-lg text-[13px] font-medium text-[#333] hover:border-[#1CD4FF] hover:text-[#1CD4FF] transition-colors cursor-pointer shrink-0"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 h-[36px] bg-white border border-[#e5e7eb] rounded-lg text-[13px] font-medium text-[#333] hover:border-[#1CD4FF] hover:text-[#1CD4FF] transition-colors cursor-pointer shrink-0"
               >
                 <img src={sortIcon} alt="sort" className="w-[16px] h-[16px] object-contain shrink-0" />
                 <span>Sort by: <span className="text-[#1CD4FF]">{sortBy}</span></span>
               </button>
               {sortOpen && (
-                <div className="absolute top-[40px] right-0 z-50 bg-white border border-[#e5e7eb] rounded-xl shadow-lg overflow-hidden min-w-[160px]">
+                <div className="absolute top-[40px] right-0 z-50 bg-white border border-[#e5e7eb] rounded-xl shadow-lg overflow-hidden min-w-[160px] w-full sm:w-auto">
                   {SORT_OPTIONS.map((opt) => (
                     <button
                       key={opt}

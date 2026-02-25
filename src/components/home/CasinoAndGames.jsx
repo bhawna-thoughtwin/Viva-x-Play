@@ -50,27 +50,21 @@ const newGames = [
 
 /* ── Sub-section row header ── */
 const RowHeader = ({ title }) => (
-  <div className="flex items-center justify-between mb-3">
-    <span className="text-[22px] font-bold text-[#121212]">{title}</span>
+  <div className="flex items-center justify-between mb-3 gap-2">
+    <span className="text-[16px] md:text-[22px] font-bold text-[#121212] truncate min-w-0">{title}</span>
     <button
       className="
-    bg-transparent
-    text-[#1CD4FF]
-    font-semibold
-    cursor-pointer
-    outline-none
-
-    px-2 py-1
-    md:px-4 md:py-2
-
-    border-none
-    md:border md:border-[#1CD4FF]
-
-    rounded-none
-    md:rounded-md
-  "
+        shrink-0
+        border-2 border-[#1CD4FF] text-[#1CD4FF] bg-white
+        rounded-md md:rounded-lg
+        px-2.5 md:px-8
+        h-[28px] md:h-[44px]
+        text-[11px] md:text-[14px]
+        leading-none font-[590] font-['SF_Pro']
+        cursor-pointer hover:bg-[#f0fdff] transition-colors whitespace-nowrap
+      "
     >
-      VIEW ALL
+      View All
     </button>
   </div>
 );

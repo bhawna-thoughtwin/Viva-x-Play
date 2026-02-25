@@ -141,22 +141,23 @@ const LiveNowRow = ({ score, liveTime, league, team1, team2, score1, score2, odd
 const LiveNowSection = () => (
   <div className="mt-6">
     {/* Header */}
-    <div className="flex items-center justify-between mb-3">
-      <div className="flex items-center gap-2">
-        <span className="text-[20px] font-bold text-[#121212]">Live Now</span>
-        {/* <span
-          className="flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold border"
-          style={{ background: 'linear-gradient(180deg, #E3FC7B 0%, #C2D95A 100%)', borderColor: '#A0B73B', color: '#3a5a00' }}
-        >
-          <span className="w-[5px] h-[5px] rounded-full bg-[#3a5a00] animate-pulse shrink-0" />
-          {liveNowData.length}
-        </span> */}
+    <div className="flex items-center justify-between mb-3 gap-2">
+      <div className="flex items-center gap-2 min-w-0 flex-1">
+        <span className="text-[16px] md:text-[20px] font-bold text-[#121212] truncate">Live Now</span>
       </div>
-      <button className="flex items-center gap-1 border border-[#e0e0e0] text-[#1CD4FF] px-3 py-1.5 rounded-md text-[13px] font-semibold cursor-pointer hover:bg-[#f0fdff] transition-colors bg-transparent">
+      <button
+        className="
+          shrink-0
+          border-2 border-[#1CD4FF] text-[#1CD4FF] bg-white
+          rounded-md md:rounded-lg
+          px-2.5 md:px-8
+          h-[28px] md:h-[44px]
+          text-[11px] md:text-[14px]
+          leading-none font-[590] font-['SF_Pro']
+          cursor-pointer hover:bg-[#f0fdff] transition-colors whitespace-nowrap
+        "
+      >
         View All
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-          <path d="M9 18l6-6-6-6" />
-        </svg>
       </button>
     </div>
 

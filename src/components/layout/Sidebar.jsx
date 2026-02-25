@@ -226,7 +226,7 @@ const Sidebar = () => {
 
                   {/* ── Sub-links ── */}
                   {item.children && expanded[item.label] && (
-                    <div className="flex flex-col py-1 gap-[2px]">
+                  <div className="flex flex-col py-1 gap-[2px] ml-[20px] md:ml-[30px]">
                       {item.children.map((child) => {
                         const isChildActive = child.path
                           ? `${location.pathname}${location.search}` === child.path ||
@@ -236,11 +236,11 @@ const Sidebar = () => {
                           <button
                             key={child.label}
                             disabled={child.disabled}
-                            className={`border-none outline-none cursor-pointer text-[14px] font-medium text-left rounded-lg transition-all flex items-center gap-2.5 w-full
+                            className={`border-none outline-none cursor-pointer text-[14px] font-medium text-left rounded-lg flex items-center gap-2.5 w-full px-3 py-[10px]
                               ${child.disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
                               ${isChildActive
-                                ? 'px-3 py-[10px] text-white font-semibold'
-                                : 'pl-7 pr-2 py-[9px] text-[#0d0c22] hover:bg-[#f7f7f7]'
+                                ? 'text-white font-semibold'
+                                : 'text-[#0d0c22] hover:bg-[#f7f7f7]'
                               }`}
                             style={isChildActive
                               ? { background: 'linear-gradient(90deg, #117F99 0%, #1CD4FF 100%)' }
@@ -257,7 +257,7 @@ const Sidebar = () => {
                               <img
                                 src={child.icon}
                                 alt={child.label}
-                                className="w-[16px] h-[16px] object-contain shrink-0"
+                                className="w-[24px] h-[16px] object-contain shrink-0"
                                 style={isChildActive ? { filter: 'brightness(0) invert(1)' } : { opacity: 0.7 }}
                               />
                             )}

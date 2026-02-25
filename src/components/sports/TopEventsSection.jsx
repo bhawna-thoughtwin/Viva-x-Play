@@ -101,13 +101,21 @@ const TopEventsSection = () => {
   return (
     <div className="mt-6">
       {/* Header */}
-      <div className="flex items-center justify-between mb-3">
-        <span className="text-[20px] font-bold text-[#121212]">Top Events</span>
-        <button className="flex items-center gap-1 border border-[#e0e0e0] text-[#1CD4FF] px-3 py-1.5 rounded-md text-[13px] font-semibold cursor-pointer hover:bg-[#f0fdff] transition-colors bg-transparent">
+      <div className="flex items-center justify-between mb-3 gap-2">
+        <span className="text-[16px] md:text-[20px] font-bold text-[#121212] truncate min-w-0">Top Events</span>
+        <button
+          className="
+            shrink-0
+            border-2 border-[#1CD4FF] text-[#1CD4FF] bg-white
+            rounded-md md:rounded-lg
+            px-2.5 md:px-8
+            h-[28px] md:h-[44px]
+            text-[11px] md:text-[14px]
+            leading-none font-[590] font-['SF_Pro']
+            cursor-pointer hover:bg-[#f0fdff] transition-colors whitespace-nowrap
+          "
+        >
           View All
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-            <path d="M9 18l6-6-6-6" />
-          </svg>
         </button>
       </div>
 

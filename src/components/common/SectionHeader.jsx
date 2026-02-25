@@ -1,17 +1,17 @@
 const SectionHeader = ({ icon, title, subtitle, onViewAll }) => {
   return (
-    <div className="flex items-center justify-between mb-4">
+    <div className="flex items-center justify-between mb-4 gap-2">
 
       {/* Left — icon + title/subtitle */}
-      <div className="flex items-center gap-2.5">
+      <div className="flex items-center gap-2 min-w-0 flex-1">
         {icon && (
-          <span className="flex items-center w-10 h-10 md:w-[51px] md:h-[51px] shrink-0">
+          <span className="flex items-center shrink-0 w-8 h-8 md:w-[51px] md:h-[51px]">
             {icon}
           </span>
         )}
 
         <div className="flex flex-col min-w-0">
-          <h2 className="text-[18px] md:text-[32px] font-bold text-[#121212] leading-tight">
+          <h2 className="text-[15px] md:text-[32px] font-bold text-[#121212] leading-tight truncate">
             {title}
           </h2>
 
@@ -23,28 +23,23 @@ const SectionHeader = ({ icon, title, subtitle, onViewAll }) => {
         </div>
       </div>
 
-
       {/* Right — View All button */}
       {onViewAll && (
         <button
+          onClick={onViewAll}
           className="
-    bg-transparent
-    text-[#1CD4FF]
-    font-semibold
-    cursor-pointer
-    outline-none
-
-    px-2 py-1
-    md:px-4 md:py-2
-
-    border-none
-    md:border md:border-[#1CD4FF]
-
-    rounded-none
-    md:rounded-md
-  "
+            shrink-0
+            border-2 border-[#1CD4FF] text-[#1CD4FF] bg-white
+            rounded-md md:rounded-lg
+            px-2.5 md:px-8
+            h-[28px] md:h-[44px]
+            text-[11px] md:text-[14px]
+            leading-none font-[590] font-['SF_Pro']
+            cursor-pointer hover:bg-[#f0fdff] transition-colors
+            whitespace-nowrap
+          "
         >
-          VIEW ALL
+          View All
         </button>
       )}
 
