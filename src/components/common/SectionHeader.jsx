@@ -11,12 +11,12 @@ const SectionHeader = ({ icon, title, subtitle, onViewAll }) => {
         )}
 
         <div className="flex flex-col min-w-0">
-          <h2 className="text-[22px] md:text-[32px] font-bold text-[#121212] leading-tight">
+          <h2 className="text-[18px] md:text-[32px] font-bold text-[#121212] leading-tight">
             {title}
           </h2>
 
           {subtitle && (
-            <p className="text-[13px] md:text-[14px] text-[#777] truncate">
+            <p className="text-[12px] md:text-[14px] text-[#777] truncate">
               {subtitle}
             </p>
           )}
@@ -27,10 +27,24 @@ const SectionHeader = ({ icon, title, subtitle, onViewAll }) => {
       {/* Right — View All button */}
       {onViewAll && (
         <button
-          className="bg-transparent border border-[#e0e0e0] text-[#1cd4ff] px-3 md:px-[14px] py-1.5 rounded-md text-xs md:text-[13px] font-semibold cursor-pointer shrink-0"
-          onClick={onViewAll}
+          className="
+    bg-transparent
+    text-[#1CD4FF]
+    font-semibold
+    cursor-pointer
+    outline-none
+
+    px-2 py-1
+    md:px-4 md:py-2
+
+    border-none
+    md:border md:border-[#1CD4FF]
+
+    rounded-none
+    md:rounded-md
+  "
         >
-          VIEW ALL &rsaquo;
+          VIEW ALL
         </button>
       )}
 

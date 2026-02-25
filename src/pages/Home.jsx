@@ -9,16 +9,18 @@ import LatestBet from '../components/home/LatestBet';
 
 const Home = () => {
   return (
-    
-    <div className="flex flex-col gap-[20px] my-4 md:my-5 mr-0 md:mr-10">
+
+    <div className="flex flex-col gap-[20px] my-0 md:my-5 mr-0 md:mr-10">
       <HeroBanner />
-      <PromotionsSection />
-      <LiveBetting />
-      <SportsBetting />
-      <SportsHero />
-      <CasinoAndGames />
-      <FreeSpinBonus />
-      <LatestBet />
+      <div className='md:p-0 px-4'>
+        <PromotionsSection />
+        <LiveBetting />
+        <SportsBetting />
+        <SportsHero />
+        <CasinoAndGames />
+        <FreeSpinBonus />
+        <LatestBet />
+      </div>
     </div>
   );
 };

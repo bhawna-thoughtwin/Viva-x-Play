@@ -118,7 +118,8 @@ const Sidebar = () => {
       {/* ── Sidebar panel ── */}
       <aside
         className={`
-     left-0 top-[62px]
+     left-0 
+     pt-[62px]
     w-[300px]
     h-full
     md:relative

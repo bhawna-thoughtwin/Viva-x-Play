@@ -8,33 +8,37 @@ const MainLayout = ({ children }) => {
   const { sidebarOpen } = useApp();
 
   return (
-    <div className="min-h-screen bg-[#ECECEC]">
-      <Navbar />
+    <div className="min-h-screen bg-[#ECECEC] ">
+      <div className='container sm:w-full sm:max-w-full '>
+        <Navbar />
 
-      <div className="grid grid-cols-12 gap-2">
-        {/* Sidebar */}
-        <div className="col-span-2">
-          <Sidebar />
-        </div>
+        <div className="grid grid-cols-12 gap-2">
+          {/* Sidebar */}
+          <div className="col-span-2">
+            <Sidebar />
+          </div>
 
-        {/* Main Content */}
-        <div
-          className="
-            col-span-10
+          {/* Main Content */}
+          <div
+            className="
+            col-span-12
+    md:col-span-10
+
             pt-[55px]
             min-h-[calc(100vh-62px)]
             bg-[#ECECEC]
             transition-all
             duration-300
             ease-in-out
-            ml-[75px]
-            max-md:-ml-[40px]
+            ml-0
+            md:ml-[75px]
+            
           "
-        >
-          {children}
+          >
+            {children}
+          </div>
         </div>
       </div>
-
       <Footer />
       <BottomNav />
     </div>

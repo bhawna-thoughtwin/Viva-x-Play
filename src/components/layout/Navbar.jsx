@@ -29,7 +29,7 @@ const Navbar = () => {
   const isLoggedIn = !!user;
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-[1000] flex items-center justify-between bg-[#1f1f1f] h-[62px] px-5">
+    <header className="fixed top-0 left-0 right-0 z-[99999] flex items-center justify-between bg-[#1f1f1f] h-[62px] px-5">
 
       {/* ── Left: Hamburger (mobile only) + Logo ── */}
       <div className="flex items-center">

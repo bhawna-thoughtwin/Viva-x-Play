@@ -52,8 +52,25 @@ const newGames = [
 const RowHeader = ({ title }) => (
   <div className="flex items-center justify-between mb-3">
     <span className="text-[22px] font-bold text-[#121212]">{title}</span>
-    <button className="bg-transparent border border-[#E0E0E0] text-[#1CD4FF] px-[14px] py-[5px] rounded-md text-[13px] font-semibold cursor-pointer outline-none">
-      VIEW ALL &rsaquo;
+    <button
+      className="
+    bg-transparent
+    text-[#1CD4FF]
+    font-semibold
+    cursor-pointer
+    outline-none
+
+    px-2 py-1
+    md:px-4 md:py-2
+
+    border-none
+    md:border md:border-[#1CD4FF]
+
+    rounded-none
+    md:rounded-md
+  "
+    >
+      VIEW ALL
     </button>
   </div>
 );

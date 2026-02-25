@@ -85,7 +85,7 @@ const Promotion = () => {
                     Promotions
                 </button>
                 <span className="text-[#aaa]">›</span>
-                <span className="text-[#0D0C22] font-medium">Casino Welcome Offer</span>
+                <span className="text-[#0D0C22] font-medium">Free Spin Bonus</span>
             </nav>
 
             {/* ── Hero + title ── */}

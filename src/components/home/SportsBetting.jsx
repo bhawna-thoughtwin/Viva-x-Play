@@ -1,7 +1,8 @@
 import useScrollDots from '../../hooks/useScrollDots';
 import ScrollDots from '../common/ScrollDots';
 import SectionHeader from '../common/SectionHeader';
-import MatchCard from '../cards/MatchCard';
+import TopEventsSection from '../sports/TopEventsSection';
+import LiveNowSection from '../sports/LiveNowSection';
 import { volleyballPlayer3 as sportsIcon } from '../../assets/icons';
 import sport1 from '../../assets/images/sport1.png';
 import sport2 from '../../assets/images/sport2.png';
@@ -17,66 +18,6 @@ const sports = [
   { label: 'Boxing', image: sport5, number: '5' },
 ];
 
-const trendingMatches = [
-  { league: 'Soccer | La Liga 2026', team1: 'FC Barcelona', team2: 'Real Madrid', score1: 1, score2: 0, odds: ['1.85', '2.05', '+54'] },
-  { league: 'Soccer | La Liga 2026', team1: 'FC Barcelona', team2: 'Real Madrid', score1: 1, score2: 0, odds: ['1.85', '2.05', '+54'] },
-  { league: 'Soccer | La Liga 2026', team1: 'FC Barcelona', team2: 'Real Madrid', score1: 1, score2: 0, odds: ['1.85', '2.05', '+54'] },
-  { league: 'Soccer | La Liga 2026', team1: 'FC Barcelona', team2: 'Real Madrid', score1: 1, score2: 0, odds: ['1.85', '2.05', '+54'] },
-];
-
-const recommendationMatches = [
-  { league: 'Soccer | La Liga 2026', team1: 'FC Barcelona', team2: 'Real Madrid', score1: 1, score2: 0, odds: ['1.85', '2.05', '+54'] },
-  { league: 'Soccer | La Liga 2026', team1: 'FC Barcelona', team2: 'Real Madrid', score1: 1, score2: 0, odds: ['1.85', '2.05', '+54'] },
-  { league: 'Soccer | La Liga 2026', team1: 'FC Barcelona', team2: 'Real Madrid', score1: 1, score2: 0, odds: ['1.85', '2.05', '+54'] },
-  { league: 'Soccer | La Liga 2026', team1: 'FC Barcelona', team2: 'Real Madrid', score1: 1, score2: 0, odds: ['1.85', '2.05', '+54'] },
-];
-
-/* Reusable card row */
-const CardRow = ({ title, matches }) => {
-  const { scrollRef, activeIndex, scrollToIndex } = useScrollDots(matches.length);
-
-  return (
-    <div className="mt-6">
-
-      {/* Header Row */}
-      <div className="flex items-center justify-between mb-4 gap-3">
-        <span className="text-[20px] md:text-[24px] font-bold text-[#121212] truncate">
-          {title}
-        </span>
-        <button
-          className="bg-transparent border border-[#E0E0E0] text-[#1CD4FF] px-3 md:px-[14px] py-1.5 rounded-md text-xs md:text-[13px] font-semibold cursor-pointer shrink-0 whitespace-nowrap"
-        >
-          VIEW ALL &rsaquo;
-        </button>
-      </div>
-
-      {/* Cards Row */}
-      <div
-        ref={scrollRef}
-        className="flex gap-3 overflow-x-auto pb-1"
-        style={{
-          scrollSnapType: 'x mandatory',
-          scrollbarWidth: 'none',
-          msOverflowStyle: 'none',
-          WebkitOverflowScrolling: 'touch',
-        }}
-      >
-        {matches.map((match, i) => (
-          <div
-            key={i}
-            className="shrink-0 w-[301px] h-[202px]"
-            style={{ scrollSnapAlign: 'start' }}
-          >
-            <MatchCard {...match} isLive={false} />
-          </div>
-        ))}
-      </div>
-
-      <ScrollDots count={matches.length} activeIndex={activeIndex} scrollToIndex={scrollToIndex} />
-
-    </div>
-  );
-};
 
 
 
@@ -135,8 +76,8 @@ const SportsBetting = () => {
       {/* Scroll dots — below sports strip, above Trending */}
       <ScrollDots count={sports.length} activeIndex={sportsActive} scrollToIndex={sportsScrollTo} className="md:hidden mb-2" />
 
-      <CardRow title="Top Events" matches={trendingMatches} />
-      <CardRow title="Live Now" matches={recommendationMatches} />
+      <TopEventsSection />
+      <LiveNowSection />
 
     </section>
   );
