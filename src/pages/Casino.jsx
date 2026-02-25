@@ -110,6 +110,8 @@ const Casino = () => {
               title={section.label}
               icon={section.icon}
               games={section.games}
+              categoryKey={section.key}
+              basePath="/casino"
             />
           ))}
         </div>

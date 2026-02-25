@@ -24,7 +24,9 @@ import FAQ from './pages/support/faq';
 import ProfilePage from './pages/ProfilePage';
 import ProtectedRoute from './routes/ProtectedRoute';
 import Casino from './pages/Casino';
+import CasinoDetails from './pages/CasinoDetails';
 import LiveCasino from './pages/LiveCasino';
+import LiveCasinoDetails from './pages/LiveCasinoDetails';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -53,7 +55,9 @@ function App() {
                   <Route path="/" element={<Home />} />
                   <Route path="/sports" element={<Sports />} />
                   <Route path="/casino" element={<Casino />} />
+                  <Route path="/casino/:category" element={<CasinoDetails />} />
                   <Route path="/live-casino" element={<LiveCasino />} />
+                  <Route path="/live-casino/:category" element={<LiveCasinoDetails />} />
                   <Route path="/promotion" element={<PromotionsGrid />} />
                   <Route path="/promotion/detail" element={<Promotion />} />
                   <Route path="/about/aml-policy" element={<AMLPolicy />} />

@@ -56,5 +56,9 @@ export { default as baccaratIcon } from './baccrat.svg';
 export { default as jackpotIcon } from './jackpot.svg';
 export { default as newReleaseIcon } from './new realase.svg';
 
+// Utility icons
+export { default as sortIcon } from './sort.svg';
+export { default as changeIcon } from './Change.svg';
+
 // Legacy/Other
 export { default as legacyImage } from './81a429aaf4ae70d4170b2f520f10dda378204b52.png';

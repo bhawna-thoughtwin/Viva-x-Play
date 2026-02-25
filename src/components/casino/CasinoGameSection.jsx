@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import GameCard from './GameCard';
 import {
   ChevronLeftIcon, ChevronRightIcon,
@@ -20,8 +21,9 @@ const ChevronRight = () => (
   />
 );
 
-const CasinoGameSection = ({ title, icon, games = [] }) => {
+const CasinoGameSection = ({ title, icon, games = [], categoryKey, basePath = '/casino' }) => {
   const scrollRef = useRef(null);
+  const navigate = useNavigate();
 
   const scroll = (dir) => {
     if (!scrollRef.current) return;
@@ -63,7 +65,10 @@ const CasinoGameSection = ({ title, icon, games = [] }) => {
           <div className="hidden md:block w-px h-[44px] bg-[#6b7280]/30" />
 
           {/* See All */}
-          <button className="border-2 border-[#1CD4FF] text-[#1CD4FF] bg-white rounded-lg px-4 md:px-8 h-[36px] md:h-[44px] text-[14px] leading-[20px] font-[590] font-['SF_Pro'] cursor-pointer hover:bg-[#f0fdff] transition-colors whitespace-nowrap">
+          <button
+            onClick={() => categoryKey && navigate(`${basePath}/${categoryKey}`)}
+            className="border-2 border-[#1CD4FF] text-[#1CD4FF] bg-white rounded-lg px-4 md:px-8 h-[36px] md:h-[44px] text-[14px] leading-[20px] font-[590] font-['SF_Pro'] cursor-pointer hover:bg-[#f0fdff] transition-colors whitespace-nowrap"
+          >
             View All
           </button>
         </div>

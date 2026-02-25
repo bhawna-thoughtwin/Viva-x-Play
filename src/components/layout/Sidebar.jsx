@@ -11,7 +11,7 @@ import referIcon from '../../assets/icons/icon-refer.svg';
 import bonusIcon from '../../assets/icons/icon-bonus.svg';
 import supportIcon from '../../assets/icons/icon-support.svg';
 import aboutIcon from '../../assets/icons/icon-about.svg';
-import { chatIcon, faqIcon, envelopeIcon, profileIcon, slotsIcon, rouletteIcon, blackjackIcon, pokerIcon, crashIcon, baccaratIcon, jackpotIcon, newReleaseIcon } from '../../assets/icons';
+import { chatIcon, faqIcon, envelopeIcon, profileIcon, slotsIcon, rouletteIcon, blackjackIcon, pokerIcon, crashIcon, baccaratIcon, jackpotIcon, newReleaseIcon, casinoDiceIcon, monitorIcon } from '../../assets/icons';
 
 const casinoLinks = [
   { label: 'Slots', icon: slotsIcon },
@@ -22,6 +22,14 @@ const casinoLinks = [
   { label: 'Baccarat', icon: baccaratIcon },
   { label: 'Jackpot', icon: jackpotIcon },
   { label: 'New Release', icon: newReleaseIcon },
+];
+
+const liveCasinoLinks = [
+  { label: 'Roulette', icon: rouletteIcon, path: '/live-casino?filter=roulette' },
+  { label: 'Blackjack', icon: blackjackIcon, path: '/live-casino?filter=blackjack' },
+  { label: 'Poker', icon: pokerIcon, path: '/live-casino?filter=poker' },
+  { label: 'Baccarat & Dice', icon: casinoDiceIcon, path: '/live-casino?filter=baccarat' },
+  { label: 'Game Shows', icon: monitorIcon, path: '/live-casino?filter=gameshows' },
 ];
 
 const aboutLinks = [
@@ -45,7 +53,7 @@ const menuGroups = [
   [
     { label: 'Sports', icon: sportsIcon, path: '/sports' },
     { label: 'Casino', icon: casinoIcon, expandable: true, path: '/casino', children: casinoLinks },
-    { label: 'Live Casino', icon: liveDealerIcon, expandable: true, path: '/live-casino'},
+    { label: 'Live Casino', icon: liveDealerIcon, expandable: true, path: '/live-casino', children: liveCasinoLinks },
   ],
   [
      { label: 'Promotions', icon: promotionsIcon, path: '/promotion' },
@@ -83,8 +91,9 @@ const Sidebar = () => {
   const { sidebarOpen, toggleSidebar, user } = useApp();
   const isLoggedIn = !!user;
   const [expanded, setExpanded] = useState(() => {
-    // Auto-open Casino sub-menu if already on /casino
-    if (window.location.pathname === '/casino') return { Casino: true };
+    const path = window.location.pathname;
+    if (path === '/casino') return { Casino: true };
+    if (path === '/live-casino') return { 'Live Casino': true };
     return {};
   });
   const [activeSubItem, setActiveSubItem] = useState(null);
@@ -208,13 +217,18 @@ const Sidebar = () => {
                   {/* ── Sub-links ── */}
                   {item.children && expanded[item.label] && (
                     <div className="flex flex-col pb-1 pt-1">
-                      {item.children.map((child) => (
+                      {item.children.map((child) => {
+                        const isChildActive = child.path
+                          ? `${location.pathname}${location.search}` === child.path ||
+                            activeSubItem === child.label
+                          : activeSubItem === child.label;
+                        return (
                         <button
                           key={child.label}
                           disabled={child.disabled}
                           className={`border-none outline-none cursor-pointer text-[15px] font-medium text-left px-2 py-[11px] rounded-lg transition-colors flex items-center gap-3 ${child.disabled
                             ? 'opacity-50 cursor-not-allowed text-[#999]'
-                            : activeSubItem === child.label
+                            : isChildActive
                               ? 'bg-[#1cd4ff] text-white font-semibold'
                               : 'bg-transparent text-[#0d0c22] hover:bg-[#f7f7f7]'
                             }`}
@@ -230,11 +244,13 @@ const Sidebar = () => {
                               src={child.icon}
                               alt={child.label}
                               className="w-[20px] h-[20px] object-contain shrink-0"
+                              style={isChildActive ? { filter: 'brightness(0) invert(1)' } : {}}
                             />
                           )}
                           <span className="flex-1">{child.label}</span>
                         </button>
-                      ))}
+                        );
+                      })}
                     </div>
                   )}
 

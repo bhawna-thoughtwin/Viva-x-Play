@@ -42,20 +42,13 @@ const filters = [
   { key: 'newrelease',  label: 'New Releases',iconImg: newReleaseIcon, IconComp: null },
 ];
 
-const CasinoFilterBar = ({ activeFilter, onFilterChange }) => {
+const CasinoFilterBar = ({ activeFilter, onFilterChange, customFilters }) => {
+  const displayFilters = customFilters || filters;
   return (
     <div className="flex flex-col gap-3 mb-5 md:mb-6">
 
       {/* Search bar */}
       <div className="w-full max-w-[330px] mb-2">
-        {/* <div className="flex items-center gap-2 px-3 py-3 bg-[#f5f5f5] border border-[#333]/30 rounded-lg">
-          <input
-            type="text"
-            placeholder="Search Game..."
-            className="w-full bg-transparent border-none outline-none text-[#6b7280] text-[15px] font-inherit placeholder:text-[#6b7280]/70"
-          />
-          <img src={searchIcon} alt="search" className="w-5 h-5 opacity-60 shrink-0" />
-        </div> */}
         <SearchBar/>
       </div>
 
@@ -64,7 +57,7 @@ const CasinoFilterBar = ({ activeFilter, onFilterChange }) => {
         className="flex items-center gap-2 md:gap-3 overflow-x-auto pb-1"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
-        {filters.map(({ key, label, iconImg, IconComp }) => {
+        {displayFilters.map(({ key, label, iconImg, IconComp }) => {
           const isActive = activeFilter === key;
           return (
             <button
