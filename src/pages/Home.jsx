@@ -16,7 +16,14 @@ const Home = () => {
         <PromotionsSection />
         <LiveBetting />
         <SportsBetting />
+      </div>
+
+      {/* Hero stretches edge-to-edge on mobile — break out of MainLayout's px-3 */}
+      <div className="-mx-3 md:mx-0">
         <SportsHero />
+      </div>
+
+      <div className='md:p-0 px-4'>
         <CasinoAndGames />
         <FreeSpinBonus />
         <LatestBet />

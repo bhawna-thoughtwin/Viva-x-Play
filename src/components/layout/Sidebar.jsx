@@ -156,54 +156,63 @@ const Sidebar = () => {
 
                   {/* ── Expandable (Casino / Support / About Us) ── */}
                   {item.expandable ? (
-                    <button
-                      className={`flex items-center gap-3 w-full border-none outline-none cursor-pointer px-2 py-[11px] text-[15px] font-medium text-left rounded-lg transition-colors ${
-                        item.path && location.pathname === item.path
-                          ? 'bg-[#1CD4FF] text-white font-semibold'
-                          : 'bg-transparent text-[#0d0c22] hover:bg-[#f7f7f7]'
-                      }`}
-                      onClick={() => {
-                        setExpanded(prev => ({ ...prev, [item.label]: !prev[item.label] }));
-                        if (item.path) handleNavigate(item.path);
-                      }}
-                    >
-                      <img
-                        src={item.icon}
-                        alt={item.label}
-                        className="w-[20px] h-[20px] object-contain shrink-0"
-                        style={item.path && location.pathname === item.path ? { filter: 'brightness(0) invert(1)' } : {}}
-                      />
-                      <span className={`flex-1 text-[15px] ${item.path && location.pathname === item.path ? 'text-white' : 'text-[#0d0c22]'}`}>
-                        {item.label}
-                      </span>
-                      <span className="flex items-center shrink-0 mr-1">
-                        {expanded[item.label] ? <ChevronUp /> : <ChevronDown />}
-                      </span>
-                    </button>
+                    (() => {
+                      const isActive = item.path && location.pathname === item.path;
+                      return (
+                        <button
+                          className={`flex items-center gap-3 w-full border-none outline-none cursor-pointer px-2 py-[11px] text-[15px] font-medium text-left rounded-lg transition-all ${
+                            isActive ? 'text-white font-semibold' : 'bg-transparent text-[#0d0c22] hover:bg-[#f7f7f7]'
+                          }`}
+                          style={isActive ? { background: 'linear-gradient(90deg, #117F99 0%, #1CD4FF 100%)' } : {}}
+                          onClick={() => {
+                            setExpanded(prev => ({ ...prev, [item.label]: !prev[item.label] }));
+                            if (item.path) handleNavigate(item.path);
+                          }}
+                        >
+                          <img
+                            src={item.icon}
+                            alt={item.label}
+                            className="w-[20px] h-[20px] object-contain shrink-0"
+                            style={isActive ? { filter: 'brightness(0) invert(1)' } : {}}
+                          />
+                          <span className={`flex-1 text-[15px] ${isActive ? 'text-white' : 'text-[#0d0c22]'}`}>
+                            {item.label}
+                          </span>
+                          <span className="flex items-center shrink-0 mr-1">
+                            {expanded[item.label] ? <ChevronUp /> : <ChevronDown />}
+                          </span>
+                        </button>
+                      );
+                    })()
 
                     /* ── Navigable item ── */
                   ) : item.path ? (
-                    <button
-                      className={`flex items-center gap-3 w-full border-none outline-none cursor-pointer px-2 py-[11px] text-[15px] font-medium text-left rounded-lg transition-colors ${location.pathname === item.path
-                        ? 'bg-[#1CD4FF] text-white font-semibold'
-                        : 'bg-transparent text-[#0D0C22] hover:bg-[#F7F7F7]'
-                        }`}
-                      onClick={() => {
-                        setActiveSubItem(item.label);
-                        handleNavigate(item.path);
-                      }}
-                    >
-                      <img
-                        src={item.icon}
-                        alt={item.label}
-                        className="w-[20px] h-[20px] object-contain shrink-0"
-                        style={location.pathname === item.path ? { filter: 'brightness(0) invert(1)' } : {}}
-                      />
-                      <span className={`flex-1 text-[15px] ${location.pathname === item.path ? 'text-white' : 'text-[#0D0C22]'}`}>
-                        {item.label}
-                      </span>
-                      <span className="flex items-center shrink-0 mr-1"><ChevronDown /></span>
-                    </button>
+                    (() => {
+                      const isActive = location.pathname === item.path;
+                      return (
+                        <button
+                          className={`flex items-center gap-3 w-full border-none outline-none cursor-pointer px-2 py-[11px] text-[15px] font-medium text-left rounded-lg transition-all ${
+                            isActive ? 'text-white font-semibold' : 'bg-transparent text-[#0D0C22] hover:bg-[#F7F7F7]'
+                          }`}
+                          style={isActive ? { background: 'linear-gradient(90deg, #117F99 0%, #1CD4FF 100%)' } : {}}
+                          onClick={() => {
+                            setActiveSubItem(item.label);
+                            handleNavigate(item.path);
+                          }}
+                        >
+                          <img
+                            src={item.icon}
+                            alt={item.label}
+                            className="w-[20px] h-[20px] object-contain shrink-0"
+                            style={isActive ? { filter: 'brightness(0) invert(1)' } : {}}
+                          />
+                          <span className={`flex-1 text-[15px] ${isActive ? 'text-white' : 'text-[#0D0C22]'}`}>
+                            {item.label}
+                          </span>
+                          <span className="flex items-center shrink-0 mr-1"><ChevronDown /></span>
+                        </button>
+                      );
+                    })()
 
                     /* ── Static item ── */
                   ) : (
@@ -217,39 +226,43 @@ const Sidebar = () => {
 
                   {/* ── Sub-links ── */}
                   {item.children && expanded[item.label] && (
-                    <div className="flex flex-col pb-1 pt-1">
+                    <div className="flex flex-col py-1 gap-[2px]">
                       {item.children.map((child) => {
                         const isChildActive = child.path
                           ? `${location.pathname}${location.search}` === child.path ||
                             activeSubItem === child.label
                           : activeSubItem === child.label;
                         return (
-                        <button
-                          key={child.label}
-                          disabled={child.disabled}
-                          className={`border-none outline-none cursor-pointer text-[15px] font-medium text-left px-2 py-[11px] rounded-lg transition-colors flex items-center gap-3 ${child.disabled
-                            ? 'opacity-50 cursor-not-allowed text-[#999]'
-                            : isChildActive
-                              ? 'bg-[#1cd4ff] text-white font-semibold'
-                              : 'bg-transparent text-[#0d0c22] hover:bg-[#f7f7f7]'
-                            }`}
-                          onClick={() => {
-                            if (!child.disabled) {
-                              setActiveSubItem(child.label);
-                              handleNavigate(child.path);
+                          <button
+                            key={child.label}
+                            disabled={child.disabled}
+                            className={`border-none outline-none cursor-pointer text-[14px] font-medium text-left rounded-lg transition-all flex items-center gap-2.5 w-full
+                              ${child.disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
+                              ${isChildActive
+                                ? 'px-3 py-[10px] text-white font-semibold'
+                                : 'pl-7 pr-2 py-[9px] text-[#0d0c22] hover:bg-[#f7f7f7]'
+                              }`}
+                            style={isChildActive
+                              ? { background: 'linear-gradient(90deg, #117F99 0%, #1CD4FF 100%)' }
+                              : {}
                             }
-                          }}
-                        >
-                          {child.icon && (
-                            <img
-                              src={child.icon}
-                              alt={child.label}
-                              className="w-[20px] h-[20px] object-contain shrink-0"
-                              style={isChildActive ? { filter: 'brightness(0) invert(1)' } : {}}
-                            />
-                          )}
-                          <span className="flex-1">{child.label}</span>
-                        </button>
+                            onClick={() => {
+                              if (!child.disabled) {
+                                setActiveSubItem(child.label);
+                                handleNavigate(child.path);
+                              }
+                            }}
+                          >
+                            {child.icon && (
+                              <img
+                                src={child.icon}
+                                alt={child.label}
+                                className="w-[16px] h-[16px] object-contain shrink-0"
+                                style={isChildActive ? { filter: 'brightness(0) invert(1)' } : { opacity: 0.7 }}
+                              />
+                            )}
+                            <span className="flex-1">{child.label}</span>
+                          </button>
                         );
                       })}
                     </div>

@@ -21,24 +21,24 @@ const MainLayout = ({ children }) => {
           {/* Main Content */}
           <div
             className="
-            col-span-12
-    md:col-span-10
+              col-span-12
+              md:col-span-10
 
-            pt-[55px]
-            min-h-[calc(100vh-62px)]
-            bg-[#ECECEC]
+              pt-[55px]
+              min-h-[calc(100vh-62px)]
+              bg-[#ECECEC]
             transition-all
             duration-300
             ease-in-out
             ml-0
             md:ml-[75px]
             
-          "
+            "
           >
-            {children}
+              {children}
+            </div>
           </div>
         </div>
-      </div>
       <Footer />
       <BottomNav />
     </div>

@@ -79,7 +79,7 @@ const CasinoDetails = () => {
 
   return (
     <div className="w-full min-h-screen bg-[#ECECEC]">
-      <div className="flex flex-col gap-4 md:gap-5 p-3 md:p-6 ml-[-30px] max-md:-ml-[40px]">
+      <div className="flex flex-col gap-4 md:gap-5 md:p-6">
 
         {/* ── Breadcrumb ── */}
         <div className="flex items-center gap-2 text-[13px] text-[#6b7280]">

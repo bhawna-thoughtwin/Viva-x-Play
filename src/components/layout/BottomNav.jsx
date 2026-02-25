@@ -21,7 +21,7 @@ const BottomNav = () => {
     const navItems = [
         { label: 'BROWSE', type: 'browse', path: null },
         { label: 'CASINO', type: 'casino', path: '/casino' },
-        { label: 'LIVE DEALER', type: 'live-dealer', path: '/live-dealer' },
+        { label: 'LIVE CASINO', type: 'live-dealer', path: '/live-casino' },
         { label: 'SPORTS', type: 'sports', path: '/sports' },
         { label: 'MY PROFILE', type: 'profile', path: '/profile' },
     ];

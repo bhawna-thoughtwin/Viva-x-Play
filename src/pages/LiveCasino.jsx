@@ -3,8 +3,6 @@ import { useSearchParams } from 'react-router-dom';
 import CasinoFilterBar from '../components/casino/CasinoFilterBar';
 import CasinoGameSection from '../components/casino/CasinoGameSection';
 import PromotionsSection from '../components/home/PromotionsSection';
-import LatestBet from '../components/home/LatestBet';
-
 import {
   rouletteIcon, blackjackIcon, pokerIcon,
   baccaratIcon, liveDealerIconAlt, monitorIcon,
@@ -83,8 +81,7 @@ const LiveCasino = () => {
 
   return (
     <div className="w-full min-h-screen bg-[#ECECEC]">
-      <div className="flex flex-col gap-4 md:gap-6 p-3 md:p-6 ml-[-30px]
-            max-md:-ml-[40px]">
+     <div className="flex flex-col gap-4 md:gap-6 md:p-6">
 
         {/* ── Page header ── */}
         <div className="bg-white rounded-xl px-6 py-5 flex items-center gap-3">
@@ -119,9 +116,6 @@ const LiveCasino = () => {
           ))}
         </div>
         <Casinoprovider/>
-
-        {/* ── Latest Bets ── */}
-        <LatestBet />
 
       </div>
     </div>

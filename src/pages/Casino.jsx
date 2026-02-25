@@ -80,8 +80,7 @@ const Casino = () => {
 
   return (
     <div className="w-full min-h-screen bg-[#ECECEC]">
-      <div className="flex flex-col gap-4 md:gap-6 p-3 md:p-6 ml-[-30px]
-            max-md:-ml-[40px]">
+     <div className="flex flex-col gap-4 md:gap-6 md:p-6">
 
         {/* ── Page header ── */}
         <div className="bg-white rounded-xl px-6 py-5 flex items-center gap-3">
