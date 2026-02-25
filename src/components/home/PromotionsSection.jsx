@@ -38,13 +38,14 @@ const promotions = [
   },
 ];
 
-const PromotionsSection = () => {
+const PromotionsSection = ({ hideHeader = false }) => {
   const { scrollRef, activeIndex, scrollToIndex } = useScrollDots(promotions.length);
 
   return (
     <section className="bg-white rounded-xl p-4 md:p-5 mb-3 md:mb-4 w-full box-border">
 
-      <SectionHeader
+      {!hideHeader && (
+         <SectionHeader
         title="Promotions"
         icon={
           <img
@@ -56,6 +57,8 @@ const PromotionsSection = () => {
         onViewAll={() => { }}
         viewAllClassName="hidden md:block"
       />
+      )}
+
 
       {/* Cards — horizontal scroll, snap on mobile */}
       <div

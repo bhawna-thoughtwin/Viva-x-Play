@@ -28,6 +28,13 @@ export { default as sportsIconAlt } from './icon-sports.svg';
 export { default as searchIcon } from './icon-search.svg';
 export { default as worldIcon } from './icon-world.svg';
 export { default as logo } from './logo.svg';
+export { default as selectAllIcon } from "./select-all.svg";
+export { default as HomeIcon } from './home1.svg';
+export { default as ChevronLeftIcon } from './chevronleft.svg';
+export { default as ChevronRightIcon } from './chevronright.svg';
+export {default as providerIcon} from './providericon.svg';
+export {default as monitorIcon} from './monitor1.svg';
+export {default as footballIcon} from './Football.svg';
 
 // Athlete/Player Images
 export { default as volleyballPlayer1 } from './volleyball-player 1.png';

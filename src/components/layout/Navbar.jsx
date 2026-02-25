@@ -19,7 +19,7 @@ const promotionsIconb = promotionsIcon;
 const navLinks = [
   { label: 'Sports',      path: '/sports',      icon: sportsIcon },
   { label: 'Casino',      path: '/casino',       icon: casinoIcon },
-  { label: 'Live Dealer', path: '/live-dealer',  icon: liveDealerIconb },
+  { label: 'Live Casino', path: '/live-casino',  icon: liveDealerIconb },
   { label: 'Promotions',  path: '/promotion',   icon: promotionsIconb},
 ];
 

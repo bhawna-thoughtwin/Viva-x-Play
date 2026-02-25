@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-import promotiongrid1 from '../assets/images/promotiongrid1.png';
+import freespinbannerimg from '../assets/images/freespinbannerimg.png';
 
 /* ── T&C sections ── */
 const tcSections = [
@@ -92,15 +92,15 @@ const Promotion = () => {
             <div className="bg-white rounded-xl px-3 md:px-6 pt-4 md:pt-6 pb-0 flex flex-col gap-2 md:gap-6 overflow-hidden">
                 <div className="w-full flex flex-col gap-2 md:gap-3">
                     <h2 className="text-[22px] md:text-[42px] font-bold text-[#333] uppercase m-0 leading-tight">
-                        Casino Welcome Offer
+                       Get Up to 1,000 FREE Spins
                     </h2>
                     <p className="text-[14px] md:text-[24px] font-[510] text-[#333] m-0">
-                        Get a 500% Bonus up to $10,000
+                        Deposit today and start spinning your way to big wins instantly.
                     </p>
                 </div>
                 <div className="-mx-3 md:-mx-6">
                     <img
-                        src={promotiongrid1}
+                        src={freespinbannerimg}
                         alt="Casino Welcome Offer Banner"
                         className="w-full block object-cover"
                         style={{ aspectRatio: '1122 / 604' }}

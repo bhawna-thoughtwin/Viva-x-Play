@@ -52,7 +52,7 @@ function App() {
                   <Route path="/" element={<Home />} />
                   <Route path="/sports" element={<Sports />} />
                   <Route path="/casino" element={<Casino />} />
-                  <Route path="/live-dealer" element={<LiveDealer />} />
+                  <Route path="/live-casino" element={<LiveCasino />} />
                   <Route path="/promotion" element={<PromotionsGrid />} />
                   <Route path="/promotion/detail" element={<Promotion />} />
                   <Route path="/about/aml-policy" element={<AMLPolicy />} />

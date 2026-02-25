@@ -135,8 +135,8 @@ const SportsBetting = () => {
       {/* Scroll dots — below sports strip, above Trending */}
       <ScrollDots count={sports.length} activeIndex={sportsActive} scrollToIndex={sportsScrollTo} className="md:hidden mb-2" />
 
-      <CardRow title="Trending" matches={trendingMatches} />
-      <CardRow title="Recommendations" matches={recommendationMatches} />
+      <CardRow title="Top Events" matches={trendingMatches} />
+      <CardRow title="Live Now" matches={recommendationMatches} />
 
     </section>
   );

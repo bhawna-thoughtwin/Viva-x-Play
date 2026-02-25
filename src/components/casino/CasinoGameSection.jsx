@@ -1,16 +1,23 @@
 import { useRef } from 'react';
 import GameCard from './GameCard';
+import {
+  ChevronLeftIcon, ChevronRightIcon,
+} from '../../assets/icons';
 
 const ChevronLeft = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-    <path d="M15 18l-6-6 6-6" stroke="#1CD4FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
+  <img
+    src={ChevronLeftIcon}
+    alt="left"
+    className="w-[18px] h-[18px] object-contain"
+  />
 );
 
 const ChevronRight = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-    <path d="M9 18l6-6-6-6" stroke="#1CD4FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
+  <img
+    src={ChevronRightIcon}
+    alt="right"
+    className="w-[18px] h-[18px] object-contain"
+  />
 );
 
 const CasinoGameSection = ({ title, icon, games = [] }) => {
@@ -56,8 +63,8 @@ const CasinoGameSection = ({ title, icon, games = [] }) => {
           <div className="hidden md:block w-px h-[44px] bg-[#6b7280]/30" />
 
           {/* See All */}
-          <button className="border-2 border-[#1CD4FF] text-[#1CD4FF] bg-white rounded-lg px-4 md:px-8 h-[36px] md:h-[44px] text-[13px] md:text-[14px] font-semibold cursor-pointer hover:bg-[#f0fdff] transition-colors whitespace-nowrap">
-            See All
+          <button className="border-2 border-[#1CD4FF] text-[#1CD4FF] bg-white rounded-lg px-4 md:px-8 h-[36px] md:h-[44px] text-[14px] leading-[20px] font-[590] font-['SF_Pro'] cursor-pointer hover:bg-[#f0fdff] transition-colors whitespace-nowrap">
+            View All
           </button>
         </div>
       </div>

@@ -3,21 +3,21 @@ import SearchBar from '../common/SearchBar';
 import {
   slotsIcon, rouletteIcon, blackjackIcon, pokerIcon,
   crashIcon, baccaratIcon, jackpotIcon, newReleaseIcon,
-  searchIcon
+  searchIcon,selectAllIcon,HomeIcon
 } from '../../assets/icons';
 
 /* Home / Lobby icon */
-const HomeIcon = ({ active }) => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-    <path
-      d="M3 9.5L12 3L21 9.5V20a1 1 0 01-1 1H5a1 1 0 01-1-1V9.5z"
-      stroke={active ? '#fff' : '#333'}
-      strokeWidth="1.8"
-      strokeLinejoin="round"
-    />
-    <path d="M9 21V12h6v9" stroke={active ? '#fff' : '#333'} strokeWidth="1.8" strokeLinejoin="round" />
-  </svg>
-);
+// const HomeIcon = ({ active }) => (
+//   <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+//     <path
+//       d="M3 9.5L12 3L21 9.5V20a1 1 0 01-1 1H5a1 1 0 01-1-1V9.5z"
+//       stroke={active ? '#fff' : '#333'}
+//       strokeWidth="1.8"
+//       strokeLinejoin="round"
+//     />
+//     <path d="M9 21V12h6v9" stroke={active ? '#fff' : '#333'} strokeWidth="1.8" strokeLinejoin="round" />
+//   </svg>
+// );
 
 /* Grid / All icon */
 const GridIcon = ({ active }) => (
@@ -30,8 +30,8 @@ const GridIcon = ({ active }) => (
 );
 
 const filters = [
-  { key: 'lobby',       label: 'Lobby',       iconImg: null,           IconComp: HomeIcon },
-  { key: 'all',         label: 'All',         iconImg: null,           IconComp: GridIcon },
+  { key: 'lobby',       label: 'Lobby',       iconImg: HomeIcon},
+  { key: 'all',         label: 'All',         iconImg: selectAllIcon },
   { key: 'slots',       label: 'Slots',       iconImg: slotsIcon,      IconComp: null },
   { key: 'roulette',    label: 'Roulette',    iconImg: rouletteIcon,   IconComp: null },
   { key: 'blackjack',   label: 'Blackjack',   iconImg: blackjackIcon,  IconComp: null },
@@ -47,15 +47,16 @@ const CasinoFilterBar = ({ activeFilter, onFilterChange }) => {
     <div className="flex flex-col gap-3 mb-5 md:mb-6">
 
       {/* Search bar */}
-      <div className="w-full max-w-[330px]">
-        <div className="flex items-center gap-2 px-3 py-3 bg-[#f5f5f5] border border-[#333]/30 rounded-lg">
+      <div className="w-full max-w-[330px] mb-2">
+        {/* <div className="flex items-center gap-2 px-3 py-3 bg-[#f5f5f5] border border-[#333]/30 rounded-lg">
           <input
             type="text"
             placeholder="Search Game..."
             className="w-full bg-transparent border-none outline-none text-[#6b7280] text-[15px] font-inherit placeholder:text-[#6b7280]/70"
           />
           <img src={searchIcon} alt="search" className="w-5 h-5 opacity-60 shrink-0" />
-        </div>
+        </div> */}
+        <SearchBar/>
       </div>
 
       {/* Filter pills — horizontally scrollable */}

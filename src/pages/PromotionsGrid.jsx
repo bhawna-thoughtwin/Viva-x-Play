@@ -12,7 +12,7 @@ import promotionsIcon from '../assets/icons/icon-promotions2.svg';
 
 /* ── Filter tabs ── */
 const tabs = [
-    { label: 'All' },
+    { label: 'All', icon: null },
     { label: 'Sports', icon: sportsIconPng },
     { label: 'Casino', icon: casinoIconImg },
     { label: 'Live Dealer', icon: liveDealerIconImg },
@@ -58,7 +58,7 @@ const PromotionsGrid = () => {
 
     return (
         /* outer: add px-3 on mobile so cards don't touch screen edges */
-      <div className="w-full flex flex-col gap-4 md:gap-5 pb-10 px-3 md:pl-0 md:pr-4 mt-4 md:mt-5">
+        <div className="w-full flex flex-col gap-4 md:gap-5 pb-10 px-3 md:pl-0 md:pr-4 mt-4 md:mt-5">
 
             {/* ── Promotions header ── */}
             <div
@@ -68,7 +68,22 @@ const PromotionsGrid = () => {
                 <img src={promotionsIcon} alt="" className="w-5 h-5 md:w-6 md:h-6 object-contain" />
                 <h1 className="text-[17px] md:text-[20px] font-bold text-[#0D0C22] m-0">Promotions</h1>
             </div>
-
+<nav className="hidden md:flex items-center gap-1.5 md:gap-2 text-[12px] md:text-[13px] flex-wrap">
+                <button
+                    onClick={() => navigate('/')}
+                    className="bg-transparent border-none cursor-pointer text-[#666] hover:text-[#0D0C22] p-0 transition-colors"
+                >
+                    Home
+                </button>
+                <span className="text-[#aaa]">›</span>
+                <button
+                    onClick={() => navigate('/promotion')}
+                    className="bg-transparent border-none cursor-pointer text-[#666] hover:text-[#0D0C22] p-0 transition-colors"
+                >
+                    Promotions
+                </button>
+                
+            </nav>
             {/* ── Filter tabs + card grid ── */}
             <div
                 className="bg-white p-3 md:p-6 flex flex-col gap-4 md:gap-6"
@@ -77,28 +92,62 @@ const PromotionsGrid = () => {
 
                 {/* ── Tabs — horizontally scrollable on mobile ── */}
                 <div className="overflow-x-auto -mx-3 px-3 md:mx-0 md:px-0 pb-1 md:pb-0">
+
+                    {/* Rounded container */}
                     <div className="inline-flex items-center gap-1 bg-white rounded-full p-1 shadow-[0_1px_4px_rgba(0,0,0,0.08)] min-w-max">
-                        {tabs.map((tab) => (
-                            <button
-                                key={tab.label}
-                                onClick={() => setActiveTab(tab.label)}
-                                className={`flex items-center gap-1.5 px-3 md:px-4 py-1.5 md:py-2 rounded-full border-0 text-[13px] md:text-[14px] font-[510] whitespace-nowrap cursor-pointer transition-all duration-200 ${activeTab === tab.label
-                                        ? tab.label === 'All'
-                                            ? 'bg-[#D6D6D6] text-[#0D0C22] font-semibold shadow-[0_1px_4px_rgba(0,0,0,0.12)]'
-                                            : 'bg-[#1CD4FF] text-[#0D0C22] font-semibold shadow-[0_1px_6px_rgba(28,212,255,0.35)]'
-                                        : 'bg-transparent text-[#0D0C22]'}`}
-                            >
-                                {tab.icon && (
-                                    <img
-                                        src={tab.icon}
-                                        alt={tab.label}
-                                        className={`w-3.5 h-3.5 md:w-4 md:h-4 object-contain ${activeTab === tab.label ? 'opacity-100' : 'opacity-70'}`}
-                                    />
-                                )}
-                                {tab.label}
-                            </button>
-                        ))}
+
+                        {tabs.map(({ key, label, iconImg, IconComp }) => {
+                            const isActive = activeTab === key;
+
+                            return (
+                                <button
+                                    key={key}
+                                    onClick={() => setActiveTab(key)}
+                                    className={`
+            flex items-center gap-1.5
+            px-3 md:px-4
+            py-1.5 md:py-2
+            rounded-full
+            border-0
+            text-[13px] md:text-[14px]
+            font-semibold
+            whitespace-nowrap
+            cursor-pointer
+            transition-all duration-200
+            shrink-0
+
+            ${isActive
+                                            ? "bg-[#1CD4FF] text-[#0D0C22] shadow-[0_1px_6px_rgba(28,212,255,0.35)]"
+                                            : "bg-transparent text-[#0D0C22]"
+                                        }
+          `}
+                                >
+
+                                    {/* SVG icons */}
+                                    {IconComp && <IconComp active={isActive} />}
+
+                                    {/* Image icons */}
+                                    {iconImg && (
+                                        <img
+                                            src={iconImg}
+                                            alt={label}
+                                            className={`
+                w-[14px] h-[14px]
+                md:w-[16px] md:h-[16px]
+                object-contain
+                ${isActive ? "opacity-100" : "opacity-70"}
+              `}
+                                        />
+                                    )}
+
+                                    {label}
+
+                                </button>
+                            );
+                        })}
+
                     </div>
+
                 </div>
 
                 {/* ── Card grid ── */}

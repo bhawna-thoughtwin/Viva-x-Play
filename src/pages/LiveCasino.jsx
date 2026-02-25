@@ -8,10 +8,10 @@ import {
   slotsIcon, rouletteIcon, blackjackIcon, pokerIcon,
   crashIcon, baccaratIcon, jackpotIcon, newReleaseIcon,
   casinoDiceIcon,
-} from '../assets/icons';
+} from"../assets/icons";
 
 /* ── Game images ── */
-import g1 from '../../assets/images/aviamasters.png';
+import g1 from "../../assets/images/aviamasters.png";
 import g2 from '../../assets/images/aztecClusters.png';
 import g3 from '../../assets/images/crazytime.png';
 import g4 from '../../assets/images/duckhunter.png';
@@ -23,17 +23,16 @@ import n3 from '../../assets/images/new3.png';
 import n4 from '../../assets/images/new4.png';
 import n5 from '../../assets/images/new5.png';
 import n6 from '../../assets/images/new6.png';
+
 import Casinoprovider from "../components/casino/Casinoprovider";
-
-
 /* ── Shared game pool — rotated per section ── */
 const pool8 = [
-  { image: g1, name: 'Book of Time' },
-  { image: g2, name: 'Sweet Bonanza' },
-  { image: g3, name: 'Gates of Olympus' },
-  { image: g4, name: 'Sugar Rush' },
-  { image: g5, name: 'Wild West Gold' },
-  { image: g6, name: 'Starlight Princess' },
+  { image: g1, name: 'Avia Masters' },
+  { image: g2, name: 'Aztec Clusters' },
+  { image: g3, name: 'Crazy Time' },
+  { image: g4, name: 'Duck Hunter' },
+  { image: g5, name: 'Fortune Tiger' },
+  { image: g6, name: 'Knockout Rides' },
   { image: n1, name: 'Big Bass Splash' },
   { image: n2, name: 'Fruit Party' },
 ];
@@ -69,7 +68,7 @@ const sections = [
   ]},
 ];
 
-const Casino = () => {
+const LiveCasino = () => {
   const [activeFilter, setActiveFilter] = useState('lobby');
 
   /* Which sections to show based on active filter */
@@ -123,4 +122,4 @@ const Casino = () => {
   );
 };
 
-export default Casino;
+export default LiveCasino;

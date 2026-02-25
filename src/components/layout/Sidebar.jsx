@@ -45,7 +45,7 @@ const menuGroups = [
   [
     { label: 'Sports', icon: sportsIcon, path: '/sports' },
     { label: 'Casino', icon: casinoIcon, expandable: true, path: '/casino', children: casinoLinks },
-      { label: 'Live Casino', icon: liveDealerIcon },
+    { label: 'Live Casino', icon: liveDealerIcon, expandable: true, path: '/live-casino'},
   ],
   [
      { label: 'Promotions', icon: promotionsIcon, path: '/promotion' },

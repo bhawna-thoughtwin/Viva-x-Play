@@ -25,7 +25,7 @@ const getImage = (game) => {
 
 const LatestBet = () => {
   return (
-    <section className="mt-4 md:mt-5 bg-white rounded-xl p-4 md:p-5 shadow-[0_4px_14px_rgba(0,0,0,0.04)] w-full box-border">
+    <section className="mt-2 md:mt-2 bg-white rounded-xl p-4 md:p-5 shadow-[0_4px_14px_rgba(0,0,0,0.04)] w-full box-border">
 
       {/* Tabs */}
       {/* <div className="w-full inline-flex border border-[#1CD4FF] overflow-hidden mb-4">
