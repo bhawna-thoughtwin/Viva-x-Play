@@ -5,6 +5,7 @@ import MainLayout from './components/layout/MainLayout';
 
 import Home from './pages/Home';
 import Sports from './pages/Sports';
+import SportMatchDetail from './pages/SportMatchDetail';
 import LiveDealer from './pages/LiveDealer';
 import PromotionsGrid from './pages/PromotionsGrid';
 import Promotion from './pages/Promotion';
@@ -58,6 +59,7 @@ function App() {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/sports" element={<Sports />} />
+                  <Route path="/sports/match" element={<SportMatchDetail />} />
                   <Route path="/casino" element={<Casino />} />
                   <Route path="/casino/:category" element={<CasinoDetails />} />
                   <Route path="/live-casino" element={<LiveCasino />} />

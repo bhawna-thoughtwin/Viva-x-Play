@@ -1,11 +1,19 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import TopEventsSection from '../components/sports/TopEventsSection';
 import { LiveNowRow, liveNowData } from '../components/sports/LiveNowSection';
 import {
+  homeclrIcon,
+  LiveClrIcon,
+  InstagramIcon,
+  virtualclrIcon,
+  AllSportsClrIcon,
   footballIcon,
-  monitorIcon,
-  chatIcon,
+  FootballClrIcon,
   liveIcon,
+  flatIcon,
+  baseballIcon,
+  basketballIcon,
   homeIcon,
   rouletteIcon,
   virtualIcon,
@@ -13,7 +21,12 @@ import {
   liveStremingIcon,
   AllSportsIcon,
   resultIcon,
-  searchIcon
+  searchIcon,
+  greyhoundIcon,
+  IconHockeyIcon,
+  HorseIcon,
+  AmFootBallballIcon,
+  EsportsIcon,
 } from '../assets/icons';
 
 /* ─── Sub-Components ─── */
@@ -60,47 +73,47 @@ const TOP_LEAGUES = [
 
 const SPORT_LIST = [
   { label: 'Football', icon: footballIcon, count: 303, live: true },
-  { label: 'Basketball', icon: footballIcon, count: 62, live: true },
-  { label: 'Tennis', icon: footballIcon, count: 12, live: true },
-  { label: 'Baseball', icon: footballIcon, count: 42, live: false },
-  { label: 'Ice Hockey', icon: footballIcon, count: 86, live: false },
-  { label: 'American Football', icon: footballIcon, count: 24, live: false },
-  { label: 'Horse Racing', icon: footballIcon, count: 36, live: true },
-  { label: 'Greyhounds', icon: footballIcon, count: 63, live: true },
-  { label: 'Table Tennis', icon: footballIcon, count: 43, live: false },
-  { label: 'E-sports', icon: footballIcon, count: 61, live: true },
+  { label: 'Basketball', icon: basketballIcon, count: 62, live: true },
+  { label: 'Tennis', icon: flatIcon, count: 12, live: true },
+  { label: 'Baseball', icon: baseballIcon, count: 42, live: false },
+  { label: 'Ice Hockey', icon: IconHockeyIcon, count: 86, live: false },
+  { label: 'American Football', icon: AmFootBallballIcon, count: 24, live: false },
+  { label: 'Horse Racing', icon: HorseIcon, count: 36, live: true },
+  { label: 'Greyhounds', icon: greyhoundIcon, count: 63, live: true },
+  { label: 'Table Tennis', icon: flatIcon, count: 43, live: false },
+  { label: 'E-sports', icon: EsportsIcon, count: 61, live: true },
 ];
 
 const FILTERS = ['All', 'Today', '3h', '6h', '24h', 'Tomorrow'];
 
 const LOBBY_ICONS = [
-  { label: 'Lobby', icon: homeIcon },
-  { label: 'Live', icon: liveIcon },
-  { label: 'Virtual', icon: virtualIcon },
+  { label: 'Lobby', icon: homeclrIcon },
+  { label: 'Live', icon: InstagramIcon },
+  { label: 'Virtual', icon: virtualclrIcon },
   { label: 'Superjack', icon: superjackIcon },
   { label: 'Streaming', icon: liveStremingIcon },
-  { label: 'All sports', icon: AllSportsIcon },
-  { label: 'Results', icon: resultIcon },
-  { label: 'Football', icon: footballIcon },
-  { label: 'Tennis', icon: rouletteIcon },
-  { label: 'Baseball', icon: virtualIcon },
+  { label: 'All sports', icon: AllSportsClrIcon },
+  { label: 'Results', icon: liveIcon },
+  { label: 'Football', icon: FootballClrIcon },
+  { label: 'Tennis', icon: flatIcon },
+  { label: 'Baseball', icon: baseballIcon },
 ];
 
 const LIVE_NOW_CATEGORIES = [
-  { label: 'Football', icon: footballIcon },
-  { label: 'Basketball', icon: footballIcon },
-  { label: 'Ice Hockey', icon: footballIcon },
-  { label: 'Table Tennis', icon: footballIcon },
-  { label: 'Tennis', icon: footballIcon },
+  { label: 'Football', icon: FootballClrIcon },
+  { label: 'Basketball', icon: liveIcon },
+  { label: 'Ice Hockey', icon: liveIcon },
+  { label: 'Table Tennis', icon: liveIcon },
+  { label: 'Tennis', icon: flatIcon },
 ];
 
 const HIGHLIGHT_CATEGORIES = [
   { label: 'All' },
-  { label: 'Football', icon: footballIcon },
-  { label: 'Basketball', icon: footballIcon },
-  { label: 'Ice Hockey', icon: footballIcon },
-  { label: 'Table Tennis', icon: footballIcon },
-  { label: 'Tennis', icon: footballIcon },
+  { label: 'Football', icon: FootballClrIcon },
+  { label: 'Basketball', icon: liveIcon },
+  { label: 'Ice Hockey', icon: liveIcon },
+  { label: 'Table Tennis', icon: liveIcon },
+  { label: 'Tennis', icon: flatIcon },
 ];
 
 const highlightsData = [
@@ -121,6 +134,63 @@ const POPULAR_BETS = [
   { icon: '🏈', match: 'Wisconsin Badgers @ Oregon Ducks', market: 'Winner(Incl. OT)', pick: 'Oregon Ducks', odds: '2.85' },
   { icon: '⚽', match: 'Trabzonspor vs. Fatih Karagumruk SK', market: '1x2', pick: 'Trabzonspor', odds: '1.36' },
 ];
+
+const upcomingSportsData = [
+  { liveTime: '63', league: 'Club Friendly Games · World', team1: 'Narva Trans', team2: 'Tartu JK Welco', score1: 1, score2: 1, odds: { home: '1.29', draw: '1.29', away: '1.29' } },
+  { liveTime: '63', league: 'Club Friendly Games · World', team1: 'Narva Trans', team2: 'Tartu JK Welco', score1: 1, score2: 1, odds: { home: '1.29', draw: '1.29', away: '1.29' } },
+];
+
+const highlightsSportsData = [
+  { liveTime: '63', league: 'Club Friendly Games · World', team1: 'Narva Trans', team2: 'Tartu JK Welco', score1: 1, score2: 1, odds: { home: '1.29', draw: '1.29', away: '1.29' } },
+  { liveTime: '63', league: 'Club Friendly Games · World', team1: 'Narva Trans', team2: 'Tartu JK Welco', score1: 1, score2: 1, odds: { home: '1.29', draw: '1.29', away: '1.29' } },
+];
+
+const sportsLiveData = [
+  { liveTime: '63', league: 'Club Friendly Games · World', team1: 'Narva Trans', team2: 'Tartu JK Welco', score1: 1, score2: 1, odds: { home: '1.29', draw: '1.29', away: '1.29' } },
+  { liveTime: '63', league: 'Club Friendly Games · World', team1: 'Narva Trans', team2: 'Tartu JK Welco', score1: 1, score2: 1, odds: { home: '1.29', draw: '1.29', away: '1.29' } },
+  { liveTime: '63', league: 'Club Friendly Games · World', team1: 'Narva Trans', team2: 'Tartu JK Welco', score1: 1, score2: 1, odds: { home: '1.29', draw: '1.29', away: '1.29' } },
+];
+
+const SportsLiveRow = ({ liveTime, league, team1, team2, score1, score2, odds }) => (
+  <div className="bg-[#F8F8F9] border border-[#EBEBEB] rounded-[10px] overflow-hidden">
+    <div className="flex items-center gap-2 px-3 pt-3 pb-2">
+      <span className="flex items-center gap-[5px] bg-[#FF8C00] text-white text-[9px] font-extrabold px-[7px] py-[3px] rounded-full shrink-0 tracking-wide">
+        <span className="w-[5px] h-[5px] rounded-full bg-white shrink-0" />
+        LIVE
+      </span>
+      <span className="text-[12px] font-semibold text-[#333]">{liveTime}'</span>
+      <span className="text-[11px] text-[#888] flex-1 truncate">{league}</span>
+      <button className="shrink-0 text-[#CCCCCC] hover:text-[#FFB800] transition-colors">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+        </svg>
+      </button>
+    </div>
+    <div className="px-3 pb-2.5">
+      <div className="flex items-center justify-between py-[3px]">
+        <span className="text-[13px] font-bold text-[#1A1A1A]">{team1}</span>
+        <span className="text-[13px] font-bold text-[#1A1A1A]">{score1}</span>
+      </div>
+      <div className="flex items-center justify-between py-[3px]">
+        <span className="text-[13px] font-bold text-[#1A1A1A]">{team2}</span>
+        <span className="text-[13px] font-bold text-[#1A1A1A]">{score2}</span>
+      </div>
+    </div>
+    <div className="flex items-stretch gap-1.5 px-3 pb-3">
+      {[{ key: 'home' }, { key: 'draw' }, { key: 'away' }].map(({ key }) => (
+        <button key={key} className="flex-1 flex flex-col items-center justify-center bg-white border border-[#E5E7EB] rounded-[7px] py-[7px] hover:border-[#1CD4FF] transition-all cursor-pointer active:scale-[0.97]">
+          <span className="text-[13px] font-bold text-[#1A1A1A] leading-tight">{odds[key]}</span>
+          <span className="text-[9px] text-[#999] truncate max-w-full px-1 mt-[2px]">{team1}</span>
+        </button>
+      ))}
+      <button className="w-[38px] flex items-center justify-center bg-white border border-[#B8EFFF] rounded-[7px] text-[#1CD4FF] hover:bg-[#1CD4FF] hover:text-white transition-all shrink-0 cursor-pointer">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M6 9l6 6 6-6" />
+        </svg>
+      </button>
+    </div>
+  </div>
+);
 
 /* ─── Reusable Components ─── */
 
@@ -176,10 +246,12 @@ const MatchCard = ({ time, league, team1, team2, score1, score2, odds, isLive, l
    ═══════════════════════════════════════════════════ */
 
 const Sports = () => {
+  const navigate = useNavigate();
   const [activeSport, setActiveSport] = useState('Football');
   const [activeLiveSport, setActiveLiveSport] = useState('Football');
   const [activeFilter, setActiveFilter] = useState('All');
-  const [activeHighlightCat, setActiveHighlightCat] = useState('All');
+  const [activeHighlightCat, setActiveHighlightCat] = useState('Football');
+  const [activeUpcomingCat, setActiveUpcomingCat] = useState('Football');
 
   return (
     <div className="flex flex-col min-h-screen bg-[#ECECEC] pt-[14px] px-[8px] sm:px-[12px] md:px-[16px] gap-[12px] md:gap-[16px] overflow-x-hidden pb-10">
@@ -216,7 +288,7 @@ const Sports = () => {
             </div>
             <div className="py-2">
               {TOP_LEAGUES.map((league) => (
-                <button key={league.label} className="flex items-center justify-between w-full h-[40px] px-4 group hover:bg-gray-50 transition-all">
+                <button key={league.label} onClick={() => navigate('/sports/match')} className="flex items-center justify-between w-full h-[40px] px-4 group hover:bg-gray-50 transition-all">
                   <div className="flex items-center gap-3">
                     <TrophyIcon />
                     <span className="text-[13px] font-bold text-[#4A4A4A] group-hover:text-black">{league.label}</span>
@@ -243,7 +315,7 @@ const Sports = () => {
             </div>
             <div className="flex flex-col">
               {SPORT_LIST.map((sport) => (
-                <button key={sport.label} className="flex items-center justify-between w-full h-[44px] px-4 group hover:bg-gray-50 transition-all">
+                <button key={sport.label} onClick={() => navigate('/sports/match')} className="flex items-center justify-between w-full h-[44px] px-4 group hover:bg-gray-50 transition-all">
                   <div className="flex items-center gap-3">
                     <img src={sport.icon} alt={sport.label} className="w-[16px] h-[16px] opacity-70" />
                     <span className="text-[13px] font-bold text-[#4A4A4A] group-hover:text-black">{sport.label}</span>
@@ -268,51 +340,110 @@ const Sports = () => {
 
           {/* Live Now */}
           <div className="bg-white p-[12px] sm:p-[16px] md:p-[20px] shadow-sm rounded-[12px] border border-[#F0F0F0] w-full">
-            <div className="flex items-center justify-between mb-3 sm:mb-5">
-              <h2 className="text-[16px] sm:text-[18px] font-bold text-[#1A1A1A]">Live Now</h2>
-              <button className="text-[11px] sm:text-[12px] font-bold text-[#1CD4FF] border border-[#1CD4FF]/30 px-3 sm:px-5 py-1.5 sm:py-2 rounded-lg hover:bg-[#1CD4FF] hover:text-white transition-all uppercase tracking-wide">View All</button>
+            <h2 className="text-[16px] sm:text-[18px] font-bold text-[#1A1A1A] mb-3 sm:mb-4">Live Now</h2>
+            {/* Sport tabs + scroll arrow */}
+            <div className="flex items-center gap-2 mb-4">
+              <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide flex-1 pb-1">
+                {LIVE_NOW_CATEGORIES.map((cat) => (
+                  <button key={cat.label} onClick={() => setActiveLiveSport(cat.label)}
+                    className={`flex-shrink-0 flex items-center gap-1.5 px-3 h-[34px] rounded-[8px] text-[12px] font-bold transition-all border ${activeLiveSport === cat.label ? 'bg-[#1A1A1A] text-white border-[#1A1A1A]' : 'bg-white text-[#4A4A4A] border-[#E0E0E0] hover:bg-gray-50'}`}
+                  >
+                    <img src={cat.icon} alt={cat.label} className={`w-3.5 h-3.5 ${activeLiveSport === cat.label ? 'invert brightness-0' : 'opacity-60'}`} />
+                    {cat.label}
+                  </button>
+                ))}
+              </div>
+              <button className="shrink-0 w-[34px] h-[34px] flex items-center justify-center bg-white border border-[#E0E0E0] rounded-[8px] text-[#4A4A4A] hover:bg-gray-50 transition-all">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M9 6l6 6-6 6" /></svg>
+              </button>
             </div>
-            <div className="flex items-center gap-2 overflow-x-auto pb-4 scrollbar-hide">
-              {LIVE_NOW_CATEGORIES.map((cat) => (
-                <button key={cat.label} onClick={() => setActiveLiveSport(cat.label)}
-                  className={`flex-shrink-0 flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 h-[32px] sm:h-[36px] rounded-[6px] text-[11px] sm:text-[12px] font-bold transition-all border ${activeLiveSport === cat.label ? 'bg-[#1A1A1A] text-white border-[#1A1A1A]' : 'bg-white text-[#4A4A4A] border-[#E0E0E0] hover:bg-gray-50'}`}
-                >
-                  <img src={cat.icon} alt={cat.label} className={`w-3.5 h-3.5 ${activeLiveSport === cat.label ? 'invert brightness-0' : 'opacity-60'}`} />
-                  {cat.label}
-                </button>
-              ))}
-            </div>
+            {/* 1x2 dropdown */}
             <div className="mb-4">
-              <div className="w-full h-[40px] sm:w-[240px] bg-gray-50 border border-gray-100 rounded-lg flex items-center justify-between px-4 cursor-pointer hover:bg-gray-100 transition-all">
-                <span className="text-[12px] font-bold text-[#4A4A4A]">1x2</span>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 9l6 6 6-6" /></svg>
+              <div className="w-full h-[42px] bg-white border border-[#E5E7EB] rounded-[8px] flex items-center justify-between px-4 cursor-pointer hover:bg-gray-50 transition-all">
+                <span className="text-[13px] font-semibold text-[#4A4A4A]">1x2</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M6 9l6 6 6-6" /></svg>
               </div>
             </div>
-            <div className="flex flex-col gap-1">
-              {liveNowData.map((match, i) => (<LiveNowRow key={i} {...match} />))}
+            {/* Match cards */}
+            <div className="flex flex-col gap-2">
+              {sportsLiveData.map((match, i) => (<SportsLiveRow key={i} {...match} />))}
             </div>
+            {/* View All Events */}
+            <button className="w-full mt-3 h-[44px] border border-[#E5E7EB] rounded-[10px] text-[13px] font-bold text-[#1CD4FF] hover:bg-[#F0FEFF] transition-all">
+              View All Events
+            </button>
           </div>
 
           {/* Highlights */}
           <div className="bg-white p-[12px] sm:p-[16px] md:p-[20px] shadow-sm rounded-[12px] border border-[#F0F0F0] w-full">
-            <div className="flex items-center justify-between mb-3 sm:mb-4">
-              <h2 className="text-[16px] sm:text-[18px] font-bold text-[#1A1A1A]">Highlights</h2>
-              <button className="text-[11px] sm:text-[12px] font-bold text-[#1CD4FF] border border-[#1CD4FF]/30 px-3 sm:px-5 py-1.5 sm:py-2 rounded-lg hover:bg-[#1CD4FF] hover:text-white transition-all uppercase tracking-wide">View All</button>
+            <h2 className="text-[16px] sm:text-[18px] font-bold text-[#1A1A1A] mb-3 sm:mb-4">Highlights</h2>
+            {/* Sport tabs + scroll arrow */}
+            <div className="flex items-center gap-2 mb-4">
+              <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide flex-1 pb-1">
+                {LIVE_NOW_CATEGORIES.map((cat) => (
+                  <button key={cat.label} onClick={() => setActiveHighlightCat(cat.label)}
+                    className={`flex-shrink-0 flex items-center gap-1.5 px-3 h-[34px] rounded-[8px] text-[12px] font-bold transition-all border ${activeHighlightCat === cat.label ? 'bg-[#1A1A1A] text-white border-[#1A1A1A]' : 'bg-white text-[#4A4A4A] border-[#E0E0E0] hover:bg-gray-50'}`}
+                  >
+                    <img src={cat.icon} alt={cat.label} className={`w-3.5 h-3.5 ${activeHighlightCat === cat.label ? 'invert brightness-0' : 'opacity-60'}`} />
+                    {cat.label}
+                  </button>
+                ))}
+              </div>
+              <button className="shrink-0 w-[34px] h-[34px] flex items-center justify-center bg-white border border-[#E0E0E0] rounded-[8px] text-[#4A4A4A] hover:bg-gray-50 transition-all">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M9 6l6 6-6 6" /></svg>
+              </button>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {highlightsData.map((match, i) => (<MatchCard key={i} {...match} />))}
+            {/* 1x2 dropdown */}
+            <div className="mb-4">
+              <div className="w-full h-[42px] bg-white border border-[#E5E7EB] rounded-[8px] flex items-center justify-between px-4 cursor-pointer hover:bg-gray-50 transition-all">
+                <span className="text-[13px] font-semibold text-[#4A4A4A]">1x2</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M6 9l6 6 6-6" /></svg>
+              </div>
             </div>
+            {/* Match cards */}
+            <div className="flex flex-col gap-2">
+              {highlightsSportsData.map((match, i) => (<SportsLiveRow key={i} {...match} />))}
+            </div>
+            {/* View All Events */}
+            <button className="w-full mt-3 h-[44px] border border-[#E5E7EB] rounded-[10px] text-[13px] font-bold text-[#1CD4FF] hover:bg-[#F0FEFF] transition-all">
+              View All Events
+            </button>
           </div>
 
           {/* Upcoming */}
           <div className="bg-white p-[12px] sm:p-[16px] md:p-[20px] shadow-sm rounded-[12px] border border-[#F0F0F0] w-full">
-            <div className="flex items-center justify-between mb-3 sm:mb-4">
-              <h2 className="text-[16px] sm:text-[18px] font-bold text-[#1A1A1A]">Upcoming</h2>
-              <button className="text-[11px] sm:text-[12px] font-bold text-[#1CD4FF] border border-[#1CD4FF]/30 px-3 sm:px-5 py-1.5 sm:py-2 rounded-lg hover:bg-[#1CD4FF] hover:text-white transition-all uppercase tracking-wide">View All</button>
+            <h2 className="text-[16px] sm:text-[18px] font-bold text-[#1A1A1A] mb-3 sm:mb-4">Upcoming</h2>
+            {/* Sport tabs + scroll arrow */}
+            <div className="flex items-center gap-2 mb-4">
+              <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide flex-1 pb-1">
+                {LIVE_NOW_CATEGORIES.map((cat) => (
+                  <button key={cat.label} onClick={() => setActiveUpcomingCat(cat.label)}
+                    className={`flex-shrink-0 flex items-center gap-1.5 px-3 h-[34px] rounded-[8px] text-[12px] font-bold transition-all border ${activeUpcomingCat === cat.label ? 'bg-[#1A1A1A] text-white border-[#1A1A1A]' : 'bg-white text-[#4A4A4A] border-[#E0E0E0] hover:bg-gray-50'}`}
+                  >
+                    <img src={cat.icon} alt={cat.label} className={`w-3.5 h-3.5 ${activeUpcomingCat === cat.label ? 'invert brightness-0' : 'opacity-60'}`} />
+                    {cat.label}
+                  </button>
+                ))}
+              </div>
+              <button className="shrink-0 w-[34px] h-[34px] flex items-center justify-center bg-white border border-[#E0E0E0] rounded-[8px] text-[#4A4A4A] hover:bg-gray-50 transition-all">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M9 6l6 6-6 6" /></svg>
+              </button>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {upcomingData.map((match, i) => (<MatchCard key={i} {...match} />))}
+            {/* 1x2 dropdown */}
+            <div className="mb-4">
+              <div className="w-full h-[42px] bg-white border border-[#E5E7EB] rounded-[8px] flex items-center justify-between px-4 cursor-pointer hover:bg-gray-50 transition-all">
+                <span className="text-[13px] font-semibold text-[#4A4A4A]">1x2</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M6 9l6 6 6-6" /></svg>
+              </div>
             </div>
+            {/* Match cards */}
+            <div className="flex flex-col gap-2">
+              {upcomingSportsData.map((match, i) => (<SportsLiveRow key={i} {...match} />))}
+            </div>
+            {/* View All Events */}
+            <button className="w-full mt-3 h-[44px] border border-[#E5E7EB] rounded-[10px] text-[13px] font-bold text-[#1CD4FF] hover:bg-[#F0FEFF] transition-all">
+              View All Events
+            </button>
           </div>
         </div>
 

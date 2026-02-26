@@ -134,7 +134,7 @@ export const LiveNowRow = ({ score, liveTime, league, team1, team2, score1, scor
   </div>
 );
 
-const LiveNowSection = () => {
+  const LiveNowSection = () => {
   const navigate = useNavigate();
   return (
     <div className="mt-6">
@@ -158,14 +158,7 @@ const LiveNowSection = () => {
           View All
         </button>
       </div>
-
-      {/* Match rows */}
-      <div className="flex flex-col gap-3">
-        {liveNowData.map((match, i) => (
-          <LiveNowRow key={i} {...match} />
-        ))}
-      </div>
-
+      
     {/* Match rows */}
     <div className="flex flex-col">
       {liveNowData.map((match, i) => (
@@ -175,3 +168,4 @@ const LiveNowSection = () => {
     </div>
   );
 };
+export default LiveNowSection;

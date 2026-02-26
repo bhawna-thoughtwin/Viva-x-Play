@@ -3,7 +3,7 @@ import useScrollDots from '../../hooks/useScrollDots';
 import ScrollDots from '../common/ScrollDots';
 import SectionHeader from '../common/SectionHeader';
 import TopEventsSection from '../sports/TopEventsSection';
-import LiveNowSection from '../sports/LiveNowSection';
+import LiveNowSection from "../sports/LiveNowSection";
 import { volleyballPlayer3 as sportsIcon } from '../../assets/icons';
 import sport1 from '../../assets/images/sport1.png';
 import sport2 from '../../assets/images/sport2.png';

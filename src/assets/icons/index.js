@@ -32,20 +32,20 @@ export { default as selectAllIcon } from "./select-all.svg";
 export { default as HomeIcon } from './home1.svg';
 export { default as ChevronLeftIcon } from './chevronleft.svg';
 export { default as ChevronRightIcon } from './chevronright.svg';
-export {default as providerIcon} from './providericon.svg';
-export {default as monitorIcon} from './monitor1.svg';
-export {default as footballIcon} from './Football.svg';
-export {default as homeIcon} from './home2.svg';
-export {default as question1} from "./question1.svg";
-export {default as gameshowIcon} from "./gameshow.svg";
-export {default as virtualIcon } from "./vr-game.svg";
-export {default as resultIcon } from "./result.svg";
-export {default as liveStremingIcon } from "./live-stream.svg";
-export {default as AllSportsIcon } from "./all-sports.svg";
-export {default as superjackIcon} from "./superjack.svg";
-export {default as sentEmailIcon } from "./sent-mail 1.svg";
-export {default as dotIcon} from "./Ellipse4.svg";
-export {default as rightArrowIcon} from "./chevron-right.svg";
+export { default as providerIcon } from './providericon.svg';
+export { default as monitorIcon } from './monitor1.svg';
+export { default as footballIcon } from './Football.svg';
+export { default as homeIcon } from './home2.svg';
+export { default as question1 } from "./question1.svg";
+export { default as gameshowIcon } from "./gameshow.svg";
+export { default as virtualIcon } from "./vr-game.svg";
+export { default as resultIcon } from "./result.svg";
+export { default as liveStremingIcon } from "./live-stream.svg";
+export { default as AllSportsIcon } from "./all-sports.svg";
+export { default as superjackIcon } from "./superjack.svg";
+export { default as sentEmailIcon } from "./sent-mail 1.svg";
+export { default as dotIcon } from "./Ellipse4.svg";
+export { default as rightArrowIcon } from "./chevron-right.svg";
 
 
 // Athlete/Player Images
@@ -71,7 +71,29 @@ export { default as newReleaseIcon } from './new realase.svg';
 // Utility icons
 export { default as sortIcon } from './sort.svg';
 export { default as changeIcon } from './Change.svg';
-export { default as liveIcon } from './live 1.svg';
+export { default as liveIcon } from './liveClr.svg';
 
 // Legacy/Other
-export { default as legacyImage } from './81a429aaf4ae70d4170b2f520f10dda378204b52.png';
+
+// sportsage colorfull icons
+export { default as baseballIcon } from "../icons/baseballclr.svg";
+export { default as basketballIcon } from "../icons/Basketball.svg";
+export { default as CricketIcon } from "../icons/Cricket.svg";
+export { default as DartIcon } from "../icons/Dart.svg";
+// export { default as EsportsIcon } from "../icons/E sports.svg";
+export { default as FootballClrIcon } from "../icons/Footballclr.svg";
+export { default as flatIcon } from "../icons/flat.svg";
+// export { default as footballIcon } from "../icons/Footballclr.svg";
+export { default as homeclrIcon } from "../icons/Home.svg";
+export { default as GroupclrIcon } from "../icons/Groupclr.svg";
+export { default as HorseIcon } from "../icons/HorseRacing.svg";
+export { default as greyhoundIcon } from "../icons/Greyhound.svg";
+export { default as EsportsIcon } from "../icons/ESports.svg";
+export { default as InstagramIcon } from "../icons/Instagram-live.svg";
+export { default as LiveClrIcon } from "../icons/liveClr.svg";
+export { default as LotteryIcon } from "../icons/Lottery.svg";
+export { default as IconHockeyIcon } from "../icons/Icehockey.svg";
+export { default as AmFootBallballIcon } from "../icons/American Football.svg";
+export { default as virtualclrIcon } from "../icons/vr-glasses 1.svg";
+export { default as RugbyIcon } from "../icons/Rugby.svg";
+export { default as AllSportsClrIcon} from "../icons/sports2.svg";
