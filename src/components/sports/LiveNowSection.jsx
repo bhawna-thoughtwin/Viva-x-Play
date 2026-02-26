@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { footballIcon, monitorIcon, chatIcon, liveIcon } from '../../assets/icons';
 
-const liveNowData = [
+export const liveNowData = [
   {
     score: '3823',
     liveTime: '20:34',
@@ -25,18 +25,18 @@ const liveNowData = [
 ];
 
 const ODD_COLS = [
-  { key: 'home',  label: '1' },
-  { key: 'draw',  label: 'Draw' },
-  { key: 'away',  label: '2' },
-  { key: 'over',  label: 'Over 4.5' },
+  { key: 'home', label: '1' },
+  { key: 'draw', label: 'Draw' },
+  { key: 'away', label: '2' },
+  { key: 'over', label: 'Over 4.5' },
   { key: 'under', label: 'Under 4.5' },
-  { key: 'x1',    label: '1X' },
-  { key: 'x12',   label: '12' },
-  { key: 'x2',    label: 'X2' },
+  { key: 'x1', label: '1X' },
+  { key: 'x12', label: '12' },
+  { key: 'x2', label: 'X2' },
 ];
 
-const LiveNowRow = ({ score, liveTime, league, team1, team2, score1, score2, odds }) => (
-  <div className="border border-[#e5e7eb] rounded-[8px] overflow-hidden bg-white">
+export const LiveNowRow = ({ score, liveTime, league, team1, team2, score1, score2, odds }) => (
+  <div className="border border-[#e5e7eb] rounded-[8px] overflow-hidden bg-white mb-3">
 
     {/* ── Top info bar ── */}
     <div className="flex items-center gap-2.5 px-3 py-2 bg-[#fafafa] border-b border-[#f0f0f0]">
@@ -74,7 +74,7 @@ const LiveNowRow = ({ score, liveTime, league, team1, team2, score1, score2, odd
 
     {/* ── Teams + Odds grid ── */}
     <div className="overflow-x-auto" style={{ scrollbarWidth: 'none' }}>
-      <table className="w-full min-w-[700px] border-collapse">
+      <table className="w-full min-w-[600px] border-collapse">
 
         {/* Column headers row */}
         <thead>
@@ -105,16 +105,9 @@ const LiveNowRow = ({ score, liveTime, league, team1, team2, score1, score2, odd
             </td>
             {ODD_COLS.map((col, i) => (
               <td key={col.key} className="px-1.5 py-2 text-center">
-                {i === 0 && (
-                  <button className="w-full min-w-[52px] h-[30px] px-2 bg-[#f5f5f7] hover:bg-[#1CD4FF] hover:text-white border border-[#e5e7eb] hover:border-[#1CD4FF] rounded-[6px] text-[12px] font-semibold text-[#1CD4FF] transition-colors cursor-pointer">
-                    {odds[col.key]}
-                  </button>
-                )}
-                {i !== 0 && (
-                  <button className="w-full min-w-[52px] h-[30px] px-2 bg-[#f5f5f7] hover:bg-[#1CD4FF] hover:text-white border border-[#e5e7eb] hover:border-[#1CD4FF] rounded-[6px] text-[12px] font-semibold text-[#222] transition-colors cursor-pointer">
-                    {odds[col.key]}
-                  </button>
-                )}
+                <button className={`w-full min-w-[52px] h-[30px] px-2 bg-[#f5f5f7] hover:bg-[#1CD4FF] hover:text-white border border-[#e5e7eb] hover:border-[#1CD4FF] rounded-[6px] text-[12px] font-semibold transition-colors cursor-pointer ${i === 0 ? 'text-[#1CD4FF]' : 'text-[#222]'}`}>
+                  {odds[col.key]}
+                </button>
               </td>
             ))}
           </tr>
@@ -172,8 +165,13 @@ const LiveNowSection = () => {
           <LiveNowRow key={i} {...match} />
         ))}
       </div>
+
+    {/* Match rows */}
+    <div className="flex flex-col">
+      {liveNowData.map((match, i) => (
+        <LiveNowRow key={i} {...match} />
+      ))}
+    </div>
     </div>
   );
 };
-
-export default LiveNowSection;
