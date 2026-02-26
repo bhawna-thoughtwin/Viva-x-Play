@@ -52,43 +52,40 @@ const topEventsData = [
   },
 ];
 
-const TopEventCard = ({ time, league, team1, team2, score1, score2, odds }) => (
-  <div className="shrink-0 w-[338px] h-[176px] bg-white border border-[#e5e7eb] rounded-[8px] px-4 py-3 flex flex-col justify-between cursor-pointer hover:border-[#1CD4FF] hover:shadow-sm transition-all box-border">
+export const TopEventCard = ({ time, league, team1, team2, score1, score2, odds }) => (
+  <div className="shrink-0 w-[410px] max-w-[calc(100vw-32px)] bg-white border border-[#E0E0E0] rounded-[10px] px-5 py-4 flex flex-col gap-4 cursor-pointer hover:border-[#1CD4FF]/50 transition-all shadow-sm">
 
-    {/* Top row: time + football icon + full league text + monitor icon */}
-    <div className="flex items-center justify-between gap-2">
-      <div className="flex items-center gap-1.5 min-w-0">
-        <span className="text-[12px] font-semibold text-[#4a4a4a] shrink-0">{time}</span>
-        <img src={footballIcon} alt="sport" className="w-[13px] h-[13px] object-contain opacity-60 shrink-0" />
-        <span className="text-[12px] text-[#6b7280] whitespace-nowrap overflow-hidden text-ellipsis">{league}</span>
+    {/* Top row: time + league + broadcast icon */}
+    <div className="flex items-center justify-between">
+      <div className="flex items-center gap-2 overflow-hidden flex-1">
+        <span className="text-[12px] font-bold text-[#1A1A1A] shrink-0">{time}</span>
+        <img src={footballIcon} alt="sport" className="w-3.5 h-3.5 opacity-40 shrink-0" />
+        <span className="text-[11px] font-semibold text-gray-500 truncate">{league}</span>
       </div>
-      <img src={monitorIcon} alt="broadcast" className="w-[14px] h-[14px] object-contain opacity-60 shrink-0 ml-2" />
+      <img src={monitorIcon} alt="broadcast" className="w-4 h-4 opacity-40 shrink-0 ml-4" />
     </div>
 
-    {/* Teams + scores */}
-    <div className="flex flex-col gap-1">
+    {/* Body: Teams + scores */}
+    <div className="flex flex-col gap-2">
       <div className="flex items-center justify-between">
-        <span className="text-[13px] font-semibold text-[#1a1a1a] truncate">{team1}</span>
-        <span className="text-[14px] font-bold text-[#1a1a1a] ml-3 shrink-0">{score1}</span>
+        <span className="text-[14px] font-bold text-[#1A1A1A] truncate pr-4">{team1}</span>
+        <span className="text-[14px] font-bold text-[#1A1A1A]">{score1}</span>
       </div>
       <div className="flex items-center justify-between">
-        <span className="text-[13px] font-semibold text-[#1a1a1a] truncate">{team2}</span>
-        <span className="text-[14px] font-bold text-[#1a1a1a] ml-3 shrink-0">{score2}</span>
+        <span className="text-[14px] font-bold text-[#1A1A1A] truncate pr-4">{team2}</span>
+        <span className="text-[14px] font-bold text-[#1A1A1A]">{score2}</span>
       </div>
     </div>
 
-    {/* Divider */}
-    <div className="h-px bg-[#f0f0f0] -mx-4" />
-
-    {/* Odds */}
-    <div className="flex gap-2">
+    {/* Footer: Odds Buttons */}
+    <div className="flex gap-3">
       {odds.map((odd, i) => (
         <button
           key={i}
-          className="flex-1 flex flex-col items-center gap-0.5 bg-[#f5f5f7] hover:bg-[#e8fafe] border border-transparent hover:border-[#1CD4FF] rounded-[6px] px-2 py-1.5 transition-colors cursor-pointer"
+          className="flex-1 flex flex-col items-center justify-center bg-[#F9FAFB] border border-[#F0F0F0] rounded-[8px] h-[58px] transition-all hover:border-[#1CD4FF] hover:bg-white active:scale-[0.98]"
         >
-          <span className="w-full text-center whitespace-nowrap overflow-hidden text-ellipsis" style={{ fontWeight: 590, fontSize: '14px', lineHeight: '100%', letterSpacing: '0%', color: '#6b7280' }}>{odd.label}</span>
-          <span className="text-[13px] font-bold text-[#1CD4FF]">{odd.value}</span>
+          <span className="text-[11px] font-bold text-gray-400 mb-0.5 uppercase tracking-wide truncate w-[90%] text-center">{odd.label}</span>
+          <span className="text-[15px] font-black text-[#1CD4FF] leading-none">{odd.value}</span>
         </button>
       ))}
     </div>
@@ -99,29 +96,16 @@ const TopEventsSection = () => {
   const scrollRef = useRef(null);
 
   return (
-    <div className="mt-6">
+    <div className="mt-0">
       {/* Header */}
-      <div className="flex items-center justify-between mb-3 gap-2">
-        <span className="text-[16px] md:text-[20px] font-bold text-[#121212] truncate min-w-0">Top Events</span>
-        <button
-          className="
-            shrink-0
-            border-2 border-[#1CD4FF] text-[#1CD4FF] bg-white
-            rounded-md md:rounded-lg
-            px-2.5 md:px-8
-            h-[28px] md:h-[44px]
-            text-[11px] md:text-[14px]
-            leading-none font-[590] cursor-pointer hover:bg-[#f0fdff] transition-colors whitespace-nowrap
-          "
-        >
-          View All
-        </button>
+      <div className="flex items-center justify-between mb-5">
+        <h2 className="text-[22px] font-bold text-black uppercase tracking-tight">Top Events</h2>
       </div>
 
       {/* Scrollable cards */}
       <div
         ref={scrollRef}
-        className="flex gap-3 overflow-x-auto pb-2"
+        className="flex gap-3 overflow-x-auto pb-4 scrollbar-hide"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {topEventsData.map((event, i) => (
