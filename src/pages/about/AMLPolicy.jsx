@@ -4,7 +4,7 @@ const AMLPolicy = () => {
   return (
     <div className="w-full max-w-[1188px] bg-[#f5f7fb] rounded-[12px] overflow-hidden shadow-[0_4px_18px_rgba(15,23,42,0.06)] mx-auto">
 
-      <PageHeader title="AML Policy" />
+      <PageHeader title="AML Policy" breadcrumb />
 
       <div
         className="bg-white mx-[20px] mb-[20px] px-4 sm:px-6 md:px-8 py-6 md:py-8 rounded-[8px] shadow-[0_4px_8px_0_rgba(0,0,0,0.1),0_3px_10px_0_rgba(0,0,0,0.08)]"

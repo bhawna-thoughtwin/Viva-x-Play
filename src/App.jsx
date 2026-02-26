@@ -21,6 +21,9 @@ import GlobalToaster from "./components/common/GlobalToaster";
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import FAQ from './pages/support/faq';
+import ContactSupport from './pages/support/ContactSupport';
+import ReferAFriend from './pages/ReferAFriend';
+import ProvidersPage from './pages/ProvidersPage';
 import ProfilePage from './pages/ProfilePage';
 import ProtectedRoute from './routes/ProtectedRoute';
 import Casino from './pages/Casino';
@@ -69,6 +72,10 @@ function App() {
                   <Route path="/about/self-exclusion-policy" element={<SelfExclusionPolicy />} />
                   <Route path="/about/terms-and-conditions" element={<TermsAndConditions />} />
                   <Route path="/support/faq" element={<FAQ />} />
+                  <Route path="/support/contact" element={<ContactSupport />} />
+                  <Route path="/refer-a-friend" element={<ReferAFriend />} />
+                  <Route path="/casino/providers" element={<ProvidersPage />} />
+                  <Route path="/live-casino/providers" element={<ProvidersPage />} />
                   <Route path='/profile' element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
                 
                 </Routes>

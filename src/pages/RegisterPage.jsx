@@ -2,14 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import loginLogo from '../assets/images/loginlogo.png';
 import loginPageImg from '../assets/images/loginpage.png';
-import bottom1 from '../assets/images/bottom.png';
-import bottom2 from '../assets/images/bottom2.png';
-import bottom3 from '../assets/images/bottom3.png';
-import bottom4 from '../assets/images/bottom4.png';
 import toast from 'react-hot-toast';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
-
-
 const RegisterPage = () => {
   const navigate = useNavigate();
 

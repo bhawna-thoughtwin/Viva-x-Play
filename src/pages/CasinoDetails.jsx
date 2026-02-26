@@ -14,11 +14,11 @@ import g4 from '../assets/images/duckhunter.png';
 import g5 from '../assets/images/fortunetiger.png';
 import g6 from '../assets/images/knockoutriches.png';
 import g7 from '../assets/images/bookoftime.png';
-import g8 from '../assets/images/juicyfruit.png';
+import g8 from '../assets/images/aviamasters.png';
 import g9 from '../assets/images/monkeypop2.png';
-import g10 from '../assets/images/pinko.png';
+import g10 from '../assets/images/aviamasters.png';
 import g11 from '../assets/images/skyroulette.png';
-import g12 from '../assets/images/sugarrush.png';
+import g12 from '../assets/images/new4.png';
 import n1 from '../assets/images/new1.png';
 import n2 from '../assets/images/new2.png';
 import n3 from '../assets/images/new3.png';
@@ -48,9 +48,9 @@ const categoryMeta = {
   newrelease: { label: 'New Releases', icon: newReleaseIcon },
 };
 
-const buildGames = (count = 24) =>
+const buildGames = (count = 24, shuffled) =>
   Array.from({ length: count }, (_, i) => ({
-    image: allImages[i % allImages.length],
+    image: shuffled[i % shuffled.length],
     name: allGameNames[i % allGameNames.length],
   }));
 
@@ -66,7 +66,10 @@ const CasinoDetails = () => {
   const [sortOpen, setSortOpen] = useState(false);
   const [activeFilters, setActiveFilters] = useState([]);
 
-  const games = useMemo(() => buildGames(24), []);
+  const games = useMemo(() => {
+    const shuffled = [...allImages].sort(() => Math.random() - 0.5);
+    return buildGames(24, shuffled);
+  }, [category]);
 
   const filtered = useMemo(() => {
     let list = games.filter((g) =>

@@ -115,7 +115,7 @@ const LiveCasino = () => {
             />
           ))}
         </div>
-        <Casinoprovider/>
+        <Casinoprovider from="live-casino" />
 
       </div>
     </div>

@@ -43,6 +43,7 @@ export {default as resultIcon } from "./result.svg";
 export {default as liveStremingIcon } from "./live-stream.svg";
 export {default as AllSportsIcon } from "./all-sports.svg";
 export {default as superjackIcon} from "./superjack.svg";
+export {default as sentEmailIcon } from "./sent-mail 1.svg";
 
 
 // Athlete/Player Images

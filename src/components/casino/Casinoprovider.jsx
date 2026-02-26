@@ -1,31 +1,22 @@
 import { useCallback, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import useEmblaCarousel from 'embla-carousel-react';
 import {
     ChevronLeftIcon, ChevronRightIcon, providerIcon
 } from '../../assets/icons';
 
 import providerimage1 from "../../assets/images/providerimage1.svg";
-import providerimg from "../../assets/images/providerimg.png";
 import providerimg2 from "../../assets/images/providerimg2.svg";
 import providerimg3 from "../../assets/images/providerimg3.svg";
 
 const providers = [
-    { id: 1, image: providerimage1, name: "Pragmatic Play" },
-    { id: 2, image: providerimg2, name: "Skywind", useFigmaFrame: true },
-    { id: 3, image: providerimg3, name: "Creedroomz" },
-    { id: 4, image: providerimg, name: "Pragmatic Play" },
-    { id: 5, image: providerimg2, name: "Skywind", useFigmaFrame: true },
-    { id: 6, image: providerimg, name: "Pragmatic Play" },
-    { id: 7, image: providerimg2, name: "Skywind", useFigmaFrame: true },
+    { id: 1, image: providerimage1, name: "Pragmatic Play", fullCard: true },
+    { id: 2, image: providerimg2, name: "Skywind", fullCard: true },
+    { id: 3, image: providerimg3, name: "Creedroomz", fullCard: true },
+    { id: 4, image: providerimg2, name: "Skywind", fullCard: true },
+    { id: 5, image: providerimg2, name: "Skywind", fullCard: true },
+    { id: 6, image: providerimg2, name: "Skywind", fullCard: true },
 ];
-
-const SkywindProviderCard = () => (
-    <img
-        src={providerimg2}
-        alt="Skywind"
-        className="flex-shrink-0 w-[250px] h-[93px] object-contain"
-    />
-);
 const ChevronLeft = () => (
     <img src={ChevronLeftIcon} alt="left" className="w-[18px] h-[18px] object-contain" />
 );
@@ -33,7 +24,8 @@ const ChevronRight = () => (
     <img src={ChevronRightIcon} alt="right" className="w-[18px] h-[18px] object-contain" />
 );
 
-const Casinoprovider = () => {
+const Casinoprovider = ({ from = 'casino' }) => {
+    const navigate = useNavigate();
     const [emblaRef, emblaApi] = useEmblaCarousel({
         loop: true,
         align: 'start',
@@ -46,7 +38,7 @@ const Casinoprovider = () => {
 
     useEffect(() => {
         if (!emblaApi) return;
-        const interval = setInterval(() => emblaApi.scrollNext(), 3000);
+        const interval = setInterval(() => emblaApi.scrollNext(), 2000);
         return () => clearInterval(interval);
     }, [emblaApi]);
 
@@ -90,7 +82,9 @@ const Casinoprovider = () => {
                     <div className="hidden md:block w-px h-[44px] bg-[#6b7280]/30" />
 
                     {/* See All */}
-                    <button className="border-2 border-[#1CD4FF] text-[#1CD4FF] bg-white rounded-lg px-4 md:px-8 h-[36px] md:h-[44px] text-[14px] leading-[20px] font-[590] cursor-pointer hover:bg-[#f0fdff] transition-colors whitespace-nowrap">
+                    <button
+                        onClick={() => navigate(`/${from}/providers`)}
+                        className="border-2 border-[#1CD4FF] text-[#1CD4FF] bg-white rounded-lg px-4 md:px-8 h-[36px] md:h-[44px] text-[14px] leading-[20px] font-[590] cursor-pointer hover:bg-[#f0fdff] transition-colors whitespace-nowrap">
                         View All
                     </button>
                 </div>
@@ -100,19 +94,23 @@ const Casinoprovider = () => {
             <div className="overflow-hidden" ref={emblaRef}>
                 <div className="flex gap-3" style={{ backfaceVisibility: 'hidden' }}>
                 {providers.map((provider, index) =>
-                    provider.useFigmaFrame ? (
-                        <div key={`${provider.id}-${index}`} className="flex-shrink-0">
-                            <SkywindProviderCard />
+                    provider.fullCard ? (
+                        <div key={`${provider.id}-${index}`} className="flex-shrink-0 w-[250px] h-[93px]">
+                            <img
+                                src={provider.image}
+                                alt={provider.name}
+                                className="w-[250px] h-[93px] object-contain rounded-lg"
+                            />
                         </div>
                     ) : (
                         <div
                             key={`${provider.id}-${index}`}
-                            className="flex-shrink-0 min-w-[140px] md:min-w-[250px] h-[93px] bg-[#F3F4F6] rounded-lg flex items-center justify-center px-4"
+                            className="flex-shrink-0 w-[250px] h-[93px] bg-[#F3F4F6] rounded-lg flex items-center justify-center px-4"
                         >
                             <img
                                 src={provider.image}
                                 alt={provider.name}
-                                className="max-h-[32px] max-w-[200px] object-contain"
+                                className="max-h-[56px] max-w-[200px] object-contain"
                             />
                         </div>
                     )

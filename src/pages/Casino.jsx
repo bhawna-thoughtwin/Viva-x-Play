@@ -108,13 +108,17 @@ const Casino = () => {
               key={section.key}
               title={section.label}
               icon={section.icon}
-              games={section.games}
+              games={
+                activeFilter === 'lobby' || activeFilter === 'all'
+                  ? section.games
+                  : section.games.slice(0, 5)
+              }
               categoryKey={section.key}
               basePath="/casino"
             />
           ))}
         </div>
-        <Casinoprovider/>
+        <Casinoprovider from="casino" />
 
         {/* ── Latest Bets ── */}
         <LatestBet />

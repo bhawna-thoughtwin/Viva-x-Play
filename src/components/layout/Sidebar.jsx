@@ -54,7 +54,7 @@ const aboutLinks = [
 ];
 const supportLinks = [
   { label: 'FAQ', path: '/support/faq', icon: faqIcon, inactiveIcon: question1 },
-  { label: 'Contact', path: '/support/contact', icon: envelopeIcon, disabled: true },
+  { label: 'Contact', path: '/support/contact', icon: envelopeIcon },
   { label: 'Chat', path: '/support/chat', icon: chatIcon, disabled: true },
 ];
 
@@ -67,7 +67,7 @@ const menuGroups = [
   ],
   [
      { label: 'Promotions', icon: promotionsIcon, path: '/promotion' },
-    { label: 'Refer a friend', icon: referIcon },
+    { label: 'Refer a friend', icon: referIcon, path: '/refer-a-friend' },
     { label: 'Welcome Bonuses', icon: bonusIcon },
   
   ],

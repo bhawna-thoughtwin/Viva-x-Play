@@ -72,17 +72,17 @@ const Navbar = () => {
 
         {/* Login */}
         <button
-          className={`bg-[#121212] text-white px-[6px] md:px-[10px] pt-[3px] md:pt-[4px] pb-[3px] md:pb-[4px] w-[55px] sm:w-[70px] md:w-[90px] h-[40px] md:h-[44px] rounded-[6px] md:rounded-[8px] text-[9px] sm:text-[10px] md:text-[12px] font-[500] uppercase border-2 border-[#1cd4ff] cursor-pointer transition-all duration-200 ${
+          className={`bg-[#121212] text-white px-[6px] md:px-[10px] pt-[3px] md:pt-[4px] pb-[3px] md:pb-[4px] w-[55px] sm:w-[70px] md:w-[90px] h-[40px] md:h-[44px] rounded-[6px] md:rounded-[8px] text-[9px] sm:text-[10px] md:text-[12px] font-[500] border-2 border-[#1cd4ff] cursor-pointer transition-all duration-200 ${
             isLoggedIn ? 'hidden md:block' : 'block'
           }`}
           onClick={() => navigate('/login')}
         >
-          LOGIN
+          Login
         </button>
 
         {/* Register */}
         <button
-          className={`bg-[#1cd4ff] text-[#121212] px-[6px] md:px-[10px] pt-[3px] md:pt-[4px] pb-[3px] md:pb-[4px] w-[70px] sm:w-[90px] md:w-[122px] h-[40px] md:h-[44px] rounded-[6px] md:rounded-[8px] text-[9px] sm:text-[10px] md:text-[12px] font-[510] uppercase cursor-pointer border-none transition-all duration-200 ${
+          className={`bg-[#1cd4ff] text-[#FFFFFF] px-[6px] md:px-[10px] pt-[3px] md:pt-[4px] pb-[3px] md:pb-[4px] w-[70px] sm:w-[90px] md:w-[122px] h-[40px] md:h-[44px] rounded-[6px] md:rounded-[8px] text-[9px] sm:text-[10px] md:text-[12px] font-[510] cursor-pointer border-none transition-all duration-200 ${
             isLoggedIn ? 'hidden md:block' : 'block'
           }`}
           onClick={() => navigate('/register')}

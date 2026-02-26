@@ -11,16 +11,20 @@ const FAQ = () => {
 
     return (
         <>
-            <div className="flex items-center gap-2 text-[13px] text-[#6b7280] py-0 ">
+            {/* ── Breadcrumb ── */}
+            <nav className="flex items-center gap-2 text-[13px] text-[#6b7280] mb-4 mt-4">
                 <button
                     onClick={() => navigate('/')}
-                    className="hover:text-[#1CD4FF] transition-colors font-medium cursor-pointer"
+                    className="bg-transparent border-none cursor-pointer p-0 hover:text-[#1CD4FF] transition-colors font-medium"
                 >
                     Home
                 </button>
                 <span className="text-[#ccc]">›</span>
-                {/* <span className="text-[#333] font-semibold">{meta.label}</span> */}
-            </div>
+                <span className="text-[#6b7280]">Support</span>
+                <span className="text-[#ccc]">›</span>
+                <span className="text-[#0D0C22] font-semibold">FAQ's</span>
+            </nav>
+
             <PageHeader title="FAQ's" />
 
             <div className="w-full flex flex-col md:flex-row gap-4 md:gap-6">
@@ -34,10 +38,14 @@ const FAQ = () => {
                                 setActiveCategory(category);
                                 setOpenIndex(null);
                             }}
-                            className={`w-full text-left px-4 py-2 rounded-lg mb-2 transition ${activeCategory === category
-                                ? "bg-[#1cd4ff] text-white font-semibold"
+                            className={`w-full text-left px-4 py-2 rounded-lg mb-2 transition font-medium ${activeCategory === category
+                                ? "text-white font-semibold"
                                 : "hover:bg-gray-100 text-[#555]"
                                 }`}
+                        style={activeCategory === category
+                            ? { background: 'linear-gradient(90deg, #117F99 0%, #1CD4FF 100%)' }
+                            : {}
+                        }
                         >
                             {category}
                         </button>
