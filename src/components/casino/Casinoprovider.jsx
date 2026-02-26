@@ -4,12 +4,13 @@ import {
     ChevronLeftIcon, ChevronRightIcon, providerIcon
 } from '../../assets/icons';
 
+import providerimage1 from "../../assets/images/providerimage1.svg";
 import providerimg from "../../assets/images/providerimg.png";
 import providerimg2 from "../../assets/images/providerimg2.svg";
 import providerimg3 from "../../assets/images/providerimg3.svg";
 
 const providers = [
-    { id: 1, image: providerimg, name: "Pragmatic Play" },
+    { id: 1, image: providerimage1, name: "Pragmatic Play" },
     { id: 2, image: providerimg2, name: "Skywind", useFigmaFrame: true },
     { id: 3, image: providerimg3, name: "Creedroomz" },
     { id: 4, image: providerimg, name: "Pragmatic Play" },
