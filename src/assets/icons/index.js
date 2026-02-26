@@ -35,6 +35,15 @@ export { default as ChevronRightIcon } from './chevronright.svg';
 export {default as providerIcon} from './providericon.svg';
 export {default as monitorIcon} from './monitor1.svg';
 export {default as footballIcon} from './Football.svg';
+export {default as homeIcon} from './home2.svg';
+export {default as question1} from "./question1.svg";
+export {default as gameshowIcon} from "./gameshow.svg";
+export {default as virtualIcon } from "./vr-game.svg";
+export {default as resultIcon } from "./result.svg";
+export {default as liveStremingIcon } from "./live-stream.svg";
+export {default as AllSportsIcon } from "./all-sports.svg";
+export {default as superjackIcon} from "./superjack.svg";
+
 
 // Athlete/Player Images
 export { default as volleyballPlayer1 } from './volleyball-player 1.png';

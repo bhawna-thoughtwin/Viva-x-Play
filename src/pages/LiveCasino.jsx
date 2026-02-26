@@ -6,7 +6,7 @@ import PromotionsSection from '../components/home/PromotionsSection';
 import {
   rouletteIcon, blackjackIcon, pokerIcon,
   baccaratIcon, liveDealerIconAlt, monitorIcon,
-  selectAllIcon, HomeIcon,
+  selectAllIcon, HomeIcon,homeIcon
 } from "../assets/icons";
 
 /* ── Game images ── */
@@ -48,7 +48,7 @@ const pool8b = [
 ];
 
 const liveCasinoFilters = [
-  { key: 'lobby',      label: 'Lobby',           iconImg: HomeIcon },
+  { key: 'lobby',      label: 'Lobby',           iconImg: HomeIcon ,inactiveIconImg: homeIcon},
   { key: 'all',        label: 'All',             iconImg: selectAllIcon },
   { key: 'roulette',   label: 'Roulette',        iconImg: rouletteIcon },
   { key: 'blackjack',  label: 'Blackjack',       iconImg: blackjackIcon },

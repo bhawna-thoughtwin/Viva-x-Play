@@ -6,7 +6,6 @@ const SelfExclusionPolicy = () => {
       <PageHeader title="Self-Exclusion Policy" />
 
       <div
-        style={{ fontFamily: "SF Pro, -apple-system, BlinkMacSystemFont, sans-serif" }}
         className="bg-white mx-[20px] mb-[20px] px-4 sm:px-6 md:px-8 py-6 md:py-8 rounded-[8px] shadow-[0_4px_8px_0_rgba(0,0,0,0.1),0_3px_10px_0_rgba(0,0,0,0.08)]"
       >
 

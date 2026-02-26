@@ -200,7 +200,7 @@ const LiveDot = () => (
   <span className="inline-flex items-center justify-center w-[24px] h-[24px]">
     <svg width="17" height="12" viewBox="0 0 17 12" fill="none">
       <rect x="0" y="0" width="17" height="12" rx="3" fill="#E60026"/>
-      <text x="8.5" y="9" textAnchor="middle" fill="white" fontSize="8" fontWeight="bold" fontFamily="SF Pro, sans-serif">LIVE</text>
+      <text x="8.5" y="9" textAnchor="middle" fill="white" fontSize="8" fontWeight="bold" >LIVE</text>
     </svg>
   </span>
 );

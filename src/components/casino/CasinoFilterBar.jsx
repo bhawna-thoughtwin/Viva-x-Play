@@ -3,7 +3,7 @@ import SearchBar from '../common/SearchBar';
 import {
   slotsIcon, rouletteIcon, blackjackIcon, pokerIcon,
   crashIcon, baccaratIcon, jackpotIcon, newReleaseIcon,
-  searchIcon,selectAllIcon,HomeIcon
+  searchIcon, selectAllIcon, homeIcon
 } from '../../assets/icons';
 
 /* Home / Lobby icon */
@@ -30,7 +30,7 @@ const GridIcon = ({ active }) => (
 );
 
 const filters = [
-  { key: 'lobby',       label: 'Lobby',       iconImg: HomeIcon},
+  { key: 'lobby',       label: 'Lobby',       iconImg: homeIcon },
   { key: 'all',         label: 'All',         iconImg: selectAllIcon },
   { key: 'slots',       label: 'Slots',       iconImg: slotsIcon,      IconComp: null },
   { key: 'roulette',    label: 'Roulette',    iconImg: rouletteIcon,   IconComp: null },
@@ -57,7 +57,7 @@ const CasinoFilterBar = ({ activeFilter, onFilterChange, customFilters }) => {
         className="flex items-center gap-2 md:gap-3 overflow-x-auto pb-1"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
-        {displayFilters.map(({ key, label, iconImg, IconComp }) => {
+        {displayFilters.map(({ key, label, iconImg, inactiveIconImg, IconComp }) => {
           const isActive = activeFilter === key;
           return (
             <button
@@ -65,17 +65,17 @@ const CasinoFilterBar = ({ activeFilter, onFilterChange, customFilters }) => {
               onClick={() => onFilterChange(key)}
               className={`flex items-center gap-1.5 shrink-0 px-3 md:px-4 h-[44px] rounded-md text-[14px] md:text-[15px] font-medium cursor-pointer transition-colors whitespace-nowrap border
                 ${isActive
-                  ? 'bg-[#1CD4FF] border-[#1CD4FF] text-white'
-                  : 'bg-white border-[#1CD4FF] text-[#333] hover:bg-[#f0fdff]'
+                  ? 'bg-[#1F2937] border-[#1F2937] text-white'
+                  : 'bg-white text-[#333] hover:bg-[#f0fdff]'
                 }`}
             >
               {/* SVG component icons (Lobby, All) */}
               {IconComp && <IconComp active={isActive} />}
 
               {/* Image icons (Slots, Roulette…) */}
-              {iconImg && (
+              {(iconImg || inactiveIconImg) && (
                 <img
-                  src={iconImg}
+                  src={isActive ? iconImg : (inactiveIconImg || iconImg)}
                   alt={label}
                   className="w-[18px] h-[18px] object-contain shrink-0"
                   style={isActive ? { filter: 'brightness(0) invert(1)' } : {}}

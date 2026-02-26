@@ -34,8 +34,7 @@ const SectionHeader = ({ icon, title, subtitle, onViewAll }) => {
             px-2.5 md:px-8
             h-[28px] md:h-[44px]
             text-[11px] md:text-[14px]
-            leading-none font-[590] font-['SF_Pro']
-            cursor-pointer hover:bg-[#f0fdff] transition-colors
+            leading-none font-[590] cursor-pointer hover:bg-[#f0fdff] transition-colors
             whitespace-nowrap
           "
         >

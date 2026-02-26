@@ -9,10 +9,10 @@ import { selectAllIcon, sportsIconPng, casinoIcon, liveDealerIconAlt, promotions
 
 /* ── Filter tabs ── */
 const tabs = [
-  { label: 'All',         icon: selectAllIcon },
-  { label: 'Sports',      icon: sportsIconPng },
-  { label: 'Casino',      icon: casinoIcon },
-  { label: 'Live Casino', icon: liveDealerIconAlt },
+    { label: 'All', icon: selectAllIcon },
+    { label: 'Sports', icon: sportsIconPng },
+    { label: 'Casino', icon: casinoIcon },
+    { label: 'Live Casino', icon: liveDealerIconAlt },
 ];
 
 /* ── Promotions data ── */
@@ -56,7 +56,7 @@ const PromotionsGrid = () => {
     return (
         /* outer: add px-3 on mobile so cards don't touch screen edges */
         <div className="w-full flex flex-col gap-4 md:gap-5 pb-10 px-3 md:pl-0 md:pr-4 mt-4 md:mt-5">
-<nav className="hidden md:flex items-center gap-1.5 md:gap-2 text-[12px] md:text-[13px] flex-wrap">
+            <nav className="hidden md:flex items-center gap-1.5 md:gap-2 text-[12px] md:text-[13px] flex-wrap">
                 <button
                     onClick={() => navigate('/')}
                     className="bg-transparent border-none cursor-pointer text-[#666] hover:text-[#0D0C22] p-0 transition-colors"
@@ -70,7 +70,7 @@ const PromotionsGrid = () => {
                 >
                     Promotions
                 </button>
-                
+
             </nav>
             {/* ── Promotions header ── */}
             <div
@@ -93,13 +93,13 @@ const PromotionsGrid = () => {
                     {/* Rounded container */}
                     <div className="inline-flex items-center gap-1 bg-[#f5f5f7] rounded-[10px] p-1 min-w-max">
 
-                      {tabs.map(({ label, icon }) => {
-                        const isActive = activeTab === label;
-                        return (
-                          <button
-                            key={label}
-                            onClick={() => setActiveTab(label)}
-                            className={`
+                        {tabs.map(({ label, icon }) => {
+                            const isActive = activeTab === label;
+                            return (
+                                <button
+                                    key={label}
+                                    onClick={() => setActiveTab(label)}
+                                    className={`
                               flex items-center gap-2
                               px-4 py-2
                               rounded-[8px]
@@ -108,23 +108,23 @@ const PromotionsGrid = () => {
                               whitespace-nowrap cursor-pointer
                               transition-all duration-200 shrink-0
                               ${isActive
-                                ? 'bg-[#0D0C22] text-white shadow-md'
-                                : 'bg-transparent text-[#0D0C22] hover:bg-white/70'
-                              }
+                                            ? 'bg-[#0D0C22] text-white shadow-md'
+                                            : 'bg-transparent text-[#0D0C22] hover:bg-white/70'
+                                        }
                             `}
-                          >
-                            {icon && (
-                              <img
-                                src={icon}
-                                alt={label}
-                                className="w-[16px] h-[16px] object-contain shrink-0"
-                                style={isActive ? { filter: 'brightness(0) invert(1)' } : {}}
-                              />
-                            )}
-                            {label}
-                          </button>
-                        );
-                      })}
+                                >
+                                    {icon && (
+                                        <img
+                                            src={icon}
+                                            alt={label}
+                                            className="w-[16px] h-[16px] object-contain shrink-0"
+                                            style={isActive ? { filter: 'brightness(0) invert(1)' } : {}}
+                                        />
+                                    )}
+                                    {label}
+                                </button>
+                            );
+                        })}
 
                     </div>
 

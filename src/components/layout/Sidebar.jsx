@@ -11,25 +11,35 @@ import referIcon from '../../assets/icons/icon-refer.svg';
 import bonusIcon from '../../assets/icons/icon-bonus.svg';
 import supportIcon from '../../assets/icons/icon-support.svg';
 import aboutIcon from '../../assets/icons/icon-about.svg';
-import { chatIcon, faqIcon, envelopeIcon, profileIcon, slotsIcon, rouletteIcon, blackjackIcon, pokerIcon, crashIcon, baccaratIcon, jackpotIcon, newReleaseIcon, casinoDiceIcon, monitorIcon } from '../../assets/icons';
+import { chatIcon, faqIcon, envelopeIcon, profileIcon, slotsIcon, rouletteIcon, blackjackIcon, pokerIcon, crashIcon, baccaratIcon, jackpotIcon, newReleaseIcon, casinoDiceIcon, question1,gameshowIcon,virtualIcon,resultIcon,liveStremingIcon,AllSportsIcon,homeIcon,superjackIcon} from '../../assets/icons';
+// import gameshowIcon from '../../assets/icons/gameshow.svg';
+const sportsLinks = [
+  { label: 'Lobby',       icon: homeIcon,      path: '/sports/lobby' },
+  { label: 'Live',    icon: rouletteIcon,   path: '/sports/live' },
+  { label: 'Virtual',   icon: virtualIcon,  path: '/sports/virtual' },
+  { label: 'Superjack',       icon: superjackIcon,      path: '/sports/superjack' },
+  { label: 'Streaming',       icon: liveStremingIcon,      path: '/sports/streaming' },
+  { label: 'All Sports',    icon: AllSportsIcon,   path: '/sports/all-sports' },
+  { label: 'Result',     icon: resultIcon,    path: '/sports/result' },
+];
 
 const casinoLinks = [
-  { label: 'Slots', icon: slotsIcon },
-  { label: 'Roulette', icon: rouletteIcon },
-  { label: 'Blackjack', icon: blackjackIcon },
-  { label: 'Poker', icon: pokerIcon },
-  { label: 'Crash', icon: crashIcon },
-  { label: 'Baccarat', icon: baccaratIcon },
-  { label: 'Jackpot', icon: jackpotIcon },
-  { label: 'New Release', icon: newReleaseIcon },
+  { label: 'Slots',       icon: slotsIcon,      path: '/casino/slots' },
+  { label: 'Roulette',    icon: rouletteIcon,   path: '/casino/roulette' },
+  { label: 'Blackjack',   icon: blackjackIcon,  path: '/casino/blackjack' },
+  { label: 'Poker',       icon: pokerIcon,      path: '/casino/poker' },
+  { label: 'Crash',       icon: crashIcon,      path: '/casino/crash' },
+  { label: 'Baccarat',    icon: baccaratIcon,   path: '/casino/baccarat' },
+  { label: 'Jackpot',     icon: jackpotIcon,    path: '/casino/jackpot' },
+  { label: 'New Release', icon: newReleaseIcon, path: '/casino/newrelease' },
 ];
 
 const liveCasinoLinks = [
-  { label: 'Roulette', icon: rouletteIcon, path: '/live-casino?filter=roulette' },
-  { label: 'Blackjack', icon: blackjackIcon, path: '/live-casino?filter=blackjack' },
-  { label: 'Poker', icon: pokerIcon, path: '/live-casino?filter=poker' },
-  { label: 'Baccarat & Dice', icon: casinoDiceIcon, path: '/live-casino?filter=baccarat' },
-  { label: 'Game Shows', icon: monitorIcon, path: '/live-casino?filter=gameshows' },
+  { label: 'Roulette', icon: rouletteIcon, path: '/live-casino/roulette' },
+  { label: 'Blackjack', icon: blackjackIcon, path: '/live-casino/blackjack' },
+  { label: 'Poker', icon: pokerIcon, path: '/live-casino/poker' },
+  { label: 'Baccarat & Dice', icon: casinoDiceIcon, path: '/live-casino/baccarat' },
+  { label: 'Game Shows', icon: gameshowIcon, path: '/live-casino/gameshows' },
 ];
 
 const aboutLinks = [
@@ -43,7 +53,7 @@ const aboutLinks = [
   { label: 'Terms & Conditions', path: '/about/terms-and-conditions' },
 ];
 const supportLinks = [
-  { label: 'FAQ', path: '/support/faq', icon: faqIcon },
+  { label: 'FAQ', path: '/support/faq', icon: faqIcon, inactiveIcon: question1 },
   { label: 'Contact', path: '/support/contact', icon: envelopeIcon, disabled: true },
   { label: 'Chat', path: '/support/chat', icon: chatIcon, disabled: true },
 ];
@@ -51,7 +61,7 @@ const supportLinks = [
 /* Groups with dividers between them — matches Figma layout */
 const menuGroups = [
   [
-    { label: 'Sports', icon: sportsIcon, path: '/sports' },
+    { label: 'Sports', icon: sportsIcon, path: '/sports' ,expandable: true, children: sportsLinks},
     { label: 'Casino', icon: casinoIcon, expandable: true, path: '/casino', children: casinoLinks },
     { label: 'Live Casino', icon: liveDealerIcon, expandable: true, path: '/live-casino', children: liveCasinoLinks },
   ],
@@ -92,8 +102,9 @@ const Sidebar = () => {
   const isLoggedIn = !!user;
   const [expanded, setExpanded] = useState(() => {
     const path = window.location.pathname;
-    if (path === '/casino') return { Casino: true };
-    if (path === '/live-casino') return { 'Live Casino': true };
+    if (path === '/sports' || path.startsWith('/sports/')) return { Sports: true };
+    if (path === '/casino' || path.startsWith('/casino/')) return { Casino: true };
+    if (path === '/live-casino' || path.startsWith('/live-casino/')) return { 'Live Casino': true };
     return {};
   });
   const [activeSubItem, setActiveSubItem] = useState(null);
@@ -157,7 +168,7 @@ const Sidebar = () => {
                   {/* ── Expandable (Casino / Support / About Us) ── */}
                   {item.expandable ? (
                     (() => {
-                      const isActive = item.path && location.pathname === item.path;
+                      const isActive = item.path && (location.pathname === item.path || location.pathname.startsWith(item.path + '/'));
                       return (
                         <button
                           className={`flex items-center gap-3 w-full border-none outline-none cursor-pointer px-2 py-[11px] text-[15px] font-medium text-left rounded-lg transition-all ${
@@ -229,8 +240,7 @@ const Sidebar = () => {
                   <div className="flex flex-col py-1 gap-[2px] ml-[20px] md:ml-[30px]">
                       {item.children.map((child) => {
                         const isChildActive = child.path
-                          ? `${location.pathname}${location.search}` === child.path ||
-                            activeSubItem === child.label
+                          ? location.pathname === child.path || activeSubItem === child.label
                           : activeSubItem === child.label;
                         return (
                           <button
@@ -253,9 +263,9 @@ const Sidebar = () => {
                               }
                             }}
                           >
-                            {child.icon && (
+                            {(child.icon || child.inactiveIcon) && (
                               <img
-                                src={child.icon}
+                                src={isChildActive ? child.icon : (child.inactiveIcon || child.icon)}
                                 alt={child.label}
                                 className="w-[24px] h-[16px] object-contain shrink-0"
                                 style={isChildActive ? { filter: 'brightness(0) invert(1)' } : { opacity: 0.7 }}

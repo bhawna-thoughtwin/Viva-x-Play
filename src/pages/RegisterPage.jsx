@@ -14,18 +14,20 @@ const RegisterPage = () => {
   const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
-  const [remember, setRemember] = useState(false);
+  const [agreeTerms, setAgreeTerms] = useState(false);
+  const [agreeMarketing, setAgreeMarketing] = useState(false);
 
-  //  Dummy register states
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [dob, setDob] = useState('');
+  const [country, setCountry] = useState('');
 
   const handleRegister = (e) => {
     e.preventDefault();
 
-    if (!username || !email || !password) {
-      alert("Please fill all fields");
+    if (!username || !email || !password || !dob || !country) {
+      toast.error("Please fill all fields");
       return;
     }
 
@@ -33,6 +35,8 @@ const RegisterPage = () => {
       username,
       email,
       password,
+      dob,
+      country,
     };
 
     // Save to localStorage
@@ -61,8 +65,8 @@ const RegisterPage = () => {
                 style={{ border: '1px solid #1CD4FF80' }}
               >
                 <button
-                  className="flex-1 h-full px-[10px] py-1 rounded-[2px] cursor-pointer text-[14px] font-bold text-[#1a1a1a] border-none box-border"
-                  style={{ background: 'linear-gradient(180deg, #E3FC7B 0%, #C2D95A 100%)' }}
+                className="flex-1 h-full px-[10px] py-1 rounded-md cursor-pointer text-[14px] font-bold text-[#FFFFFF] border-none box-border"
+                  style={{ background: 'linear-gradient(180deg,  #1F2937 0%, #1F2937 100%)' }}
                   onClick={() => navigate('/register')}
                 >
                   Register
@@ -139,16 +143,80 @@ const RegisterPage = () => {
                     </div>
                   </div>
 
-                  {/* Remember */}
-                  <div className="flex items-center justify-between">
-                    <label className="flex items-center gap-2 cursor-pointer">
+                  {/* Date of Birth */}
+                  <div className="flex flex-col gap-[6px]">
+                    <label className="text-[13px] font-medium text-[#555555]">Date of Birth</label>
+                    <div className="relative flex items-center">
+                      <input
+                        type="date"
+                        value={dob}
+                        onChange={(e) => setDob(e.target.value)}
+                        className="w-full px-[14px] py-3 rounded-[8px] border border-[#e0e0e0] text-[14px] text-[#111111] outline-none box-border bg-[#fafafa] appearance-none"
+                        style={{ colorScheme: 'light' }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Country */}
+                  <div className="flex flex-col gap-[6px]">
+                    <label className="text-[13px] font-medium text-[#555555]">Country</label>
+                    <div className="relative flex items-center">
+                      <select
+                        value={country}
+                        onChange={(e) => setCountry(e.target.value)}
+                        className="w-full px-[14px] py-3 rounded-[8px] border border-[#e0e0e0] text-[14px] outline-none box-border bg-[#fafafa] appearance-none cursor-pointer"
+                        style={{ color: country ? '#111111' : '#999999' }}
+                      >
+                        <option value="" disabled>Select Country</option>
+                        <option value="US">United States</option>
+                        <option value="GB">United Kingdom</option>
+                        <option value="CA">Canada</option>
+                        <option value="AU">Australia</option>
+                        <option value="IN">India</option>
+                        <option value="DE">Germany</option>
+                        <option value="FR">France</option>
+                        <option value="BR">Brazil</option>
+                        <option value="MX">Mexico</option>
+                        <option value="JP">Japan</option>
+                        <option value="ZA">South Africa</option>
+                        <option value="NG">Nigeria</option>
+                        <option value="PH">Philippines</option>
+                        <option value="PK">Pakistan</option>
+                        <option value="BD">Bangladesh</option>
+                        <option value="OTHER">Other</option>
+                      </select>
+                      <span className="pointer-events-none absolute right-[14px]">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                          <path d="M6 9l6 6 6-6" stroke="#999" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Checkboxes */}
+                  <div className="flex flex-col gap-[10px]">
+                    <label className="flex items-start gap-2 cursor-pointer">
                       <input
                         type="checkbox"
-                        checked={remember}
-                        onChange={e => setRemember(e.target.checked)}
-                        className="w-4 h-4 cursor-pointer accent-[#1cd4ff]"
+                        checked={agreeTerms}
+                        onChange={e => setAgreeTerms(e.target.checked)}
+                        className="w-4 h-4 mt-[2px] cursor-pointer accent-[#1cd4ff] shrink-0"
                       />
-                      <span className="text-[13px] text-[#333333]">Remember me</span>
+                      <span className="text-[13px] text-[#333333] leading-snug">
+                        I confirm that I am 18+ and agree to the{' '}
+                        <span className="underline cursor-pointer text-[#111111] font-medium">Terms &amp; Conditions</span>.
+                      </span>
+                    </label>
+                    <label className="flex items-start gap-2 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={agreeMarketing}
+                        onChange={e => setAgreeMarketing(e.target.checked)}
+                        className="w-4 h-4 mt-[2px] cursor-pointer accent-[#1cd4ff] shrink-0"
+                      />
+                      <span className="text-[13px] text-[#333333] leading-snug">
+                        I agree to receive marketing emails and promotional updates.
+                      </span>
                     </label>
                   </div>
 
@@ -157,29 +225,8 @@ const RegisterPage = () => {
                     type="submit"
                     className="w-full h-[44px] bg-[#1CD4FF] border border-[#1CD4FF] rounded-[4px] text-[#333333] text-[14px] font-[590] uppercase cursor-pointer flex items-center justify-center px-[10px] py-1 box-border"
                   >
-                    CREATE ACCOUNT
+                    Create an account
                   </button>
-
-                  {/* Divider */}
-                  <div className="flex items-center gap-3">
-                    <div className="flex-1 h-px bg-[#e0e0e0]" />
-                    <span className="text-[12px] text-[#999999] whitespace-nowrap">Or continue with</span>
-                    <div className="flex-1 h-px bg-[#e0e0e0]" />
-                  </div>
-
-                  {/* Socials */}
-                  <div className="flex justify-center items-center gap-[12px] md:gap-[16px] w-full">
-                    {[bottom1, bottom2, bottom3, bottom4].map((src, i) => (
-                      <button
-                        key={i}
-                        type="button"
-                        className="flex-1 md:flex-none md:w-[70px] h-[44px] bg-transparent border border-[#e0e0e0] rounded-[8px] cursor-pointer flex items-center justify-center box-border"
-                      >
-                        <img src={src} alt="social" className="w-6 h-6 object-contain" />
-                      </button>
-                    ))}
-                  </div>
-
                 </form>
               </div>
 

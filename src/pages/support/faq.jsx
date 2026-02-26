@@ -1,15 +1,26 @@
 import { useState } from "react";
 import PageHeader from "../about/Header/Header";
 import faqData from "../support/faqData/faqData";
+import { useNavigate } from "react-router-dom";
 
 const FAQ = () => {
     const [activeCategory, setActiveCategory] = useState("General");
     const [openIndex, setOpenIndex] = useState(null);
-
+    const navigate = useNavigate();
     const categories = Object.keys(faqData);
 
     return (
         <>
+            <div className="flex items-center gap-2 text-[13px] text-[#6b7280] py-0 ">
+                <button
+                    onClick={() => navigate('/')}
+                    className="hover:text-[#1CD4FF] transition-colors font-medium cursor-pointer"
+                >
+                    Home
+                </button>
+                <span className="text-[#ccc]">›</span>
+                {/* <span className="text-[#333] font-semibold">{meta.label}</span> */}
+            </div>
             <PageHeader title="FAQ's" />
 
             <div className="w-full flex flex-col md:flex-row gap-4 md:gap-6">
@@ -33,7 +44,6 @@ const FAQ = () => {
                     ))}
                 </div>
 
-                {/* ───────── MOBILE DROPDOWN ───────── */}
                 {/* ───────── MOBILE DROPDOWN ───────── */}
                 <div className="md:hidden w-full relative">
 
@@ -92,7 +102,7 @@ const FAQ = () => {
 
                 {/* ───────── QUESTIONS PANEL ───────── */}
                 <div className="flex-1 bg-white rounded-xl p-4 md:p-6">
-                    <h2 className="mb-4 text-[#121212] text-[16px] leading-[20px] font-normal tracking-[0%] font-['SF_Pro']">
+                    <h2 className="mb-4 text-[#121212] text-[16px] leading-[20px] font-normal tracking-[0%] ">
                         {activeCategory}
                     </h2>
 

@@ -95,8 +95,8 @@ const LoginPage = () => {
                   Register
                 </button>
                 <button
-                  className="flex-1 h-full px-[10px] py-1 rounded-[2px] cursor-pointer text-[14px] font-bold text-[#1a1a1a] border-none box-border"
-                  style={{ background: 'linear-gradient(180deg, #E3FC7B 0%, #C2D95A 100%)' }}
+                  className="flex-1 h-full px-[10px] py-1 rounded-md cursor-pointer text-[14px] font-bold text-[#FFFFFF] border-none box-border"
+                  style={{ background: 'linear-gradient(180deg, #1F2937 0%, #1F2937 100%)' }}
                   onClick={() => navigate('/login')}
                 >
                   Login
@@ -168,12 +168,17 @@ const LoginPage = () => {
                         onChange={e => setRemember(e.target.checked)}
                         className="w-4 h-4 cursor-pointer accent-[#1cd4ff]"
                       />
-                      <span className="text-[13px] text-[#333333]">
-                        Remember me
-                      </span>
+                      <div className="flex items-center justify-between gap-15 md:gap-60 w-full flex-wrap">
+                        <span className="text-[13px] text-[#333333]">
+                          Remember me
+                        </span>
+
+                        <span className="text-[13px] text-[#13ACCF] cursor-pointer hover:text-[#13ACCF]">
+                          Forgot Password ?
+                        </span>
+                      </div>
                     </label>
                   </div>
-
                   {/* Login Button */}
                   <button
                     type="submit"
@@ -181,34 +186,6 @@ const LoginPage = () => {
                   >
                     LOGIN
                   </button>
-
-                  {/* Divider */}
-                  <div className="flex items-center gap-3">
-                    <div className="flex-1 h-px bg-[#e0e0e0]" />
-                    <span className="text-[12px] text-[#999999] whitespace-nowrap">
-                      Or continue with
-                    </span>
-                    <div className="flex-1 h-px bg-[#e0e0e0]" />
-                  </div>
-
-                  {/* Social buttons */}
-                  <div className="flex justify-center items-center gap-[12px] md:gap-[16px] w-full">
-                    {[bottom1, bottom2, bottom3, bottom4].map((src, i) => (
-                      <button
-                        key={i}
-                        type="button"
-                        className="flex-1 md:flex-none md:w-[70px] h-[44px] bg-transparent border border-[#e0e0e0] rounded-[8px] cursor-pointer flex items-center justify-center box-border"
-                      >
-                        <img
-                          src={src}
-                          alt="social"
-                          className="w-[25px] h-[20px] object-contain"
-                        />
-                      </button>
-                    ))}
-                  </div>
-
-
                 </form>
 
               </div>
