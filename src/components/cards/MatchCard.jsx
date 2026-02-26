@@ -1,3 +1,4 @@
+import { dotIcon } from "../../assets/icons";
 const MatchCard = ({
   league,
   team1,
@@ -32,18 +33,25 @@ const MatchCard = ({
         </span>
 
         {isLive && (
-          <span className="
-            flex items-center gap-[4px]
-            bg-[#ff6a00]
-            text-white
-            text-[11px]
-            font-bold
-            px-[10px]
-            py-[3px]
-            rounded-full
-          ">
-            <span className="w-[7px] h-[7px] rounded-full bg-[#ff2d2d] inline-block"></span>
-            LIVE
+          <span
+            className="
+    inline-flex items-center gap-[4px]
+    bg-[#ff6a00]
+    text-white
+    text-[11px]
+    font-bold
+    px-[8px]
+    py-[3px]
+    rounded-full
+    leading-none
+  "
+          >
+            <img
+              src={dotIcon}
+              alt="live"
+              className="w-[10px] h-[10px] block"
+            />
+            <span className="leading-none">LIVE</span>
           </span>
         )}
       </div>
@@ -90,23 +98,23 @@ const MatchCard = ({
             <button
               key={i}
               className={`
-                w-[74px]
-                h-[37px]
-                rounded-[10px]
-                px-[16px]
-                py-[8px]
-                text-[13px]
-                font-semibold
-                flex items-center justify-center
-                shrink-0
-                box-border
-                transition
+          w-[74px]
+          h-[37px]
+          rounded-[10px]
+          px-[16px]
+          py-[8px]
+          text-[13px]
+          font-semibold
+          flex items-center justify-center
+          shrink-0
+          box-border
+          transition
 
-                ${isLast
-                  ? 'bg-[#7ed321] text-white border-none'
+          ${isLast
+                  ? 'bg-[linear-gradient(180deg,#E3FC7B_0%,#C2D95A_100%)] text-[#222] border-none'
                   : 'bg-white text-[#222] border border-[#e0e0e0] hover:bg-gray-50'
                 }
-              `}
+        `}
             >
               {odd}
             </button>

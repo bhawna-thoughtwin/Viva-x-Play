@@ -109,7 +109,7 @@ const Promotion = () => {
             </div>
 
             {/* ── Content ── */}
-            <div className="bg-white rounded-xl p-3 md:p-[22px] flex flex-col">
+            {/* <div className="bg-white rounded-xl p-3 md:p-[22px] flex flex-col">
 
                 <h3 className="text-[17px] md:text-[25px] font-bold text-[#0D0C22] m-0 mb-1.5 md:mb-2">
                     Get a 500% Bonus up to $10,000
@@ -160,7 +160,115 @@ const Promotion = () => {
                     </div>
                 ))}
 
-            </div>
+            </div> */}
+            <div className="bg-white rounded-xl p-3 md:p-[22px] flex flex-col gap-8">
+
+            {/* Intro */}
+            <section className="flex flex-col gap-3">
+                <h1 className="text-[22px] md:text-[32px] font-[590] text-[#333333] leading-[28px]">
+                    Spin Into Action – 1,000 Free Spins Welcome Offer!
+                </h1>
+                <p className="text-[16px] md:text-[18px] font-[590] text-[#333333]">
+                    Ready to take your first spin with Monkey Tilt?
+                </p>
+                <p className="text-[14px] md:text-[16px] text-[#333333] leading-[24px]">
+                    New players can kick things off with up to 1,000 Free Spins when signing up and making their first deposit. More spins, more chances, more excitement!
+                </p>
+            </section>
+
+            <hr className="border-[#DFE8EB]" />
+
+            {/* How to Claim */}
+            <section className="flex flex-col gap-3">
+                <h2 className="text-[18px] md:text-[24px] font-[590] text-[#333333]">
+                    How to Claim Your Free Spins
+                </h2>
+                <ul className="list-disc pl-5 flex flex-col gap-2 text-[14px] md:text-[16px] text-[#333333] leading-[24px]">
+                    <li>Register a new account at Monkey Tilt</li>
+                    <li>Deposit $20 – $2,000</li>
+                    <li>Receive Free Spins based on your deposit amount</li>
+                    <li>Start spinning and unlock real winnings!</li>
+                </ul>
+            </section>
+
+            <hr className="border-[#DFE8EB]" />
+
+            {/* Free Spins Structure */}
+            <section className="flex flex-col gap-3">
+                <h2 className="text-[18px] md:text-[24px] font-[590] text-[#333333]">
+                    Free Spins Structure
+                </h2>
+                <ul className="list-disc pl-5 flex flex-col gap-2 text-[14px] md:text-[16px] text-[#333333] leading-[24px]">
+                    <li>Deposit $20 – $49 → Get 100 Free Spins</li>
+                    <li>Deposit $50 – $99 → Get 300 Free Spins</li>
+                    <li>Deposit $100 – $499 → Get 600 Free Spins</li>
+                    <li>Deposit $500 – $2,000 → Get 1,000 Free Spins</li>
+                    <li>Maximum: 1,000 Free Spins</li>
+                    <li>Free Spins are valid on selected slot games only.</li>
+                </ul>
+            </section>
+
+            <hr className="border-[#DFE8EB]" />
+
+            {/* Terms & Conditions */}
+            <section className="flex flex-col gap-4">
+                <h2 className="text-[20px] md:text-[28px] font-[590] text-[#333333]">
+                    Terms &amp; Conditions – Free Spins Welcome Offer
+                </h2>
+
+                <div className="flex flex-col gap-2">
+                    <h3 className="text-[16px] md:text-[20px] font-[590] text-[#333333]">
+                        Wagering Contributions by Game Type:
+                    </h3>
+                    <ul className="list-disc pl-5 flex flex-col gap-2 text-[14px] md:text-[16px] text-[#333333] leading-[24px]">
+                        <li>Available only to newly registered players aged 18+.</li>
+                        <li>Promotion valid from 22nd August 2025 for 1 year unless amended or terminated.</li>
+                        <li>Offer applies to the first deposit only.</li>
+                    </ul>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                    <h3 className="text-[16px] md:text-[20px] font-[590] text-[#333333]">
+                        Free Spins Rules
+                    </h3>
+                    <ul className="list-disc pl-5 flex flex-col gap-2 text-[14px] md:text-[16px] text-[#333333] leading-[24px]">
+                        <li>Free Spins are credited instantly after qualifying deposit.</li>
+                        <li>Each spin value: $0.20 per spin.</li>
+                        <li>Winnings from Free Spins are credited as bonus funds.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <hr className="border-[#DFE8EB]" />
+
+            {/* Free Spins Rules */}
+            <section className="flex flex-col gap-3">
+                <h2 className="text-[20px] md:text-[28px] font-[590] text-[#333333]">
+                    Free Spins Rules
+                </h2>
+                <ul className="list-disc pl-5 flex flex-col gap-2 text-[14px] md:text-[16px] text-[#333333] leading-[24px]">
+                    <li>Free Spins are credited instantly after qualifying deposit.</li>
+                    <li>Each spin value: $0.20 per spin.</li>
+                    <li>Winnings from Free Spins are credited as bonus funds.</li>
+                </ul>
+            </section>
+
+            <hr className="border-[#DFE8EB]" />
+
+            {/* Wagering Requirements */}
+            <section className="flex flex-col gap-3">
+                <h2 className="text-[20px] md:text-[28px] font-[590] text-[#333333]">
+                    Wagering Requirements
+                </h2>
+                <ul className="list-disc pl-5 flex flex-col gap-2 text-[14px] md:text-[16px] text-[#333333] leading-[24px]">
+                    <li>Winnings from Free Spins are subject to a 35x wagering requirement.</li>
+                    <li>Only selected slot games contribute 100% toward wagering.</li>
+                    <li>Maximum bet allowed while wagering: $20 per spin.</li>
+                    <li>Progressive Jackpot Slots do not count toward wagering (0%).</li>
+                </ul>
+            </section>
+
+        </div>
         </div>
     );
 };

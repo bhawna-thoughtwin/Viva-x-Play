@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import useScrollDots from '../../hooks/useScrollDots';
 import ScrollDots from '../common/ScrollDots';
 import SectionHeader from '../common/SectionHeader';
@@ -31,7 +32,7 @@ const casinoCategories = [
   {
     label: 'Jackpot', number: '4', image: casino4, image2: casino44,
     imageStyle: { position: 'absolute', bottom: '28px', right: '0px', width: '90px', height: '145px', objectFit: 'contain', zIndex: 3 },
-    image2Style: { position: 'absolute', bottom: '28px', left: '5px', width: '105px', height: '160px', objectFit: 'contain', zIndex: 2 },
+    image2Style: { position: 'absolute', bottom: '28px', left: '35px', width: '105px', height: '160px', objectFit: 'contain', zIndex: 2 },
   },
   {
     label: 'Baccarat', number: '5', image: casino5,
@@ -109,6 +110,7 @@ const GameRow = ({ title, games }) => {
 };
 
 const CasinoAndGames = () => {
+  const navigate = useNavigate();
   return (
     <section className="bg-white rounded-xl p-4 md:p-5 mb-3 md:mb-4 w-full box-border">
 
@@ -117,7 +119,7 @@ const CasinoAndGames = () => {
         icon={<img src={casinoIcon} alt="Casino & Games" className="w-full h-full object-contain" />}
         title="Casino & Games"
         subtitle="Bet on 30+ sports with the best odds"
-        onViewAll={() => { }}
+        onViewAll={() => navigate('/casino')}
       />
 
       {/* 2 ── Category strip — horizontal scroll on mobile, all 5 on desktop */}

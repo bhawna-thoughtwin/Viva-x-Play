@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
 import SearchBar from '../common/SearchBar';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -68,7 +68,7 @@ const menuGroups = [
   [
      { label: 'Promotions', icon: promotionsIcon, path: '/promotion' },
     { label: 'Refer a friend', icon: referIcon, path: '/refer-a-friend' },
-    { label: 'Welcome Bonuses', icon: bonusIcon },
+    { label: 'Welcome Bonuses', icon: bonusIcon, path: '/welcome-bonuses' },
   
   ],
   [
@@ -78,6 +78,19 @@ const menuGroups = [
   ],
 
 ];
+
+const getActiveSectionFromPath = (pathname) => {
+  if (pathname === '/sports' || pathname.startsWith('/sports/')) return 'Sports';
+  if (pathname === '/casino' || pathname.startsWith('/casino/')) return 'Casino';
+  if (pathname === '/live-casino' || pathname.startsWith('/live-casino/')) return 'Live Casino';
+  if (pathname === '/promotion') return 'Promotions';
+  if (pathname === '/refer-a-friend') return 'Refer a friend';
+  if (pathname === '/welcome-bonuses') return 'Welcome Bonuses';
+  if (pathname === '/profile') return 'Profile';
+  if (supportLinks.some(c => c.path && pathname === c.path)) return 'Support';
+  if (aboutLinks.some(c => c.path && pathname === c.path)) return 'About Us';
+  return null;
+};
 
 const ChevronDown = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
@@ -105,11 +118,19 @@ const Sidebar = () => {
     if (path === '/sports' || path.startsWith('/sports/')) return { Sports: true };
     if (path === '/casino' || path.startsWith('/casino/')) return { Casino: true };
     if (path === '/live-casino' || path.startsWith('/live-casino/')) return { 'Live Casino': true };
+    if (supportLinks.some(c => c.path && path === c.path)) return { Support: true };
+    if (aboutLinks.some(c => c.path && path === c.path)) return { 'About Us': true };
     return {};
   });
+  const [activeSection, setActiveSection] = useState(() => getActiveSectionFromPath(window.location.pathname));
   const [activeSubItem, setActiveSubItem] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    const section = getActiveSectionFromPath(location.pathname);
+    if (section) setActiveSection(section);
+  }, [location.pathname]);
 
   const handleNavigate = (path) => {
     navigate(path);
@@ -168,7 +189,7 @@ const Sidebar = () => {
                   {/* ── Expandable (Casino / Support / About Us) ── */}
                   {item.expandable ? (
                     (() => {
-                      const isActive = item.path && (location.pathname === item.path || location.pathname.startsWith(item.path + '/'));
+                      const isActive = activeSection === item.label;
                       return (
                         <button
                           className={`flex items-center gap-3 w-full border-none outline-none cursor-pointer px-2 py-[11px] text-[15px] font-medium text-left rounded-lg transition-all ${
@@ -176,7 +197,11 @@ const Sidebar = () => {
                           }`}
                           style={isActive ? { background: 'linear-gradient(90deg, #117F99 0%, #1CD4FF 100%)' } : {}}
                           onClick={() => {
-                            setExpanded(prev => ({ ...prev, [item.label]: !prev[item.label] }));
+                            const willExpand = !expanded[item.label];
+                            setExpanded(prev => ({ ...prev, [item.label]: willExpand }));
+                            if (!item.path) {
+                              setActiveSection(willExpand ? item.label : null);
+                            }
                             if (item.path) handleNavigate(item.path);
                           }}
                         >
@@ -199,7 +224,7 @@ const Sidebar = () => {
                     /* ── Navigable item ── */
                   ) : item.path ? (
                     (() => {
-                      const isActive = location.pathname === item.path;
+                      const isActive = activeSection === item.label;
                       return (
                         <button
                           className={`flex items-center gap-3 w-full border-none outline-none cursor-pointer px-2 py-[11px] text-[15px] font-medium text-left rounded-lg transition-all ${
@@ -207,7 +232,6 @@ const Sidebar = () => {
                           }`}
                           style={isActive ? { background: 'linear-gradient(90deg, #117F99 0%, #1CD4FF 100%)' } : {}}
                           onClick={() => {
-                            setActiveSubItem(item.label);
                             handleNavigate(item.path);
                           }}
                         >

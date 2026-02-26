@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import useScrollDots from '../../hooks/useScrollDots';
 import ScrollDots from '../common/ScrollDots';
 import SectionHeader from '../common/SectionHeader';
@@ -39,6 +40,7 @@ const promotions = [
 ];
 
 const PromotionsSection = ({ hideHeader = false }) => {
+  const navigate = useNavigate();
   const { scrollRef, activeIndex, scrollToIndex } = useScrollDots(promotions.length);
 
   return (
@@ -54,7 +56,7 @@ const PromotionsSection = ({ hideHeader = false }) => {
             className="w-full h-full object-contain"
           />
         }
-        onViewAll={() => { }}
+        onViewAll={() => navigate('/promotion')}
         viewAllClassName="hidden md:block"
       />
       )}

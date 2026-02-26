@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import useScrollDots from '../../hooks/useScrollDots';
 import ScrollDots from '../common/ScrollDots';
 import SectionHeader from '../common/SectionHeader';
@@ -24,6 +25,7 @@ const sports = [
 
 
 const SportsBetting = () => {
+  const navigate = useNavigate();
   const { scrollRef: sportsRef, activeIndex: sportsActive, scrollToIndex: sportsScrollTo } = useScrollDots(sports.length);
 
   return (
@@ -33,7 +35,7 @@ const SportsBetting = () => {
         icon={<img src={sportsIcon} alt="Sports Betting" className="w-full h-full object-contain" />}
         title="Sports Betting"
         subtitle="Bet on 30+ sports with the best odds"
-        onViewAll={() => { }}
+        onViewAll={() => navigate('/sports')}
       />
 
       {/* Sports image strip — scrollable on mobile */}

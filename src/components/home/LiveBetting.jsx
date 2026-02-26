@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import useScrollDots from '../../hooks/useScrollDots';
 import ScrollDots from '../common/ScrollDots';
 import SectionHeader from '../common/SectionHeader';
@@ -12,6 +13,7 @@ const matches = [
 ];
 
 const LiveBetting = () => {
+  const navigate = useNavigate();
   const { scrollRef, activeIndex, scrollToIndex } = useScrollDots(matches.length);
 
   return (
@@ -21,7 +23,7 @@ const LiveBetting = () => {
         icon={<img src={liveSportsIcon} alt="Live Betting" className="w-full h-full object-contain" />}
         title="Live Betting"
         subtitle="Real-time odds • Instant payouts"
-        onViewAll={() => { }}
+        onViewAll={() => navigate('/sports')}
       />
 
       {/* Cards scroll row */}

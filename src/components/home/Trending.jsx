@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import SectionHeader from '../common/SectionHeader';
 
 const trendingMatches = [
@@ -8,9 +9,10 @@ const trendingMatches = [
 ];
 
 const Trending = () => {
+  const navigate = useNavigate();
   return (
     <section style={styles.section}>
-      <SectionHeader title="Trending" onViewAll={() => {}} />
+      <SectionHeader title="Trending" onViewAll={() => navigate('/sports')} />
       <div style={styles.list}>
         {trendingMatches.map((match, i) => (
           <div key={i} style={styles.row}>

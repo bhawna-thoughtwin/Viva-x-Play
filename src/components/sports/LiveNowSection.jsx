@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { footballIcon, monitorIcon, chatIcon, liveIcon } from '../../assets/icons';
 
 const liveNowData = [
@@ -61,9 +62,11 @@ const LiveNowRow = ({ score, liveTime, league, team1, team2, score1, score2, odd
       <span className="text-[#d1d5db] text-[10px] shrink-0">•</span>
 
       {/* Icons */}
-      <img src={footballIcon} alt="football" className="w-[14px] h-[14px] object-contain opacity-60 shrink-0" />
-      <img src={monitorIcon} alt="monitor" className="w-[14px] h-[14px] object-contain opacity-60 shrink-0" />
-      <img src={chatIcon} alt="chat" className="w-[14px] h-[14px] object-contain opacity-60 shrink-0" />
+      <div className="flex items-center gap-2.5 ml-18">
+        <img src={footballIcon} alt="football" className="w-[14px] h-[14px] object-contain opacity-60 shrink-0" />
+        <img src={monitorIcon} alt="monitor" className="w-[14px] h-[14px] object-contain opacity-60 shrink-0" />
+        <img src={chatIcon} alt="chat" className="w-[14px] h-[14px] object-contain opacity-60 shrink-0" />
+      </div>
 
       {/* League */}
       <span className="text-[12px] text-[#6b7280] truncate">{league}</span>
@@ -138,35 +141,39 @@ const LiveNowRow = ({ score, liveTime, league, team1, team2, score1, score2, odd
   </div>
 );
 
-const LiveNowSection = () => (
-  <div className="mt-6">
-    {/* Header */}
-    <div className="flex items-center justify-between mb-3 gap-2">
-      <div className="flex items-center gap-2 min-w-0 flex-1">
-        <span className="text-[16px] md:text-[20px] font-bold text-[#121212] truncate">Live Now</span>
+const LiveNowSection = () => {
+  const navigate = useNavigate();
+  return (
+    <div className="mt-6">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-3 gap-2">
+        <div className="flex items-center gap-2 min-w-0 flex-1">
+          <span className="text-[16px] md:text-[20px] font-bold text-[#121212] truncate">Live Now</span>
+        </div>
+        <button
+          onClick={() => navigate('/sports')}
+          className="
+            shrink-0
+            border-2 border-[#1CD4FF] text-[#1CD4FF] bg-white
+            rounded-md md:rounded-lg
+            px-2.5 md:px-8
+            h-[28px] md:h-[44px]
+            text-[11px] md:text-[14px]
+            leading-none font-[590] cursor-pointer hover:bg-[#f0fdff] transition-colors whitespace-nowrap
+          "
+        >
+          View All
+        </button>
       </div>
-      <button
-        className="
-          shrink-0
-          border-2 border-[#1CD4FF] text-[#1CD4FF] bg-white
-          rounded-md md:rounded-lg
-          px-2.5 md:px-8
-          h-[28px] md:h-[44px]
-          text-[11px] md:text-[14px]
-          leading-none font-[590] cursor-pointer hover:bg-[#f0fdff] transition-colors whitespace-nowrap
-        "
-      >
-        View All
-      </button>
-    </div>
 
-    {/* Match rows */}
-    <div className="flex flex-col gap-3">
-      {liveNowData.map((match, i) => (
-        <LiveNowRow key={i} {...match} />
-      ))}
+      {/* Match rows */}
+      <div className="flex flex-col gap-3">
+        {liveNowData.map((match, i) => (
+          <LiveNowRow key={i} {...match} />
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default LiveNowSection;

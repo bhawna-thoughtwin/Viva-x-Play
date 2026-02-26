@@ -30,6 +30,7 @@ import Casino from './pages/Casino';
 import CasinoDetails from './pages/CasinoDetails';
 import LiveCasino from './pages/LiveCasino';
 import LiveCasinoDetails from './pages/LiveCasinoDetails';
+import { WelComBonus } from './pages/WelComBonus';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -74,6 +75,7 @@ function App() {
                   <Route path="/support/faq" element={<FAQ />} />
                   <Route path="/support/contact" element={<ContactSupport />} />
                   <Route path="/refer-a-friend" element={<ReferAFriend />} />
+                  <Route path="/welcome-bonuses" element={<WelComBonus />} />
                   <Route path="/casino/providers" element={<ProvidersPage />} />
                   <Route path="/live-casino/providers" element={<ProvidersPage />} />
                   <Route path='/profile' element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />

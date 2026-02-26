@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { footballIcon, monitorIcon } from '../../assets/icons';
 
 const topEventsData = [
@@ -96,6 +97,7 @@ const TopEventCard = ({ time, league, team1, team2, score1, score2, odds }) => (
 );
 
 const TopEventsSection = () => {
+  const navigate = useNavigate();
   const scrollRef = useRef(null);
 
   return (
@@ -104,6 +106,7 @@ const TopEventsSection = () => {
       <div className="flex items-center justify-between mb-3 gap-2">
         <span className="text-[16px] md:text-[20px] font-bold text-[#121212] truncate min-w-0">Top Events</span>
         <button
+          onClick={() => navigate('/sports')}
           className="
             shrink-0
             border-2 border-[#1CD4FF] text-[#1CD4FF] bg-white
