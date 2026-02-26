@@ -45,6 +45,7 @@ export {default as AllSportsIcon } from "./all-sports.svg";
 export {default as superjackIcon} from "./superjack.svg";
 export {default as sentEmailIcon } from "./sent-mail 1.svg";
 export {default as dotIcon} from "./Ellipse4.svg";
+export {default as rightArrowIcon} from "./chevron-right.svg";
 
 
 // Athlete/Player Images
